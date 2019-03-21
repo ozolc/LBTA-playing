@@ -59,7 +59,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         // some basic math/geometry
         
         let leftRightPadding = view.frame.width * 0.15
-        let interSpacing = view.frame.width * 0.1
+//        let interSpacing = view.frame.width * 0.1
         
 //        let cellWidth =
         
