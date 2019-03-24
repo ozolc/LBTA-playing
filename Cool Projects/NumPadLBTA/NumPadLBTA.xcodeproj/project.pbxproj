@@ -12,6 +12,7 @@
 		B028409E2243DB2000B76317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B028409C2243DB2000B76317 /* Main.storyboard */; };
 		B02840A02243DB2000B76317 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B028409F2243DB2000B76317 /* Assets.xcassets */; };
 		B02840A32243DB2000B76317 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02840A12243DB2000B76317 /* LaunchScreen.storyboard */; };
+		B036BD692247626000207252 /* DialedNumbersHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B036BD682247626000207252 /* DialedNumbersHeader.swift */; };
 		B07434522243EAFD00645729 /* KeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07434512243EAFD00645729 /* KeyCell.swift */; };
 		B07434542243EC3300645729 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07434532243EC3300645729 /* UIView+Layout.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 		B028409F2243DB2000B76317 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B02840A22243DB2000B76317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B02840A42243DB2000B76317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B036BD682247626000207252 /* DialedNumbersHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialedNumbersHeader.swift; sourceTree = "<group>"; };
 		B07434512243EAFD00645729 /* KeyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCell.swift; sourceTree = "<group>"; };
 		B07434532243EC3300645729 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +62,7 @@
 			children = (
 				B02840982243DB2000B76317 /* AppDelegate.swift */,
 				B028409A2243DB2000B76317 /* ViewController.swift */,
+				B036BD682247626000207252 /* DialedNumbersHeader.swift */,
 				B07434512243EAFD00645729 /* KeyCell.swift */,
 				B07434532243EC3300645729 /* UIView+Layout.swift */,
 				B028409C2243DB2000B76317 /* Main.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B036BD692247626000207252 /* DialedNumbersHeader.swift in Sources */,
 				B07434542243EC3300645729 /* UIView+Layout.swift in Sources */,
 				B07434522243EAFD00645729 /* KeyCell.swift in Sources */,
 				B028409B2243DB2000B76317 /* ViewController.swift in Sources */,

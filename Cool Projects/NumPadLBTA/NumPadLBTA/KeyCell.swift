@@ -13,9 +13,19 @@ class KeyCell: UICollectionViewCell {
     let digitsLabel = UILabel()
     let lettersLabel = UILabel()
     
+    fileprivate let defaultBGColor = UIColor(white: 0.9, alpha: 1)
+    
+    override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? .darkGray : defaultBGColor
+            digitsLabel.textColor = isHighlighted ? .white : .black
+            lettersLabel.textColor = isHighlighted ? .white : .black
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(white: 0.9, alpha: 1)
+        backgroundColor = defaultBGColor
         
         digitsLabel.text = "8"
         digitsLabel.font = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? UIFont.systemFont(ofSize: 24) : .systemFont(ofSize: 32)

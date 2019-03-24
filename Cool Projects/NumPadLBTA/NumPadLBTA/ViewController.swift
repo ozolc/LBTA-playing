@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     fileprivate let cellId = "cellId"
+    fileprivate let headerId = "headerId"
     
     let numbers = [
         "1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#"
@@ -27,6 +28,27 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView.backgroundColor = .white
         
         collectionView.register(KeyCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(DialedNumbersHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+    }
+    
+    var dialedNumbersDisplayString = ""
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+        let number = numbers[indexPath.item]
+        dialedNumbersDisplayString += number
+        collectionView.reloadData()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath) as! DialedNumbersHeader
+        header.numbersLabel.text = dialedNumbersDisplayString
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let height = view.frame.height * 0.2
+        return .init(width: view.frame.width, height: height)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
