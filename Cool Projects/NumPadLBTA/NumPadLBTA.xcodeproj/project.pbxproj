@@ -13,8 +13,10 @@
 		B02840A02243DB2000B76317 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B028409F2243DB2000B76317 /* Assets.xcassets */; };
 		B02840A32243DB2000B76317 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02840A12243DB2000B76317 /* LaunchScreen.storyboard */; };
 		B036BD692247626000207252 /* DialedNumbersHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B036BD682247626000207252 /* DialedNumbersHeader.swift */; };
+		B06FDDC122493A7F00DD0744 /* GreenCallButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06FDDC022493A7F00DD0744 /* GreenCallButtonCell.swift */; };
 		B07434522243EAFD00645729 /* KeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07434512243EAFD00645729 /* KeyCell.swift */; };
 		B07434542243EC3300645729 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07434532243EC3300645729 /* UIView+Layout.swift */; };
+		B0C286DE22495DD10071BBC2 /* BackspaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C286DD22495DD10071BBC2 /* BackspaceCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +28,10 @@
 		B02840A22243DB2000B76317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B02840A42243DB2000B76317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B036BD682247626000207252 /* DialedNumbersHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialedNumbersHeader.swift; sourceTree = "<group>"; };
+		B06FDDC022493A7F00DD0744 /* GreenCallButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenCallButtonCell.swift; sourceTree = "<group>"; };
 		B07434512243EAFD00645729 /* KeyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCell.swift; sourceTree = "<group>"; };
 		B07434532243EC3300645729 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		B0C286DD22495DD10071BBC2 /* BackspaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackspaceCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				B028409A2243DB2000B76317 /* ViewController.swift */,
 				B036BD682247626000207252 /* DialedNumbersHeader.swift */,
 				B07434512243EAFD00645729 /* KeyCell.swift */,
+				B0C286DD22495DD10071BBC2 /* BackspaceCell.swift */,
+				B06FDDC022493A7F00DD0744 /* GreenCallButtonCell.swift */,
 				B07434532243EC3300645729 /* UIView+Layout.swift */,
 				B028409C2243DB2000B76317 /* Main.storyboard */,
 				B028409F2243DB2000B76317 /* Assets.xcassets */,
@@ -147,6 +153,8 @@
 				B036BD692247626000207252 /* DialedNumbersHeader.swift in Sources */,
 				B07434542243EC3300645729 /* UIView+Layout.swift in Sources */,
 				B07434522243EAFD00645729 /* KeyCell.swift in Sources */,
+				B0C286DE22495DD10071BBC2 /* BackspaceCell.swift in Sources */,
+				B06FDDC122493A7F00DD0744 /* GreenCallButtonCell.swift in Sources */,
 				B028409B2243DB2000B76317 /* ViewController.swift in Sources */,
 				B02840992243DB2000B76317 /* AppDelegate.swift in Sources */,
 			);
