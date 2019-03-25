@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B03475D82248C0F900095ACF /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03475D72248C0F900095ACF /* BookCell.swift */; };
 		B09CC35F22440E80005ED540 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CC35E22440E80005ED540 /* AppDelegate.swift */; };
 		B09CC36122440E80005ED540 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CC36022440E80005ED540 /* ViewController.swift */; };
 		B09CC36622440E81005ED540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B09CC36522440E81005ED540 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B03475D72248C0F900095ACF /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		B09CC35B22440E80005ED540 /* KindleLBTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KindleLBTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09CC35E22440E80005ED540 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B09CC36022440E80005ED540 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				B09CC35E22440E80005ED540 /* AppDelegate.swift */,
 				B09CC36022440E80005ED540 /* ViewController.swift */,
+				B03475D72248C0F900095ACF /* BookCell.swift */,
 				B09CC36522440E81005ED540 /* Assets.xcassets */,
 				B09CC36722440E81005ED540 /* LaunchScreen.storyboard */,
 				B09CC36A22440E81005ED540 /* Info.plist */,
@@ -134,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B03475D82248C0F900095ACF /* BookCell.swift in Sources */,
 				B0C0540422457C0300741A26 /* Models.swift in Sources */,
 				B09CC36122440E80005ED540 /* ViewController.swift in Sources */,
 				B09CC35F22440E80005ED540 /* AppDelegate.swift in Sources */,
