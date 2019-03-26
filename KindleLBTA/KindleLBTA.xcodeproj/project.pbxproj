@@ -59,10 +59,10 @@
 				B09CC35E22440E80005ED540 /* AppDelegate.swift */,
 				B09CC36022440E80005ED540 /* ViewController.swift */,
 				B03475D72248C0F900095ACF /* BookCell.swift */,
+				B0C0540322457C0300741A26 /* Models.swift */,
 				B09CC36522440E81005ED540 /* Assets.xcassets */,
 				B09CC36722440E81005ED540 /* LaunchScreen.storyboard */,
 				B09CC36A22440E81005ED540 /* Info.plist */,
-				B0C0540322457C0300741A26 /* Models.swift */,
 			);
 			path = KindleLBTA;
 			sourceTree = "<group>";
