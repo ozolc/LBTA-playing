@@ -23,16 +23,16 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
         
-        let book = books?[indexPath.row]
-        
-        cell.textLabel?.text = book?.title
-        cell.imageView?.image = book?.image
+//        let book = books?[indexPath.row]
+//
+//        cell.textLabel?.text = book?.title
+//        cell.imageView?.image = book?.image
         
         return cell
     }

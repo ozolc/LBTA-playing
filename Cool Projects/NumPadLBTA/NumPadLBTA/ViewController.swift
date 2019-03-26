@@ -86,7 +86,6 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 let backspaceCell = collectionView.dequeueReusableCell(withReuseIdentifier: backspaceCellId, for: indexPath) as! BackspaceCell
                 return backspaceCell
             }
-            
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! KeyCell
