@@ -13,6 +13,7 @@
 		B09CC36622440E81005ED540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B09CC36522440E81005ED540 /* Assets.xcassets */; };
 		B09CC36922440E81005ED540 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B09CC36722440E81005ED540 /* LaunchScreen.storyboard */; };
 		B0C0540422457C0300741A26 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C0540322457C0300741A26 /* Models.swift */; };
+		B0D6A656224A7CE400D8D2EA /* BookPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D6A655224A7CE400D8D2EA /* BookPageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		B09CC36822440E81005ED540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B09CC36A22440E81005ED540 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0C0540322457C0300741A26 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		B0D6A655224A7CE400D8D2EA /* BookPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				B09CC35E22440E80005ED540 /* AppDelegate.swift */,
 				B09CC36022440E80005ED540 /* ViewController.swift */,
+				B0D6A655224A7CE400D8D2EA /* BookPageController.swift */,
 				B03475D72248C0F900095ACF /* BookCell.swift */,
 				B0C0540322457C0300741A26 /* Models.swift */,
 				B09CC36522440E81005ED540 /* Assets.xcassets */,
@@ -140,6 +143,7 @@
 				B03475D82248C0F900095ACF /* BookCell.swift in Sources */,
 				B0C0540422457C0300741A26 /* Models.swift in Sources */,
 				B09CC36122440E80005ED540 /* ViewController.swift in Sources */,
+				B0D6A656224A7CE400D8D2EA /* BookPageController.swift in Sources */,
 				B09CC35F22440E80005ED540 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
