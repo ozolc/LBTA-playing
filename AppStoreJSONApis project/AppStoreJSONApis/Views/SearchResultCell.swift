@@ -11,7 +11,7 @@ import UIKit
 // Класс для использования ячейки в AppsSearchController
 class SearchResultCell: UICollectionViewCell {
     
-    let imageView: UIImageView = {
+    let appIconImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .red
         iv.widthAnchor.constraint(equalToConstant: 64).isActive = true
@@ -43,38 +43,51 @@ class SearchResultCell: UICollectionViewCell {
         button.setTitle("GET", for: .normal)
         button.setTitleColor(.blue, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        button.backgroundColor = .darkGray
+        button.backgroundColor = UIColor(white: 0.95, alpha: 1)
         button.widthAnchor.constraint(equalToConstant: 88).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        button.layer.cornerRadius = 16
         return button
     }()
+    
+    lazy var screenshot1ImgeView = self.createScreenShotImageView()
+    lazy var screenshot2ImgeView = self.createScreenShotImageView()
+    lazy var screenshot3ImgeView = self.createScreenShotImageView()
+    
+    // Создание изображений с программой
+    func createScreenShotImageView() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .blue
+        return imageView
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .yellow
+        // optional
         
-        // StackView в котором находятся элементы с названием, категорией и кол-вом загрузок.
-        let labelsStackView = UIStackView(arrangedSubviews: [
-            nameLabel, categoryLabel, ratingLabel
+        // StackView в котором находятся элементы без скриншотов приложения.
+        let infoTopStackView = UIStackView(arrangedSubviews: [
+            appIconImageView,
+            
+            // StackView в котором находятся элементы с названием, категорией и кол-вом загрузок.
+            VerticalStackView(arrangedSubviews: [nameLabel, categoryLabel, ratingLabel]),
+            
+            getButton
             ])
-        labelsStackView.axis = .vertical
+        infoTopStackView.spacing = 12
+        infoTopStackView.alignment = .center // расположение по центру ячейки. Перпендикулярно расположению заданному через AXIS
         
-        // StackView в котором находятся все элементы.
-        let stackView = UIStackView(arrangedSubviews: [
-            imageView, labelsStackView, getButton
-            ])
-        stackView.spacing = 12
-        stackView.alignment = .center // расположение по центру ячейки. Перпендикулярно расположению заданному через AXIS
+        // StackView в котором находятся скриншоты приложения.
+        let screenshotStackView = UIStackView(arrangedSubviews: [screenshot1ImgeView, screenshot2ImgeView, screenshot3ImgeView])
+        screenshotStackView.spacing = 12
+        screenshotStackView.distribution = .fillEqually
         
-        addSubview(stackView)
+        // StackView в котором находятся все элементы (вертикальное расположение)
+        let overallStackView = VerticalStackView(arrangedSubviews: [infoTopStackView, screenshotStackView], spacing: 16)
         
-        // Отключим Autoresizing mask переводится в Auto Layout constraints
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        stackView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        addSubview(overallStackView)
+        overallStackView.fillSuperview(padding: .init(top: 16, left: 16, bottom: 16, right: 16))
     }
     
     required init?(coder aDecoder: NSCoder) {
