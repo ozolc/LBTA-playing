@@ -15,9 +15,9 @@ class BaseTabBarController: UITabBarController {
         
         // Создаем ViewControllers отображаемые в UITabBarController используя универсальный метод
         viewControllers = [
+            createNavController(viewController: AppsSearchController(), title: "Search", imageName: "search"),
             createNavController(viewController: UIViewController(), title: "Today", imageName: "today_icon"),
-            createNavController(viewController: UIViewController(), title: "Apps", imageName: "apps"),
-            createNavController(viewController: AppsSearchController(), title: "Search", imageName: "search")
+            createNavController(viewController: UIViewController(), title: "Apps", imageName: "apps")
         ]
     }
     
@@ -32,7 +32,7 @@ class BaseTabBarController: UITabBarController {
         viewController.view.backgroundColor = .white // Цвет фона ViewController
         navController.tabBarItem.title = title // Заголовок элемента в UITabBarController
         navController.tabBarItem.image = UIImage(named: imageName) // Икона элемента в UITabBarController (normal state)
-        return navController
         
+        return navController
     }
 }

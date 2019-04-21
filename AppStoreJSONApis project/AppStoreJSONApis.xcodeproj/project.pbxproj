@@ -13,6 +13,7 @@
 		B0161081226C5A8C008E2407 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0161080226C5A8C008E2407 /* Assets.xcassets */; };
 		B0161084226C5A8C008E2407 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0161082226C5A8C008E2407 /* LaunchScreen.storyboard */; };
 		B016108C226C5B27008E2407 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B016108B226C5B27008E2407 /* BaseTabBarController.swift */; };
+		B0ACF0D9226CB51400B35EAC /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ACF0D8226CB51400B35EAC /* SearchResultCell.swift */; };
 		B0F96840226C6A7100684AF6 /* AppsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F9683F226C6A7100684AF6 /* AppsSearchController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		B0161083226C5A8C008E2407 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0161085226C5A8C008E2407 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B016108B226C5B27008E2407 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		B0ACF0D8226CB51400B35EAC /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		B0F9683F226C6A7100684AF6 /* AppsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +60,7 @@
 		B0161078226C5A8B008E2407 /* AppStoreJSONApis */ = {
 			isa = PBXGroup;
 			children = (
+				B0ACF0D7226CB4EE00B35EAC /* Views */,
 				B0F9683E226C6A3E00684AF6 /* Controller */,
 				B0161079226C5A8B008E2407 /* AppDelegate.swift */,
 				B016107B226C5A8B008E2407 /* ViewController.swift */,
@@ -67,6 +70,14 @@
 				B0161085226C5A8C008E2407 /* Info.plist */,
 			);
 			path = AppStoreJSONApis;
+			sourceTree = "<group>";
+		};
+		B0ACF0D7226CB4EE00B35EAC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B0ACF0D8226CB51400B35EAC /* SearchResultCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B0F9683E226C6A3E00684AF6 /* Controller */ = {
@@ -153,6 +164,7 @@
 				B016107A226C5A8B008E2407 /* AppDelegate.swift in Sources */,
 				B016108C226C5B27008E2407 /* BaseTabBarController.swift in Sources */,
 				B0F96840226C6A7100684AF6 /* AppsSearchController.swift in Sources */,
+				B0ACF0D9226CB51400B35EAC /* SearchResultCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
