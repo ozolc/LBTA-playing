@@ -63,6 +63,8 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         cell.nameLabel.text = appResult.trackName
         cell.categoryLabel.text = appResult.primaryGenreName
         cell.ratingLabel.text = "Rating: \(appResult.averageUserRating ?? 0)"
+//        cell.appIconImageView
+//        cell.screenshot1ImgeView
         
         return cell
     }
