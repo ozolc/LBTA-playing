@@ -24,34 +24,26 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         fetchITunesApps()
     }
     
+    // Локальный массив с полученными данными из JSON (trackName, primaryGenreName)
+    // Используется для datasource CollectionView
+    fileprivate var appResults = [Result]()
+    
     fileprivate func fetchITunesApps() {
-        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
-        guard let url = URL(string: urlString) else { return }
         
-        // Получение данных из Интернет
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
+        Service.shared.fetchApps { (results, err) in
             
-            // Проверка на получение ошибки при загрузки из Интернет. Если ошибка - выход из метода.
             if let err = err {
                 print("Failed to fetch apps:", err)
                 return
             }
             
-            // Успех загрузки
-            
-            guard let data = data else { return }
-            
-            // Пытаемся произвести декодирование из JSON в объект структуры SearchResult.
-            do {
-                let searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
-                
-                searchResult.results.forEach { print($0.trackName, $0.primaryGenreName) }
-                
-            } catch let jsonErr {
-                print("Failed to decode json:", jsonErr)
+            self.appResults = results
+            // На случай если есть проблемы с Интернет и мы не можем получить данные, обновим collectionView
+            // Обновление UI только в main потоке
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
             }
-            
-        }.resume() // Запустить получение данных из URL. Иначе загрузка не будет произведена.
+        }
     }
     
     // В этом методе мы переопределяем размер ячейки (метод из протокола UICollectionViewDelegateFlowLayout)
@@ -61,12 +53,17 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
     
     // Указываем количество ячеек в секции
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return appResults.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchResultCell
-        cell.nameLabel.text = "Here is my app name"
+        
+        let appResult = appResults[indexPath.item]
+        cell.nameLabel.text = appResult.trackName
+        cell.categoryLabel.text = appResult.primaryGenreName
+        cell.ratingLabel.text = "Rating: \(appResult.averageUserRating ?? 0)"
+        
         return cell
     }
     
