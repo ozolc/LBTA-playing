@@ -11,12 +11,34 @@ import UIKit
 // Класс для использования ячейки в AppsSearchController
 class SearchResultCell: UICollectionViewCell {
     
+    // Создана переменная для структуры Result, чтобы разгрузить collectionView(_ :cellForItemAt:) в AppsSearchController
+    var appResult: Result! {
+        didSet {
+            nameLabel.text = appResult.trackName
+            categoryLabel.text = appResult.primaryGenreName
+            ratingLabel.text = "Rating: \(appResult.averageUserRating ?? 0)"
+            
+            let url = URL(string: appResult.artworkUrl100)
+            appIconImageView.sd_setImage(with: url)
+            
+            screenshot1ImgeView.sd_setImage(with: URL(string: appResult.screenshotUrls[0]))
+            if appResult.screenshotUrls.count > 1 {
+                screenshot2ImgeView.sd_setImage(with: URL(string: appResult.screenshotUrls[1]))
+            }
+            if appResult.screenshotUrls.count > 2 {
+                screenshot3ImgeView.sd_setImage(with: URL(string: appResult.screenshotUrls[2]))
+            }
+            
+        }
+    }
+    
     let appIconImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .red
         iv.widthAnchor.constraint(equalToConstant: 64).isActive = true
         iv.heightAnchor.constraint(equalToConstant: 64).isActive = true
         iv.layer.cornerRadius = 12
+        iv.clipsToBounds = true
         return iv
     }()
     
@@ -58,13 +80,16 @@ class SearchResultCell: UICollectionViewCell {
     func createScreenShotImageView() -> UIImageView {
         let imageView = UIImageView()
         imageView.backgroundColor = .blue
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        // optional
         
         // StackView в котором находятся элементы без скриншотов приложения.
         let infoTopStackView = UIStackView(arrangedSubviews: [
