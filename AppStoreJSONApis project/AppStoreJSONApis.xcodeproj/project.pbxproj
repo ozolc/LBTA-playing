@@ -13,6 +13,7 @@
 		B0161081226C5A8C008E2407 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0161080226C5A8C008E2407 /* Assets.xcassets */; };
 		B0161084226C5A8C008E2407 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0161082226C5A8C008E2407 /* LaunchScreen.storyboard */; };
 		B016108C226C5B27008E2407 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B016108B226C5B27008E2407 /* BaseTabBarController.swift */; };
+		B031E560226E2BFA007A3451 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031E55F226E2BFA007A3451 /* SearchResult.swift */; };
 		B0ACF0D9226CB51400B35EAC /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ACF0D8226CB51400B35EAC /* SearchResultCell.swift */; };
 		B0ACF0DC226CC27800B35EAC /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ACF0DB226CC27800B35EAC /* UIView+Layout.swift */; };
 		B0ACF0DE226CC8DA00B35EAC /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ACF0DD226CC8DA00B35EAC /* VerticalStackView.swift */; };
@@ -28,6 +29,7 @@
 		B0161083226C5A8C008E2407 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0161085226C5A8C008E2407 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B016108B226C5B27008E2407 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		B031E55F226E2BFA007A3451 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		B0ACF0D8226CB51400B35EAC /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		B0ACF0DB226CC27800B35EAC /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		B0ACF0DD226CC8DA00B35EAC /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		B0161078226C5A8B008E2407 /* AppStoreJSONApis */ = {
 			isa = PBXGroup;
 			children = (
+				B031E55E226E2BE1007A3451 /* Model */,
 				B0ACF0DA226CC24900B35EAC /* Helpers */,
 				B0ACF0D7226CB4EE00B35EAC /* Views */,
 				B0F9683E226C6A3E00684AF6 /* Controller */,
@@ -75,6 +78,14 @@
 				B0161085226C5A8C008E2407 /* Info.plist */,
 			);
 			path = AppStoreJSONApis;
+			sourceTree = "<group>";
+		};
+		B031E55E226E2BE1007A3451 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B031E55F226E2BFA007A3451 /* SearchResult.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B0ACF0D7226CB4EE00B35EAC /* Views */ = {
@@ -176,6 +187,7 @@
 			files = (
 				B016107C226C5A8B008E2407 /* ViewController.swift in Sources */,
 				B016107A226C5A8B008E2407 /* AppDelegate.swift in Sources */,
+				B031E560226E2BFA007A3451 /* SearchResult.swift in Sources */,
 				B016108C226C5B27008E2407 /* BaseTabBarController.swift in Sources */,
 				B0F96840226C6A7100684AF6 /* AppsSearchController.swift in Sources */,
 				B0ACF0DC226CC27800B35EAC /* UIView+Layout.swift in Sources */,
