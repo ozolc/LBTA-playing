@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class AppsSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     // Идентификатор для пересоздаваемой ячейки в методе cellForItemAt. Значение произвольное - не имеет смысла.
     fileprivate let cellId = "id1234"
@@ -110,12 +110,4 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         return cell
     }
     
-    init() {
-        //  Вызываем родительский инициализатор с обязательным!!! параметром Layout. Тем самым не указываем параметр collectionViewLayout при создании в BaseTabBarController
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
