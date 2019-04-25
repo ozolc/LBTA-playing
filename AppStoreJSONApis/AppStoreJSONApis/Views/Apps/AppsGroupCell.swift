@@ -8,15 +8,6 @@
 
 import UIKit
 
-// Расширение, чтобы не дублировать создание Label. Указываем необходимые параметры в convenience инициализаторе
-extension UILabel {
-    convenience init(text: String, font: UIFont) {
-        self.init(frame: .zero)
-        self.text = text
-        self.font = font
-    }
-}
-
 class AppsGroupCell: UICollectionViewCell {
     
     let titleLabel = UILabel(text: "App Section", font: UIFont.boldSystemFont(ofSize: 30))
@@ -26,13 +17,10 @@ class AppsGroupCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .lightGray
-        
         addSubview(titleLabel)
-        titleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor)
+        titleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0))
 
         addSubview(horizontalController.view) // Мы можем добавить только UIView.
-        horizontalController.view.backgroundColor = .blue
         horizontalController.view.anchor(top: titleLabel.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
     }
     
