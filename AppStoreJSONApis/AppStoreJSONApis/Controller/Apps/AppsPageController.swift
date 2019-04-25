@@ -1,5 +1,5 @@
 //
-//  AppsController.swift
+//  AppsPageController.swift
 //  AppStoreJSONApis
 //
 //  Created by Maksim Nosov on 23/04/2019.
@@ -9,15 +9,28 @@
 import UIKit
 
 // Наследуем от шаблонного CollectionViewController, чтобы избежать дублирования кода при указании обязательного параметра collectionViewLayout у инициализатора.
-class AppsController: BaseListController, UICollectionViewDelegateFlowLayout {
+class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "id"
+    let headerId = "headerId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
+        
+        collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
+        return header
+    }
+    
+    // Указать высоту заголовка секции (обязательно)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return .init(width: view.frame.width, height: 300)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

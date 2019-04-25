@@ -12,7 +12,7 @@ class AppsGroupCell: UICollectionViewCell {
     
     let titleLabel = UILabel(text: "App Section", font: UIFont.boldSystemFont(ofSize: 30))
     
-    let horizontalController = AppsHorizontalController() // Создали CollectionViewController, чтобы поместить его в ячейку. Этот CollectionViewController будет горизонтальным внутри ячейки для контроллера AppsController. Иными словами контроллер внутри ячейки. Интересная реализация.
+    let horizontalController = AppsHorizontalController() // Создали CollectionViewController, чтобы поместить его в ячейку. Этот CollectionViewController будет горизонтальным внутри ячейки для контроллера AppsPageController. Иными словами контроллер внутри ячейки. Интересная реализация.
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-// Базовый класс для AppsSearchController, AppsController, AppsHorizontalController ...
+// Базовый класс для AppsSearchController, AppsPageController, AppsHorizontalController ...
 // Чтобы не дублировать инициализатор с обязательным параметром collectionViewLayout
 class BaseListController: UICollectionViewController {
     
