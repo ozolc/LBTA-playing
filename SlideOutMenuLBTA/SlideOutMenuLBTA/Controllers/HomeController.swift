@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class HomeController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,27 +17,35 @@ class ViewController: UITableViewController {
         setupNavigationItems()
     }
     
+    let menuController = MenuController()
+    
+    fileprivate let menuWidth: CGFloat = 300
+    
     @objc func handleOpen() {
-        print("Opening menu...")
-        
-        let vc = MenuController()
-        
-        vc.view.frame = CGRect(x: 0, y: 0, width: 300, height: self.view.frame.height)
-        
-        
+        menuController.view.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth, height: self.view.frame.height)
         let mainWindow = UIApplication.shared.keyWindow
-        mainWindow?.addSubview(vc.view)
+        mainWindow?.addSubview(menuController.view)
         
-//        view.addSubview(vc.view)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.menuController.view.transform = CGAffineTransform(translationX: self.menuWidth, y: 0)
+            
+        })
         
-//        let blueView = UIView()
-//        blueView.backgroundColor = .blue
-//        blueView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-//        view.addSubview(blueView)
+        addChild(menuController)
+        
     }
     
     @objc func handleHide() {
-        print("Hiding menu...")
+
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.menuController.view.transform = .identity
+            
+        })
+        
+//        menuController.view.removeFromSuperview()
+//        menuController.removeFromParent()
     }
     
     fileprivate func setupNavigationItems() {
