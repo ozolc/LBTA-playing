@@ -14,7 +14,16 @@ class MenuController: UITableViewController {
         super.viewDidLoad()
         
         tableView.backgroundColor = .blue
+        
+//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+//        self.view.addGestureRecognizer(panGesture)
     }
+    
+//    @objc func handlePan(gesture: UIPanGestureRecognizer) {
+//        let translation = gesture.translation(in: view)
+//        let x = translation.x + 300
+//        view.transform = CGAffineTransform(translationX: x, y: 0)
+//    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10

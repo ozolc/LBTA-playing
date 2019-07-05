@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeController: UITableViewController {
+class HomeController: UITableViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,18 @@ class HomeController: UITableViewController {
     
     fileprivate func setupPanGesture() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        panGesture.delegate = self
         self.view.addGestureRecognizer(panGesture)
+    }
+    
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        
+        menuController.view.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
     }
     
     fileprivate func handleEnded(gesture: UIPanGestureRecognizer) {
@@ -112,12 +123,6 @@ class HomeController: UITableViewController {
             self.darkCoverView.transform = transform
             
             self.darkCoverView.alpha = transform == .identity ? 0 : 1
-            
-//            if transform == .identity {
-//                self.darkCoverView.alpha = 0
-//            } else {
-//                self.darkCoverView.alpha = 1
-//            }
             
         })
     }
