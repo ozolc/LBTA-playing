@@ -18,7 +18,7 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
         
         setupMenuController()
         
-        setupPanGesture()
+//        setupPanGesture()
         
         setupDarkCoverView()
     }
@@ -33,6 +33,12 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
         let mainWindow = UIApplication.shared.keyWindow
         mainWindow?.addSubview(darkCoverView)
         darkCoverView.frame = mainWindow?.frame ?? .zero
+    }
+    
+    fileprivate func setupPanGesture() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        panGesture.delegate = self
+        self.view.addGestureRecognizer(panGesture)
     }
     
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
@@ -59,12 +65,6 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
         } else if gesture.state == .ended {
             handleEnded(gesture: gesture)
         }
-    }
-    
-    fileprivate func setupPanGesture() {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        panGesture.delegate = self
-        self.view.addGestureRecognizer(panGesture)
     }
     
 //    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
