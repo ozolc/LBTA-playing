@@ -43,7 +43,7 @@ class BaseSlidingController: UIViewController {
 
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
-        print(translation.x)
+//        print(translation.x)
         var x = translation.x
         
         x = isMenuOpened ? x + menuWidth : x
@@ -93,10 +93,33 @@ class BaseSlidingController: UIViewController {
         performAnimations()
     }
     
-    fileprivate func closeMenu() {
+    func closeMenu() {
         redViewLeadingConstraint.constant = 0
         isMenuOpened = false
         performAnimations()
+    }
+    
+    func didSelectMenuItem(indexPath: IndexPath) {
+//        print("Selected menu items", indexPath.row)
+        
+        switch indexPath.row {
+        case 0:
+            print("Home")
+        case 1:
+//            print("Lists")
+            let listsController = ListsController()
+            redView.addSubview(listsController.view)
+        case 2:
+//            print("Bookmarks")
+            let bookmarksController = UIViewController()
+            bookmarksController.view.backgroundColor = .purple
+            redView.addSubview(bookmarksController.view)
+        default:
+            print("Moments")
+        }
+        
+        redView.bringSubviewToFront(darkCoverView)
+        self.closeMenu()
     }
     
     fileprivate func performAnimations() {

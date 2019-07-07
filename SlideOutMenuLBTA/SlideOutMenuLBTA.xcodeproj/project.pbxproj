@@ -17,6 +17,7 @@
 		B0247F4F22C3C0CB00A63775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0247F4E22C3C0CB00A63775 /* Assets.xcassets */; };
 		B0247F5222C3C0CB00A63775 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0247F5022C3C0CB00A63775 /* LaunchScreen.storyboard */; };
 		B0247F5B22C3C8D500A63775 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0247F5A22C3C8D500A63775 /* MenuController.swift */; };
+		B026BAD522D24E70008DD381 /* ListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B026BAD422D24E70008DD381 /* ListsController.swift */; };
 		B0DFDC5D22D09B470000EA93 /* BaseSlidingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DFDC5C22D09B470000EA93 /* BaseSlidingController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		B0247F5122C3C0CB00A63775 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0247F5322C3C0CB00A63775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0247F5A22C3C8D500A63775 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		B026BAD422D24E70008DD381 /* ListsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
 		B0DFDC5C22D09B470000EA93 /* BaseSlidingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlidingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 				B0DFDC5B22D09B170000EA93 /* Base */,
 				B0247F5A22C3C8D500A63775 /* MenuController.swift */,
 				B0247F4922C3C0CA00A63775 /* HomeController.swift */,
+				B026BAD422D24E70008DD381 /* ListsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				B007E73F22D0D49C0002E845 /* SpacerView.swift in Sources */,
 				B0247F4822C3C0CA00A63775 /* AppDelegate.swift in Sources */,
 				B007E73D22D0CE7F0002E845 /* CustomMenuHeaderView.swift in Sources */,
+				B026BAD522D24E70008DD381 /* ListsController.swift in Sources */,
 				B0DFDC5D22D09B470000EA93 /* BaseSlidingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
