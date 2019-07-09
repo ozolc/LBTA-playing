@@ -41,6 +41,7 @@ class ChatroomsMenuController: UITableViewController {
         let label = ChatroomHeaderLabel()
         label.text = text
         label.textColor = #colorLiteral(red: 0.4745098039, green: 0.4078431373, blue: 0.4666666667, alpha: 1)
+        label.backgroundColor = #colorLiteral(red: 0.2980392157, green: 0.2078431373, blue: 0.2862745098, alpha: 1)
         return label
     }
     
