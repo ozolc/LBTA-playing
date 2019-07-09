@@ -18,6 +18,7 @@
 		B0247F5222C3C0CB00A63775 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0247F5022C3C0CB00A63775 /* LaunchScreen.storyboard */; };
 		B0247F5B22C3C8D500A63775 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0247F5A22C3C8D500A63775 /* MenuController.swift */; };
 		B026BAD522D24E70008DD381 /* ListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B026BAD422D24E70008DD381 /* ListsController.swift */; };
+		B02C2B4922D4738D00723F0D /* ChatroomsMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C2B4822D4738D00723F0D /* ChatroomsMenuController.swift */; };
 		B0886BD522D3372100CFFD7E /* BookmarksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0886BD422D3372100CFFD7E /* BookmarksController.swift */; };
 		B0DFDC5D22D09B470000EA93 /* BaseSlidingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DFDC5C22D09B470000EA93 /* BaseSlidingController.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		B0247F5322C3C0CB00A63775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0247F5A22C3C8D500A63775 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		B026BAD422D24E70008DD381 /* ListsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
+		B02C2B4822D4738D00723F0D /* ChatroomsMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomsMenuController.swift; sourceTree = "<group>"; };
 		B0886BD422D3372100CFFD7E /* BookmarksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksController.swift; sourceTree = "<group>"; };
 		B0DFDC5C22D09B470000EA93 /* BaseSlidingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlidingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 				B0247F4922C3C0CA00A63775 /* HomeController.swift */,
 				B026BAD422D24E70008DD381 /* ListsController.swift */,
 				B0886BD422D3372100CFFD7E /* BookmarksController.swift */,
+				B02C2B4822D4738D00723F0D /* ChatroomsMenuController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				B0225B2D22D1BCE60041A852 /* ProfileImageView.swift in Sources */,
 				B0247F5B22C3C8D500A63775 /* MenuController.swift in Sources */,
 				B007E73F22D0D49C0002E845 /* SpacerView.swift in Sources */,
+				B02C2B4922D4738D00723F0D /* ChatroomsMenuController.swift in Sources */,
 				B0247F4822C3C0CA00A63775 /* AppDelegate.swift in Sources */,
 				B007E73D22D0CE7F0002E845 /* CustomMenuHeaderView.swift in Sources */,
 				B026BAD522D24E70008DD381 /* ListsController.swift in Sources */,
