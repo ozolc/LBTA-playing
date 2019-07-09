@@ -28,6 +28,26 @@ class ChatroomsMenuController: UITableViewController {
         return section == 0 ? "UNREADS" : section == 1 ? "CHANNELS" : "DIRECT MESSAGES"
     }
     
+    fileprivate class ChatroomHeaderLabel: UILabel {
+        override func drawText(in rect: CGRect) {
+            super.drawText(in: rect.insetBy(dx: 16, dy: 0))
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let text = section == 0 ? "UNREADS" : section == 1 ? "CHANNELS" : "DIRECT MESSAGES"
+        
+        let label = ChatroomHeaderLabel()
+        label.text = text
+        label.textColor = #colorLiteral(red: 0.4745098039, green: 0.4078431373, blue: 0.4666666667, alpha: 1)
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return chatroomsGroups.count
     }
@@ -37,13 +57,19 @@ class ChatroomsMenuController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let cell = ChatroomMenuCell(style: .default, reuseIdentifier: nil)
         
         let text = chatroomsGroups[indexPath.section][indexPath.row]
         cell.textLabel?.text = text
         cell.backgroundColor = .clear
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+//
+        let attributedText = NSMutableAttributedString(string: "#  ", attributes: [.foregroundColor:  #colorLiteral(red: 0.4745098039, green: 0.4078431373, blue: 0.4666666667, alpha: 1), .font: UIFont.systemFont(ofSize: 18, weight: .regular)])
+        attributedText.append(NSAttributedString(string: text, attributes: [.foregroundColor: UIColor.white]))
+        cell.textLabel?.attributedText = attributedText
+        
+//        cell.textLabel?.attributedText = attributedText
         
         return cell
     }
