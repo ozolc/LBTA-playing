@@ -23,6 +23,8 @@
 		B0C5B7F022D88F50008F847F /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5B7EF22D88F50008F847F /* UIView+Layout.swift */; };
 		B0C5B7F222D89544008F847F /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5B7F122D89544008F847F /* VerticalStackView.swift */; };
 		B0E9A65B22D5F0B100A8C56C /* AppsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9A65A22D5F0B100A8C56C /* AppsSearchController.swift */; };
+		B0F7F0BD22DB767C00B77254 /* AppRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7F0BC22DB767C00B77254 /* AppRowCell.swift */; };
+		B0F7F0BF22DB77D900B77254 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F7F0BE22DB77D900B77254 /* Extensions.swift */; };
 		FAC7B3EBC44F3911FD7E437D /* Pods_AppStoreJSONApis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA5DC75DBAE4550F6ED21F5 /* Pods_AppStoreJSONApis.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,8 @@
 		B0C5B7EF22D88F50008F847F /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		B0C5B7F122D89544008F847F /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		B0E9A65A22D5F0B100A8C56C /* AppsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchController.swift; sourceTree = "<group>"; };
+		B0F7F0BC22DB767C00B77254 /* AppRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRowCell.swift; sourceTree = "<group>"; };
+		B0F7F0BE22DB77D900B77254 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CF6DF849BE1CF8439B8ED31F /* Pods-AppStoreJSONApis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreJSONApis.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreJSONApis/Pods-AppStoreJSONApis.debug.xcconfig"; sourceTree = "<group>"; };
 		CFA5DC75DBAE4550F6ED21F5 /* Pods_AppStoreJSONApis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreJSONApis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -143,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				B0A051DC22DB6B4E00B24FAA /* AppsGroupCell.swift */,
+				B0F7F0BC22DB767C00B77254 /* AppRowCell.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 			children = (
 				B0C5B7EF22D88F50008F847F /* UIView+Layout.swift */,
 				B0C5B7F122D89544008F847F /* VerticalStackView.swift */,
+				B0F7F0BE22DB77D900B77254 /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -306,9 +312,11 @@
 				B0A051D722DB68A800B24FAA /* AppsController.swift in Sources */,
 				B0C5B7F022D88F50008F847F /* UIView+Layout.swift in Sources */,
 				B0A051D922DB696700B24FAA /* BaseListController.swift in Sources */,
+				B0F7F0BD22DB767C00B77254 /* AppRowCell.swift in Sources */,
 				B0362C3D22D5DF30003DF40F /* BaseTabBarController.swift in Sources */,
 				B0A051DD22DB6B4E00B24FAA /* AppsGroupCell.swift in Sources */,
 				B040F68E22DB1BF8000F46EC /* Service.swift in Sources */,
+				B0F7F0BF22DB77D900B77254 /* Extensions.swift in Sources */,
 				B0E9A65B22D5F0B100A8C56C /* AppsSearchController.swift in Sources */,
 				B0B4895722D87B480037DD67 /* SearchResultCell.swift in Sources */,
 				B0A051DF22DB6E4F00B24FAA /* AppsHorizontalController.swift in Sources */,
