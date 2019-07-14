@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,10 @@
 		B0362C3D22D5DF30003DF40F /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0362C3C22D5DF30003DF40F /* BaseTabBarController.swift */; };
 		B040F68B22DB152D000F46EC /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B040F68A22DB152D000F46EC /* SearchResult.swift */; };
 		B040F68E22DB1BF8000F46EC /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B040F68D22DB1BF8000F46EC /* Service.swift */; };
+		B0A051D722DB68A800B24FAA /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A051D622DB68A800B24FAA /* AppsController.swift */; };
+		B0A051D922DB696700B24FAA /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A051D822DB696700B24FAA /* BaseListController.swift */; };
+		B0A051DD22DB6B4E00B24FAA /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A051DC22DB6B4E00B24FAA /* AppsGroupCell.swift */; };
+		B0A051DF22DB6E4F00B24FAA /* AppsHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A051DE22DB6E4F00B24FAA /* AppsHorizontalController.swift */; };
 		B0B4895722D87B480037DD67 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B4895622D87B480037DD67 /* SearchResultCell.swift */; };
 		B0C5B7F022D88F50008F847F /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5B7EF22D88F50008F847F /* UIView+Layout.swift */; };
 		B0C5B7F222D89544008F847F /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5B7F122D89544008F847F /* VerticalStackView.swift */; };
@@ -34,6 +38,10 @@
 		B0362C3C22D5DF30003DF40F /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		B040F68A22DB152D000F46EC /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		B040F68D22DB1BF8000F46EC /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		B0A051D622DB68A800B24FAA /* AppsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsController.swift; sourceTree = "<group>"; };
+		B0A051D822DB696700B24FAA /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
+		B0A051DC22DB6B4E00B24FAA /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
+		B0A051DE22DB6E4F00B24FAA /* AppsHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalController.swift; sourceTree = "<group>"; };
 		B0B4895622D87B480037DD67 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		B0C5B7EF22D88F50008F847F /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		B0C5B7F122D89544008F847F /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
@@ -114,9 +122,35 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		B0A051D522DB688200B24FAA /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				B0A051D622DB68A800B24FAA /* AppsController.swift */,
+				B0A051DE22DB6E4F00B24FAA /* AppsHorizontalController.swift */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		B0A051DA22DB69D000B24FAA /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B0E9A65A22D5F0B100A8C56C /* AppsSearchController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		B0A051DB22DB6B3800B24FAA /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				B0A051DC22DB6B4E00B24FAA /* AppsGroupCell.swift */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
 		B0B4895522D87B200037DD67 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B0A051DB22DB6B3800B24FAA /* Apps */,
 				B0B4895622D87B480037DD67 /* SearchResultCell.swift */,
 			);
 			path = Views;
@@ -134,8 +168,10 @@
 		B0E9A65922D5F05F00A8C56C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B0A051DA22DB69D000B24FAA /* Search */,
+				B0A051D522DB688200B24FAA /* Apps */,
 				B0362C3C22D5DF30003DF40F /* BaseTabBarController.swift */,
-				B0E9A65A22D5F0B100A8C56C /* AppsSearchController.swift */,
+				B0A051D822DB696700B24FAA /* BaseListController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -146,7 +182,6 @@
 				CF6DF849BE1CF8439B8ED31F /* Pods-AppStoreJSONApis.debug.xcconfig */,
 				8516E42870708B9D0EA01CDB /* Pods-AppStoreJSONApis.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -268,11 +303,15 @@
 				B0362C2D22D5DE11003DF40F /* ViewController.swift in Sources */,
 				B0362C2B22D5DE11003DF40F /* AppDelegate.swift in Sources */,
 				B040F68B22DB152D000F46EC /* SearchResult.swift in Sources */,
+				B0A051D722DB68A800B24FAA /* AppsController.swift in Sources */,
 				B0C5B7F022D88F50008F847F /* UIView+Layout.swift in Sources */,
+				B0A051D922DB696700B24FAA /* BaseListController.swift in Sources */,
 				B0362C3D22D5DF30003DF40F /* BaseTabBarController.swift in Sources */,
+				B0A051DD22DB6B4E00B24FAA /* AppsGroupCell.swift in Sources */,
 				B040F68E22DB1BF8000F46EC /* Service.swift in Sources */,
 				B0E9A65B22D5F0B100A8C56C /* AppsSearchController.swift in Sources */,
 				B0B4895722D87B480037DD67 /* SearchResultCell.swift in Sources */,
+				B0A051DF22DB6E4F00B24FAA /* AppsHorizontalController.swift in Sources */,
 				B0C5B7F222D89544008F847F /* VerticalStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
