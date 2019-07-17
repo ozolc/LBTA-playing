@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B012ECE422DF254100FAD777 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B012ECE322DF254100FAD777 /* AppDetailController.swift */; };
 		B01ACD4922DCCB2600B0DB34 /* AppsPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ACD4822DCCB2600B0DB34 /* AppsPageHeader.swift */; };
 		B01ACD4B22DCCE9900B0DB34 /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ACD4A22DCCE9900B0DB34 /* AppsHeaderHorizontalController.swift */; };
 		B01ACD4D22DCD0D700B0DB34 /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01ACD4C22DCD0D700B0DB34 /* AppsHeaderCell.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		8516E42870708B9D0EA01CDB /* Pods-AppStoreJSONApis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreJSONApis.release.xcconfig"; path = "Target Support Files/Pods-AppStoreJSONApis/Pods-AppStoreJSONApis.release.xcconfig"; sourceTree = "<group>"; };
+		B012ECE322DF254100FAD777 /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
 		B01ACD4822DCCB2600B0DB34 /* AppsPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageHeader.swift; sourceTree = "<group>"; };
 		B01ACD4A22DCCE9900B0DB34 /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
 		B01ACD4C22DCD0D700B0DB34 /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 				CFA5DC75DBAE4550F6ED21F5 /* Pods_AppStoreJSONApis.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B012ECE222DF252200FAD777 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				B012ECE322DF254100FAD777 /* AppDetailController.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		B0362C1E22D5DE10003DF40F = {
@@ -145,6 +155,7 @@
 		B0A051D522DB688200B24FAA /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				B012ECE222DF252200FAD777 /* Details */,
 				B0A051D622DB68A800B24FAA /* AppsPageController.swift */,
 				B0A051DE22DB6E4F00B24FAA /* AppsHorizontalController.swift */,
 				B01ACD4A22DCCE9900B0DB34 /* AppsHeaderHorizontalController.swift */,
@@ -345,6 +356,7 @@
 				B0F7F0BF22DB77D900B77254 /* Extensions.swift in Sources */,
 				B0E9A65B22D5F0B100A8C56C /* AppsSearchController.swift in Sources */,
 				B0B4895722D87B480037DD67 /* SearchResultCell.swift in Sources */,
+				B012ECE422DF254100FAD777 /* AppDetailController.swift in Sources */,
 				B0E609E622DE3DB000B9B15A /* HorizontalSnappingController.swift in Sources */,
 				B0A051DF22DB6E4F00B24FAA /* AppsHorizontalController.swift in Sources */,
 				B0C5B7F222D89544008F847F /* VerticalStackView.swift in Sources */,
