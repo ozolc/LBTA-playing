@@ -33,6 +33,8 @@
 		B0B601C122DF8E9000F35D8E /* PreviewScreenshotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B601C022DF8E9000F35D8E /* PreviewScreenshotController.swift */; };
 		B0C5B7F022D88F50008F847F /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5B7EF22D88F50008F847F /* UIView+Layout.swift */; };
 		B0C5B7F222D89544008F847F /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5B7F122D89544008F847F /* VerticalStackView.swift */; };
+		B0D9EB0422E22F5400B345BE /* TodayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9EB0322E22F5400B345BE /* TodayController.swift */; };
+		B0D9EB0722E2305E00B345BE /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9EB0622E2305E00B345BE /* TodayCell.swift */; };
 		B0DD98F422DE241100F9A0A3 /* SocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DD98F322DE241100F9A0A3 /* SocialApp.swift */; };
 		B0E609E622DE3DB000B9B15A /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E609E522DE3DB000B9B15A /* HorizontalSnappingController.swift */; };
 		B0E609E822DE430B00B9B15A /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E609E722DE430B00B9B15A /* BetterSnappingLayout.swift */; };
@@ -73,6 +75,8 @@
 		B0B601C022DF8E9000F35D8E /* PreviewScreenshotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScreenshotController.swift; sourceTree = "<group>"; };
 		B0C5B7EF22D88F50008F847F /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		B0C5B7F122D89544008F847F /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
+		B0D9EB0322E22F5400B345BE /* TodayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayController.swift; sourceTree = "<group>"; };
+		B0D9EB0622E2305E00B345BE /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
 		B0DD98F322DE241100F9A0A3 /* SocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialApp.swift; sourceTree = "<group>"; };
 		B0E609E522DE3DB000B9B15A /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
 		B0E609E722DE430B00B9B15A /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 		B0B4895522D87B200037DD67 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B0D9EB0522E2304F00B345BE /* Today */,
 				B0A051DB22DB6B3800B24FAA /* Apps */,
 				B0B4895622D87B480037DD67 /* SearchResultCell.swift */,
 			);
@@ -231,9 +236,26 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		B0D9EB0222E22F3E00B345BE /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				B0D9EB0322E22F5400B345BE /* TodayController.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		B0D9EB0522E2304F00B345BE /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				B0D9EB0622E2305E00B345BE /* TodayCell.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
 		B0E9A65922D5F05F00A8C56C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B0D9EB0222E22F3E00B345BE /* Today */,
 				B0A051DA22DB69D000B24FAA /* Search */,
 				B0A051D522DB688200B24FAA /* Apps */,
 				B0362C3C22D5DF30003DF40F /* BaseTabBarController.swift */,
@@ -378,6 +400,7 @@
 				B01ACD4D22DCD0D700B0DB34 /* AppsHeaderCell.swift in Sources */,
 				B0C5B7F022D88F50008F847F /* UIView+Layout.swift in Sources */,
 				B083F3B822E0726800764072 /* ReviewRowCell.swift in Sources */,
+				B0D9EB0722E2305E00B345BE /* TodayCell.swift in Sources */,
 				B0A051D922DB696700B24FAA /* BaseListController.swift in Sources */,
 				B012ECE722DF2D6700FAD777 /* AppDetailCell.swift in Sources */,
 				B0F7F0BD22DB767C00B77254 /* AppRowCell.swift in Sources */,
@@ -389,6 +412,7 @@
 				B0B601BF22DF8D1F00F35D8E /* PreviewCell.swift in Sources */,
 				B083F3BA22E0743B00764072 /* ReviewsController.swift in Sources */,
 				B083F3BE22E07E9900764072 /* Reviews.swift in Sources */,
+				B0D9EB0422E22F5400B345BE /* TodayController.swift in Sources */,
 				B0F7F0BF22DB77D900B77254 /* Extensions.swift in Sources */,
 				B0E9A65B22D5F0B100A8C56C /* AppsSearchController.swift in Sources */,
 				B0B4895722D87B480037DD67 /* SearchResultCell.swift in Sources */,
