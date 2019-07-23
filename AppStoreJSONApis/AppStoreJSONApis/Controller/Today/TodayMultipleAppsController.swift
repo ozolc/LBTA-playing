@@ -79,13 +79,6 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
         return .init(width: view.frame.width, height: height)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        if mode == .fullscreen {
-//            return .init(top: 12, left: 24, bottom: 12, right: 24)
-//        }
-//        return .zero
-//    }
-    
     fileprivate let spacing: CGFloat = 16
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
