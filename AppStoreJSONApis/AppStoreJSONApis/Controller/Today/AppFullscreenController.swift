@@ -14,6 +14,14 @@ class AppFullscreenController: UITableViewController {
 //    var todayItem: TodayItem?
     var todayItem: TodayItem
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0 {
+            scrollView.isScrollEnabled = false
+            scrollView.isScrollEnabled = true
+        }
+//        print(scrollView.contentOffset.y)
+    }
+    
     // dependency injection constructor
     init(todayItem: TodayItem) {
         self.todayItem = todayItem
@@ -47,6 +55,7 @@ class AppFullscreenController: UITableViewController {
             headerCell.todayCell.todayItem = todayItem
             headerCell.todayCell.layer.cornerRadius = 0
             headerCell.clipsToBounds = true
+            headerCell.todayCell.backgroundView = nil
             return headerCell
         }
         
