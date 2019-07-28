@@ -20,6 +20,7 @@
 		B07CEA4C22EA1D300028A05A /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07CEA4B22EA1D300028A05A /* CardViewModel.swift */; };
 		B097785C22ED779A002C802F /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097785B22ED779A002C802F /* RegistrationController.swift */; };
 		B097785E22ED7E32002C802F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097785D22ED7E32002C802F /* CustomTextField.swift */; };
+		B0C7171622EDFC86007D00C6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C7171522EDFC86007D00C6 /* RegistrationViewModel.swift */; };
 		B0EFCCFA22EB052C004CE90F /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EFCCF922EB052C004CE90F /* Advertiser.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		B07CEA4B22EA1D300028A05A /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		B097785B22ED779A002C802F /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		B097785D22ED7E32002C802F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		B0C7171522EDFC86007D00C6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		B0EFCCF922EB052C004CE90F /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 			children = (
 				B0269E0B22E8B41E00D00DA8 /* HomeController.swift */,
 				B097785B22ED779A002C802F /* RegistrationController.swift */,
+				B0C7171522EDFC86007D00C6 /* RegistrationViewModel.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0269E0C22E8B41E00D00DA8 /* HomeController.swift in Sources */,
+				B0C7171622EDFC86007D00C6 /* RegistrationViewModel.swift in Sources */,
 				B097785E22ED7E32002C802F /* CustomTextField.swift in Sources */,
 				B04EB14622E8D3030053A762 /* HomeBottomControlsStackView.swift in Sources */,
 				B0EFCCFA22EB052C004CE90F /* Advertiser.swift in Sources */,
