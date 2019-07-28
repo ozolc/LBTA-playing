@@ -24,8 +24,24 @@ class CardView: UIView {
                 barsStackView.addArrangedSubview(barView)
             }
             barsStackView.arrangedSubviews.first?.backgroundColor = .white
+            
+            setupImageIndexObserver()
         }
     }
+    
+    fileprivate func setupImageIndexObserver() {
+        cardViewModel.imageIndexObserver = { [weak self] (idx, image) in
+            print("Changing photo from view model")
+            self?.imageView.image = image
+            
+            self?.barsStackView.arrangedSubviews.forEach({ (v) in
+                v.backgroundColor = self?.barDeselectorColor
+            })
+            
+            self?.barsStackView.arrangedSubviews[idx].backgroundColor = .white
+        }
+    }
+    
     // encapsulation
     fileprivate let imageView = UIImageView(image: #imageLiteral(resourceName: "lady5c"))
     fileprivate let informationLabel = UILabel()
@@ -47,22 +63,14 @@ class CardView: UIView {
     fileprivate let barDeselectorColor = UIColor(white: 0, alpha: 0.1)
     
     @objc fileprivate func handleTap(gesture: UITapGestureRecognizer) {
-//        print("Handling tap and cycling photos")
+        print("Handling tap and cycling photos")
         let tapLocation = gesture.location(in: nil)
         let shouldAdvanceNextPhoto = tapLocation.x > frame.width / 2 ? true : false
-        print("tapLocation.x = \(tapLocation.x) frame.width = \(frame.width / 2)")
         if shouldAdvanceNextPhoto {
-            imageIndex = min(imageIndex + 1, cardViewModel.imageNames.count - 1)
+            cardViewModel.advanceToNextPhoto()
         } else {
-            imageIndex = max(0, imageIndex - 1)
+            cardViewModel.goToPreviousPhoto()
         }
-        
-        let imageName = cardViewModel.imageNames[imageIndex]
-        imageView.image = UIImage(named: imageName)
-        barsStackView.arrangedSubviews.forEach { (v) in
-            v.backgroundColor = barDeselectorColor
-        }
-        barsStackView.arrangedSubviews[imageIndex].backgroundColor = .white
     }
     
     fileprivate func setupLayout() {
@@ -153,8 +161,8 @@ class CardView: UIView {
             if shouldDismissCard {
                 self.removeFromSuperview()
             }
-//            self.frame = CGRect(x: 0, y: 0, width: self.superview!.frame.width, height: self.superview!.frame.height)
         }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
