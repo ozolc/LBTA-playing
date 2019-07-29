@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import JGProgressHUD
 
 class RegistrationController: UIViewController {
     
@@ -17,10 +19,11 @@ class RegistrationController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 32, weight: .heavy)
         button.backgroundColor = .white
         button.setTitleColor(.black, for: .normal)
-        button.heightAnchor.constraint(equalToConstant: 275).isActive = true
         button.layer.cornerRadius = 16
         return button
     }()
+    lazy var selectPhotoButtonWidthAnchor = selectPhotoButton.widthAnchor.constraint(equalToConstant: 275)
+    lazy var selectPhotoButtonHeightAnchor = selectPhotoButton.heightAnchor.constraint(equalToConstant: 275)
     
     let fullNameTextField: CustomTextField = {
         let tf = CustomTextField(padding: 24, height: 44)
@@ -69,8 +72,35 @@ class RegistrationController: UIViewController {
         button.isEnabled = false
         button.heightAnchor.constraint(equalToConstant: 44).isActive = true
         button.layer.cornerRadius = 22
+        button.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
         return button
     }()
+    
+    @objc fileprivate func handleRegister() {
+        self.handleTapDismiss()
+        print("Register User")
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
+            
+            if let err = err {
+                print(err)
+                self.showHUDWithError(error: err)
+                return
+            }
+            
+            print("Successfully registered user:", res?.user.uid ?? "")
+        }
+    }
+    
+    fileprivate func showHUDWithError(error: Error) {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Failed registration"
+        hud.detailTextLabel.text = error.localizedDescription
+        hud.show(in: self.view)
+        hud.dismiss(afterDelay: 4)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,8 +190,14 @@ class RegistrationController: UIViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if self.traitCollection.verticalSizeClass == .compact {
             overallStackView.axis = .horizontal
+            verticalStackView.distribution = .fillEqually
+            selectPhotoButtonHeightAnchor.isActive = false
+            selectPhotoButtonWidthAnchor.isActive = true
         } else {
             overallStackView.axis = .vertical
+            verticalStackView.distribution = .fill
+            selectPhotoButtonWidthAnchor.isActive = false
+            selectPhotoButtonHeightAnchor.isActive = true
         }
     }
     
@@ -170,7 +206,7 @@ class RegistrationController: UIViewController {
         
         overallStackView.axis = .vertical
         
-        selectPhotoButton.widthAnchor.constraint(equalToConstant: 275).isActive = true
+        
         overallStackView.spacing = 8
         overallStackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: 50))
         overallStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true

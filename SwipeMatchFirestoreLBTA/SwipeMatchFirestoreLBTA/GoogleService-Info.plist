@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>580157659967-5uhbo5vt8j58oihnc265eslo18g5tdbs.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.580157659967-5uhbo5vt8j58oihnc265eslo18g5tdbs</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBu5-CTvfZeW6QPUyTjY7Rhbsf2IOX7fBg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>580157659967</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ozolc.SwipeMatchFirestoreLBTA</string>
+	<key>PROJECT_ID</key>
+	<string>swipematchfirestore-eedf0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>swipematchfirestore-eedf0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:580157659967:ios:7602bef5e405d8c2</string>
+	<key>DATABASE_URL</key>
+	<string>https://swipematchfirestore-eedf0.firebaseio.com</string>
+</dict>
+</plist>
