@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5FD49E7E6338BF322FFECD45 /* Pods_SwipeMatchFirestoreLBTA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDDB00B3BC9D2D765E1D5D8 /* Pods_SwipeMatchFirestoreLBTA.framework */; };
+		B003CDB222EEBD2100116740 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003CDB122EEBD2100116740 /* Bindable.swift */; };
 		B010D61722EE201D00A24AFC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B010D61622EE201D00A24AFC /* GoogleService-Info.plist */; };
 		B0269E0A22E8B41E00D00DA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0269E0922E8B41E00D00DA8 /* AppDelegate.swift */; };
 		B0269E0C22E8B41E00D00DA8 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0269E0B22E8B41E00D00DA8 /* HomeController.swift */; };
@@ -31,6 +32,7 @@
 		2F82D363E9F924854B0E850F /* Pods-SwipeMatchFirestoreLBTA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeMatchFirestoreLBTA.release.xcconfig"; path = "Target Support Files/Pods-SwipeMatchFirestoreLBTA/Pods-SwipeMatchFirestoreLBTA.release.xcconfig"; sourceTree = "<group>"; };
 		3BDDB00B3BC9D2D765E1D5D8 /* Pods_SwipeMatchFirestoreLBTA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwipeMatchFirestoreLBTA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B003CDB022EEB33000116740 /* SwipeMatchFirestoreLBTA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwipeMatchFirestoreLBTA.entitlements; sourceTree = "<group>"; };
+		B003CDB122EEBD2100116740 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		B010D61622EE201D00A24AFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B0269E0622E8B41E00D00DA8 /* SwipeMatchFirestoreLBTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeMatchFirestoreLBTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0269E0922E8B41E00D00DA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				B0269E0B22E8B41E00D00DA8 /* HomeController.swift */,
 				B097785B22ED779A002C802F /* RegistrationController.swift */,
 				B0C7171522EDFC86007D00C6 /* RegistrationViewModel.swift */,
+				B003CDB122EEBD2100116740 /* Bindable.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B003CDB222EEBD2100116740 /* Bindable.swift in Sources */,
 				B0269E0C22E8B41E00D00DA8 /* HomeController.swift in Sources */,
 				B0C7171622EDFC86007D00C6 /* RegistrationViewModel.swift in Sources */,
 				B097785E22ED7E32002C802F /* CustomTextField.swift in Sources */,
