@@ -15,17 +15,6 @@ class HomeController: UIViewController {
     let buttonStackView = HomeBottomControlsStackView()
     let cardsDeckView = UIView()
     
-//    let cardViewModels: [CardViewModel] = {
-//        let producer = [
-//            Advertiser(title: "Slide Out Menu", brandName: "Lets Build That App", posterPhotoName: "slide_out_menu_poster"),
-//            User(name: "Kelly", age: 23, profession: "Music DJ", imageNames: ["kelly1", "kelly2", "kelly3"]),
-//            User(name: "Jane", age: 18, profession: "Teacher", imageNames: ["jane1", "jane2", "jane3"])
-//        ] as [ProducesCardViewModel]
-//
-//        let viewModels = producer.map({return $0.toCardViewModel()})
-//        return viewModels
-//    }()
-    
     var cardViewModels = [CardViewModel]()
     
     override func viewDidLoad() {
@@ -34,12 +23,14 @@ class HomeController: UIViewController {
         topStackView.settingsButton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
         
         setupLayout()
-        setupDummyCards()
+        setupFirestoreUserCards()
         fetchUsersFromFirestore()
     }
     
     fileprivate func fetchUsersFromFirestore() {
-        Firestore.firestore().collection("users").getDocuments { (snapshot, err) in
+        let query = Firestore.firestore().collection("users")
+//        let query = Firestore.firestore().collection("users").whereField("friends", arrayContains: "Chris")
+        query.getDocuments { (snapshot, err) in
             if let err = err {
                 print("Failed to fetch users:", err)
                 return
@@ -50,7 +41,7 @@ class HomeController: UIViewController {
                 let user = User(dictionary: userDictionary)
                 self.cardViewModels.append(user.toCardViewModel())
             })
-            self.setupDummyCards()
+            self.setupFirestoreUserCards()
         }
     }
     
@@ -61,7 +52,7 @@ class HomeController: UIViewController {
     
     // MARK: - Fileprivate
     
-    fileprivate func setupDummyCards() {
+    fileprivate func setupFirestoreUserCards() {
         cardViewModels.forEach { (cardVM) in
             let cardView = CardView(frame: .zero)
             
