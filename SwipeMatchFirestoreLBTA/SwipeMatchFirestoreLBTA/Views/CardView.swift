@@ -15,7 +15,6 @@ class CardView: UIView {
         didSet {
             // accessing index 0 will crash if imageNames.count == 0
             let imageName = cardViewModel.imageNames.first ?? ""
-            
             // load our image using some kind of url instead
             if let url = URL(string: imageName) {
                 imageView.sd_setImage(with: url)
@@ -53,8 +52,8 @@ class CardView: UIView {
     
     // encapsulation
     fileprivate let imageView = UIImageView(image: #imageLiteral(resourceName: "lady5c"))
-    fileprivate let informationLabel = UILabel()
     fileprivate let gradientLayer = CAGradientLayer()
+    fileprivate let informationLabel = UILabel()
     
     // Configuration
     fileprivate let threshold: CGFloat = 80
@@ -115,7 +114,6 @@ class CardView: UIView {
     
     fileprivate func setupGradientLayer() {
         // how we can draw a gradient with Swift
-        
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         gradientLayer.locations = [0.5, 1.1]
         // self.frame is actually zero frame

@@ -53,7 +53,6 @@ class HomeController: UIViewController {
                 let user = User(dictionary: userDictionary)
                 self.cardViewModels.append(user.toCardViewModel())
                 self.lastFetchedUser = user
-                
                 self.setupCardFromUser(user: user)
             })
         }
@@ -68,8 +67,9 @@ class HomeController: UIViewController {
     }
     
     @objc func handleSettings() {
-        let registrationController = RegistrationController()
-        present(registrationController, animated: true)
+        let settingsController = SettingsController()
+        let navController = UINavigationController(rootViewController: settingsController)
+        present(navController, animated: true)
     }
     
     // MARK: - Fileprivate
@@ -77,9 +77,7 @@ class HomeController: UIViewController {
     fileprivate func setupFirestoreUserCards() {
         cardViewModels.forEach { (cardVM) in
             let cardView = CardView(frame: .zero)
-
             cardView.cardViewModel = cardVM
-
             cardsDeckView.addSubview(cardView)
             cardView.fillSuperview()
         }
