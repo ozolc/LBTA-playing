@@ -19,6 +19,7 @@
 		B04EB14622E8D3030053A762 /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04EB14522E8D3030053A762 /* HomeBottomControlsStackView.swift */; };
 		B04EB14822E8D7C40053A762 /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04EB14722E8D7C40053A762 /* TopNavigationStackView.swift */; };
 		B06F5D5722F012F600EBABA7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F5D5622F012F600EBABA7 /* SettingsController.swift */; };
+		B06F5D5922F0276A00EBABA7 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F5D5822F0276A00EBABA7 /* SettingsCell.swift */; };
 		B07CEA4522E9AC100028A05A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07CEA4422E9AC100028A05A /* CardView.swift */; };
 		B07CEA4822EA14E40028A05A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07CEA4722EA14E40028A05A /* User.swift */; };
 		B07CEA4C22EA1D300028A05A /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07CEA4B22EA1D300028A05A /* CardViewModel.swift */; };
@@ -46,6 +47,7 @@
 		B04EB14522E8D3030053A762 /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 		B04EB14722E8D7C40053A762 /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
 		B06F5D5622F012F600EBABA7 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		B06F5D5822F0276A00EBABA7 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		B07CEA4422E9AC100028A05A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B07CEA4722EA14E40028A05A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B07CEA4B22EA1D300028A05A /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				B04EB14722E8D7C40053A762 /* TopNavigationStackView.swift */,
 				B07CEA4422E9AC100028A05A /* CardView.swift */,
 				B097785D22ED7E32002C802F /* CustomTextField.swift */,
+				B06F5D5822F0276A00EBABA7 /* SettingsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				B04EB14822E8D7C40053A762 /* TopNavigationStackView.swift in Sources */,
 				B097785C22ED779A002C802F /* RegistrationController.swift in Sources */,
 				B07CEA4822EA14E40028A05A /* User.swift in Sources */,
+				B06F5D5922F0276A00EBABA7 /* SettingsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
