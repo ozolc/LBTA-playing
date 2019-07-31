@@ -31,6 +31,7 @@
 		B097785C22ED779A002C802F /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097785B22ED779A002C802F /* RegistrationController.swift */; };
 		B097785E22ED7E32002C802F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097785D22ED7E32002C802F /* CustomTextField.swift */; };
 		B0C7171622EDFC86007D00C6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C7171522EDFC86007D00C6 /* RegistrationViewModel.swift */; };
+		B0D4E66C22F20CE600FC6A99 /* Firebase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4E66B22F20CE600FC6A99 /* Firebase+Utils.swift */; };
 		B0EFCCFA22EB052C004CE90F /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EFCCF922EB052C004CE90F /* Advertiser.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		B097785B22ED779A002C802F /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		B097785D22ED7E32002C802F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		B0C7171522EDFC86007D00C6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		B0D4E66B22F20CE600FC6A99 /* Firebase+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Firebase+Utils.swift"; sourceTree = "<group>"; };
 		B0EFCCF922EB052C004CE90F /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +138,7 @@
 		B0269E1B22E8CB7E00D00DA8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B0D4E66B22F20CE600FC6A99 /* Firebase+Utils.swift */,
 				B0269E1C22E8CBBD00D00DA8 /* Extensions+UIView.swift */,
 			);
 			path = Extensions;
@@ -354,6 +357,7 @@
 				B09599C722F145560051DCB1 /* LoginViewModel.swift in Sources */,
 				B0269E1D22E8CBBD00D00DA8 /* Extensions+UIView.swift in Sources */,
 				B07CEA4C22EA1D300028A05A /* CardViewModel.swift in Sources */,
+				B0D4E66C22F20CE600FC6A99 /* Firebase+Utils.swift in Sources */,
 				B07CEA4522E9AC100028A05A /* CardView.swift in Sources */,
 				B09599C622F145560051DCB1 /* LoginController.swift in Sources */,
 				B06F5D5722F012F600EBABA7 /* SettingsController.swift in Sources */,

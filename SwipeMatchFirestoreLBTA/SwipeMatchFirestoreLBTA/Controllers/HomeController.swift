@@ -26,23 +26,21 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
         
         setupLayout()
         fetchCurrentUser()
-//        setupFirestoreUserCards()
-//        fetchUsersFromFirestore()
     }
-    
+    fileprivate let hud = JGProgressHUD(style: .dark)
     fileprivate var user: User?
     
     fileprivate func fetchCurrentUser() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, err) in
+        hud.textLabel.text = "Loading"
+        hud.show(in: view)
+        cardsDeckView.subviews.forEach({$0.removeFromSuperview()})
+        Firestore.firestore().fetchCurrentUser { (user, err) in
             if let err = err {
-                print(err)
+                print("Failed to fetch user:", err)
+                self.hud.dismiss()
                 return
             }
-            
-            // fetched our user here
-            guard let dictionary = snapshot?.data() else { return }
-            self.user = User(dictionary: dictionary)
+            self.user = user
             self.fetchUsersFromFirestore()
         }
     }
@@ -54,17 +52,14 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
     var lastFetchedUser: User?
     
     fileprivate func fetchUsersFromFirestore() {
-        guard
-            let minAge = user?.minSeekingAge,
-            let maxAge = user?.maxSeekingAge
-            else { return }
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Fetching Users"
+        let minAge = user?.minSeekingAge ?? SettingsController.defaultMinSeekingAge
+        let maxAge = user?.maxSeekingAge ?? SettingsController.defaultMaxSeekingAge
+        hud.textLabel.text = "Loading"
         hud.show(in: view)
-        // pagination to page through 2 users at a time
+        cardsDeckView.subviews.forEach({$0.removeFromSuperview()})
         let query = Firestore.firestore().collection("users").whereField("age", isGreaterThanOrEqualTo: minAge).whereField("age", isLessThanOrEqualTo: maxAge)
         query.getDocuments { (snapshot, err) in
-            hud.dismiss()
+            self.hud.dismiss()
             if let err = err {
                 print("Failed to fetch users:", err)
                 return
@@ -76,7 +71,6 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
                 if user.uid != Auth.auth().currentUser?.uid {
                     self.setupCardFromUser(user: user)
                 }
-                
             })
         }
     }
@@ -104,34 +98,24 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
     }
     
     func didSaveSettings() {
-        print("Notified of dismissal from SettingsController in HomeController")
         fetchCurrentUser()
     }
     
     // MARK: - Fileprivate
     
-    fileprivate func setupFirestoreUserCards() {
-        cardViewModels.forEach { (cardVM) in
-            let cardView = CardView(frame: .zero)
-            cardView.cardViewModel = cardVM
-            cardsDeckView.addSubview(cardView)
-            cardView.fillSuperview()
-        }
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("HomeController did appear")
         if Auth.auth().currentUser == nil {
-            let loginController = LoginController()
-            loginController.delegate = self
-            let navController = UINavigationController(rootViewController: loginController)
+            let registrationController = RegistrationController()
+            registrationController.delegate = self
+            let navController = UINavigationController(rootViewController: registrationController)
             present(navController, animated: true)
         }
     }
     
     func didFinishLoggingIn() {
-        self.fetchCurrentUser()
+        fetchCurrentUser()
     }
 
     fileprivate func setupLayout() {
