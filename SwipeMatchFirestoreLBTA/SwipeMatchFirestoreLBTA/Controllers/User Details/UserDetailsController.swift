@@ -106,7 +106,6 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         let swipingView = swipingPhotosController.view!
-        // frame
         swipingView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width + extraSwipingHeight)
     }
     
@@ -115,7 +114,7 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
         var width = view.frame.width + changeY * 2
         width = max(view.frame.width, width)
         let imageView = swipingPhotosController.view!
-        imageView.frame = CGRect(x: min(0, -changeY),y: min(0, -changeY), width: width, height: width + extraSwipingHeight)
+        imageView.frame = CGRect(x: min(0, -changeY), y: min(0, -changeY), width: width, height: width + extraSwipingHeight)
     }
     
     @objc fileprivate func handleTapDismiss() {
