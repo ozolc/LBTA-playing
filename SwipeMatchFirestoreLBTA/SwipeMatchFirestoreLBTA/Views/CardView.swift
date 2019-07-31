@@ -96,12 +96,6 @@ class CardView: UIView {
     
     @objc fileprivate func handleMoreInfo() {
         delegate?.didTapMoreInfo(cardViewModel: self.cardViewModel)
-        
-        // hack solution
-//        let rootViewController = UIApplication.shared.keyWindow?.rootViewController
-//        let userDetailsController = UIViewController()
-//        userDetailsController.view.backgroundColor = .yellow
-//        rootViewController?.present(userDetailsController, animated: true)
     }
     
     fileprivate func setupLayout() {
