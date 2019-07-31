@@ -26,6 +26,7 @@
 		B07CEA4C22EA1D300028A05A /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07CEA4B22EA1D300028A05A /* CardViewModel.swift */; };
 		B09599C622F145560051DCB1 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09599C422F145560051DCB1 /* LoginController.swift */; };
 		B09599C722F145560051DCB1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09599C522F145560051DCB1 /* LoginViewModel.swift */; };
+		B09599CA22F152280051DCB1 /* UserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09599C922F152280051DCB1 /* UserDetailsController.swift */; };
 		B097785C22ED779A002C802F /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097785B22ED779A002C802F /* RegistrationController.swift */; };
 		B097785E22ED7E32002C802F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097785D22ED7E32002C802F /* CustomTextField.swift */; };
 		B0C7171622EDFC86007D00C6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C7171522EDFC86007D00C6 /* RegistrationViewModel.swift */; };
@@ -57,6 +58,7 @@
 		B07CEA4B22EA1D300028A05A /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		B09599C422F145560051DCB1 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		B09599C522F145560051DCB1 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		B09599C922F152280051DCB1 /* UserDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsController.swift; sourceTree = "<group>"; };
 		B097785B22ED779A002C802F /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		B097785D22ED7E32002C802F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		B0C7171522EDFC86007D00C6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		B07CEA4922EA1C890028A05A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B09599C822F152030051DCB1 /* User Details */,
 				B09599C322F1451F0051DCB1 /* Login */,
 				B0269E0B22E8B41E00D00DA8 /* HomeController.swift */,
 				B097785B22ED779A002C802F /* RegistrationController.swift */,
@@ -187,6 +190,14 @@
 				B09599C522F145560051DCB1 /* LoginViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		B09599C822F152030051DCB1 /* User Details */ = {
+			isa = PBXGroup;
+			children = (
+				B09599C922F152280051DCB1 /* UserDetailsController.swift */,
+			);
+			path = "User Details";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B09599CA22F152280051DCB1 /* UserDetailsController.swift in Sources */,
 				B003CDB222EEBD2100116740 /* Bindable.swift in Sources */,
 				B0269E0C22E8B41E00D00DA8 /* HomeController.swift in Sources */,
 				B0C7171622EDFC86007D00C6 /* RegistrationViewModel.swift in Sources */,
