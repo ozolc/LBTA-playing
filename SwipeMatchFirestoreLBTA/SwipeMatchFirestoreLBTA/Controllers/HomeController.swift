@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import JGProgressHUD
 
-class HomeController: UIViewController, SettingsControllerDelegate {
+class HomeController: UIViewController, SettingsControllerDelegate, LoginControllerDelegate {
     
     let topStackView = TopNavigationStackView()
     let cardsDeckView = UIView()
@@ -97,8 +97,6 @@ class HomeController: UIViewController, SettingsControllerDelegate {
     
     func didSaveSettings() {
         print("Notified of dismissal from SettingsController in HomeController")
-        cardViewModels.removeAll()
-        
         fetchCurrentUser()
     }
     
@@ -111,6 +109,21 @@ class HomeController: UIViewController, SettingsControllerDelegate {
             cardsDeckView.addSubview(cardView)
             cardView.fillSuperview()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("HomeController did appear")
+        if Auth.auth().currentUser == nil {
+            let loginController = LoginController()
+            loginController.delegate = self
+            let navController = UINavigationController(rootViewController: loginController)
+            present(navController, animated: true)
+        }
+    }
+    
+    func didFinishLoggingIn() {
+        self.fetchCurrentUser()
     }
 
     fileprivate func setupLayout() {
