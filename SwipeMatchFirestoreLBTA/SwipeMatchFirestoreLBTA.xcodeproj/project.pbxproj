@@ -27,6 +27,7 @@
 		B09599C622F145560051DCB1 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09599C422F145560051DCB1 /* LoginController.swift */; };
 		B09599C722F145560051DCB1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09599C522F145560051DCB1 /* LoginViewModel.swift */; };
 		B09599CA22F152280051DCB1 /* UserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09599C922F152280051DCB1 /* UserDetailsController.swift */; };
+		B09599CC22F1AC2D0051DCB1 /* SwipingPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09599CB22F1AC2D0051DCB1 /* SwipingPhotosController.swift */; };
 		B097785C22ED779A002C802F /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097785B22ED779A002C802F /* RegistrationController.swift */; };
 		B097785E22ED7E32002C802F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097785D22ED7E32002C802F /* CustomTextField.swift */; };
 		B0C7171622EDFC86007D00C6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C7171522EDFC86007D00C6 /* RegistrationViewModel.swift */; };
@@ -59,6 +60,7 @@
 		B09599C422F145560051DCB1 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		B09599C522F145560051DCB1 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B09599C922F152280051DCB1 /* UserDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsController.swift; sourceTree = "<group>"; };
+		B09599CB22F1AC2D0051DCB1 /* SwipingPhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingPhotosController.swift; sourceTree = "<group>"; };
 		B097785B22ED779A002C802F /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		B097785D22ED7E32002C802F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		B0C7171522EDFC86007D00C6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				B09599C922F152280051DCB1 /* UserDetailsController.swift */,
+				B09599CB22F1AC2D0051DCB1 /* SwipingPhotosController.swift */,
 			);
 			path = "User Details";
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				B04EB14822E8D7C40053A762 /* TopNavigationStackView.swift in Sources */,
 				B097785C22ED779A002C802F /* RegistrationController.swift in Sources */,
 				B07CEA4822EA14E40028A05A /* User.swift in Sources */,
+				B09599CC22F1AC2D0051DCB1 /* SwipingPhotosController.swift in Sources */,
 				B06F5D5922F0276A00EBABA7 /* SettingsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
