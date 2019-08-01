@@ -33,6 +33,7 @@
 		B0C7171622EDFC86007D00C6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C7171522EDFC86007D00C6 /* RegistrationViewModel.swift */; };
 		B0D4E66C22F20CE600FC6A99 /* Firebase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4E66B22F20CE600FC6A99 /* Firebase+Utils.swift */; };
 		B0EFCCFA22EB052C004CE90F /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EFCCF922EB052C004CE90F /* Advertiser.swift */; };
+		B0FB1F4822F2A09C00976A41 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB1F4722F2A09C00976A41 /* PhotoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		B0C7171522EDFC86007D00C6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		B0D4E66B22F20CE600FC6A99 /* Firebase+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Firebase+Utils.swift"; sourceTree = "<group>"; };
 		B0EFCCF922EB052C004CE90F /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
+		B0FB1F4722F2A09C00976A41 /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			children = (
 				B09599C922F152280051DCB1 /* UserDetailsController.swift */,
 				B09599CB22F1AC2D0051DCB1 /* SwipingPhotosController.swift */,
+				B0FB1F4722F2A09C00976A41 /* PhotoController.swift */,
 			);
 			path = "User Details";
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				B07CEA4522E9AC100028A05A /* CardView.swift in Sources */,
 				B09599C622F145560051DCB1 /* LoginController.swift in Sources */,
 				B06F5D5722F012F600EBABA7 /* SettingsController.swift in Sources */,
+				B0FB1F4822F2A09C00976A41 /* PhotoController.swift in Sources */,
 				B04EB14822E8D7C40053A762 /* TopNavigationStackView.swift in Sources */,
 				B097785C22ED779A002C802F /* RegistrationController.swift in Sources */,
 				B07CEA4822EA14E40028A05A /* User.swift in Sources */,
