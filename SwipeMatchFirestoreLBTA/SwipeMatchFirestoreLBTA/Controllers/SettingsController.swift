@@ -8,6 +8,9 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseStorage
 import JGProgressHUD
 import SDWebImage
 
