@@ -26,7 +26,7 @@ class MatchView: UIView {
         return label
     }()
     
-    fileprivate let currentImageView: UIImageView = {
+    fileprivate let currentUserImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "kelly1"))
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -63,10 +63,46 @@ class MatchView: UIView {
         
         setupBlurView()
         setupLayout()
+        setupAnimations()
+    }
+    
+    fileprivate func setupAnimations() {
+        // starting positions
+        let angle = 30 * CGFloat.pi / 180
+        
+        currentUserImageView.transform = CGAffineTransform(rotationAngle: -angle).concatenating( CGAffineTransform(translationX: 200, y: 0))
+        cardUserImageView.transform = CGAffineTransform(rotationAngle: angle).concatenating(CGAffineTransform(translationX: -200, y: 0))
+        
+        sendMessageButton.transform = CGAffineTransform(translationX: -500, y: 0)
+        keepSwipingButton.transform = CGAffineTransform(translationX: 500, y: 0)
+        
+        // keyframe animations for segmented animation
+        UIView.animateKeyframes(withDuration: 1.3, delay: 0, options: .calculationModeCubic, animations: {
+            
+            // animation 1 - rotation
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.45, animations: {
+                self.currentUserImageView.transform = CGAffineTransform(rotationAngle: -angle)
+                self.cardUserImageView.transform = CGAffineTransform(rotationAngle: angle)
+            })
+            
+            // animation 2 - translation back to original position
+            UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.4, animations: {
+                self.currentUserImageView.transform = .identity
+                self.cardUserImageView.transform = .identity
+            })
+                
+        }) { (_) in
+            
+        }
+        
+        UIView.animate(withDuration: 0.75, delay: 0.6 * 1.3, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+            self.sendMessageButton.transform = .identity
+            self.keepSwipingButton.transform = .identity
+        })
     }
     
     fileprivate func setupLayout() {
-        addSubview(currentImageView)
+        addSubview(currentUserImageView)
         addSubview(cardUserImageView)
         addSubview(itsAMatchImageView)
         addSubview(descriptionLabel)
@@ -78,17 +114,17 @@ class MatchView: UIView {
         itsAMatchImageView.anchor(top: nil, leading: nil, bottom: descriptionLabel.topAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 16, right: 0), size: .init(width: 300, height: 80))
         itsAMatchImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        descriptionLabel.anchor(top: nil, leading: self.leadingAnchor, bottom: currentImageView.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 32, right: 0), size: .init(width: 0, height: 50))
+        descriptionLabel.anchor(top: nil, leading: self.leadingAnchor, bottom: currentUserImageView.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 32, right: 0), size: .init(width: 0, height: 50))
         
-        currentImageView.anchor(top: nil, leading: nil, bottom: nil, trailing: centerXAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 16), size: .init(width: imageView, height: imageView))
-        currentImageView.layer.cornerRadius = imageView / 2
-        currentImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        currentUserImageView.anchor(top: nil, leading: nil, bottom: nil, trailing: centerXAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 16), size: .init(width: imageView, height: imageView))
+        currentUserImageView.layer.cornerRadius = imageView / 2
+        currentUserImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         cardUserImageView.anchor(top: nil, leading: centerXAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: imageView, height: imageView))
         cardUserImageView.layer.cornerRadius = imageView / 2
         cardUserImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
-        sendMessageButton.anchor(top: currentImageView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 32, left: 48, bottom: 0, right: 48), size: .init(width: 0, height: 60))
+        sendMessageButton.anchor(top: currentUserImageView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 32, left: 48, bottom: 0, right: 48), size: .init(width: 0, height: 60))
         
         keepSwipingButton.anchor(top: sendMessageButton.bottomAnchor, leading: sendMessageButton.leadingAnchor, bottom: nil, trailing: sendMessageButton.trailingAnchor, padding: .init(top: 16, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 60))
     }
