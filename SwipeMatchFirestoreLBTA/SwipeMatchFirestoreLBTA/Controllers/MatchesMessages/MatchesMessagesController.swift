@@ -51,6 +51,12 @@ class MatchesMessagesController: LBTAListController<MatchCell, Match>, UICollect
         return .init(width: 120, height: 140)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let match = items[indexPath.item]
+        let chatLogController = ChatLogController(match: match)
+        navigationController?.pushViewController(chatLogController, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,8 +73,6 @@ class MatchesMessagesController: LBTAListController<MatchCell, Match>, UICollect
     
     fileprivate func fetchMatches() {
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
-        
-        
         Firestore.firestore().collection("matches_messages").document(currentUserId).collection("matches").getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Failed to fetch matches", err)
