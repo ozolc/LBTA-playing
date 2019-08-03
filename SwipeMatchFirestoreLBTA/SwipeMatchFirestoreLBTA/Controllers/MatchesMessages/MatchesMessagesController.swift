@@ -54,12 +54,6 @@ class MatchesMessagesController: LBTAListController<MatchCell, Match>, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        items = [
-        //            .init(name: "1", profileImageUrl: "profile url"),
-        //            .init(name: "name", profileImageUrl: "profile url"),
-        //            .init(name: "2", profileImageUrl: "profile url")
-        //        ]
-        //
         fetchMatches()
         
         collectionView.backgroundColor = .white
