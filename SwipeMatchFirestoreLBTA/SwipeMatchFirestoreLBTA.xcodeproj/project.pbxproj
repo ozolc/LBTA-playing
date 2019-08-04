@@ -16,6 +16,11 @@
 		B0269E1122E8B42200D00DA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0269E1022E8B42200D00DA8 /* Assets.xcassets */; };
 		B0269E1422E8B42200D00DA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0269E1222E8B42200D00DA8 /* LaunchScreen.storyboard */; };
 		B028A4EB22F6D22B008B0878 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028A4EA22F6D22B008B0878 /* Message.swift */; };
+		B028A4ED22F706FB008B0878 /* MatchesHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028A4EC22F706FB008B0878 /* MatchesHeader.swift */; };
+		B028A4EF22F70757008B0878 /* MatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028A4EE22F70757008B0878 /* MatchCell.swift */; };
+		B028A4F122F707FF008B0878 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028A4F022F707FF008B0878 /* MessageCell.swift */; };
+		B028A4F322F7084D008B0878 /* MatchesHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028A4F222F7084D008B0878 /* MatchesHorizontalController.swift */; };
+		B028A4F522F70F2A008B0878 /* RecentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028A4F422F70F2A008B0878 /* RecentMessageCell.swift */; };
 		B0369BC922F49855001DFF61 /* MatchesNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0369BC822F49855001DFF61 /* MatchesNavBar.swift */; };
 		B03D84EB22F4755D006FF9C6 /* MatchesMessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03D84EA22F4755C006FF9C6 /* MatchesMessagesController.swift */; };
 		B04EB14622E8D3030053A762 /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04EB14522E8D3030053A762 /* HomeBottomControlsStackView.swift */; };
@@ -59,6 +64,11 @@
 		B0269E1322E8B42200D00DA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0269E1522E8B42200D00DA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B028A4EA22F6D22B008B0878 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B028A4EC22F706FB008B0878 /* MatchesHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesHeader.swift; sourceTree = "<group>"; };
+		B028A4EE22F70757008B0878 /* MatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCell.swift; sourceTree = "<group>"; };
+		B028A4F022F707FF008B0878 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		B028A4F222F7084D008B0878 /* MatchesHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesHorizontalController.swift; sourceTree = "<group>"; };
+		B028A4F422F70F2A008B0878 /* RecentMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageCell.swift; sourceTree = "<group>"; };
 		B0369BC822F49855001DFF61 /* MatchesNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesNavBar.swift; sourceTree = "<group>"; };
 		B03D84EA22F4755C006FF9C6 /* MatchesMessagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesMessagesController.swift; sourceTree = "<group>"; };
 		B04EB14522E8D3030053A762 /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
@@ -166,6 +176,7 @@
 			children = (
 				B03D84EA22F4755C006FF9C6 /* MatchesMessagesController.swift */,
 				B0BB4B8A22F5B99600ECEFA5 /* ChatLogController.swift */,
+				B028A4F222F7084D008B0878 /* MatchesHorizontalController.swift */,
 			);
 			path = MatchesMessages;
 			sourceTree = "<group>";
@@ -183,8 +194,6 @@
 				B0A9E7FE22F3EEC100D9B37B /* MatchView.swift */,
 				B0A9E80022F401BA00D9B37B /* SendMessageButton.swift */,
 				B0A9E80222F405FC00D9B37B /* KeepSwipingButton.swift */,
-				B0369BC822F49855001DFF61 /* MatchesNavBar.swift */,
-				B0D411CA22F66F6D00D88578 /* CustomInputAccessoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -245,6 +254,12 @@
 			isa = PBXGroup;
 			children = (
 				B0BB4B8D22F5C13000ECEFA5 /* MessagesNavBar.swift */,
+				B028A4F022F707FF008B0878 /* MessageCell.swift */,
+				B0D411CA22F66F6D00D88578 /* CustomInputAccessoryView.swift */,
+				B028A4EE22F70757008B0878 /* MatchCell.swift */,
+				B0369BC822F49855001DFF61 /* MatchesNavBar.swift */,
+				B028A4EC22F706FB008B0878 /* MatchesHeader.swift */,
+				B028A4F422F70F2A008B0878 /* RecentMessageCell.swift */,
 			);
 			path = MatchesMessages;
 			sourceTree = "<group>";
@@ -377,21 +392,26 @@
 				B0C7171622EDFC86007D00C6 /* RegistrationViewModel.swift in Sources */,
 				B0BB4B8E22F5C13000ECEFA5 /* MessagesNavBar.swift in Sources */,
 				B097785E22ED7E32002C802F /* CustomTextField.swift in Sources */,
+				B028A4ED22F706FB008B0878 /* MatchesHeader.swift in Sources */,
 				B04EB14622E8D3030053A762 /* HomeBottomControlsStackView.swift in Sources */,
 				B0EFCCFA22EB052C004CE90F /* Advertiser.swift in Sources */,
 				B0269E0A22E8B41E00D00DA8 /* AppDelegate.swift in Sources */,
+				B028A4F122F707FF008B0878 /* MessageCell.swift in Sources */,
 				B0A9E80322F405FC00D9B37B /* KeepSwipingButton.swift in Sources */,
 				B0A9E7FF22F3EEC100D9B37B /* MatchView.swift in Sources */,
+				B028A4F522F70F2A008B0878 /* RecentMessageCell.swift in Sources */,
 				B06F5D5B22F0765400EBABA7 /* AgeRangeCell.swift in Sources */,
 				B09599C722F145560051DCB1 /* LoginViewModel.swift in Sources */,
 				B03D84EB22F4755D006FF9C6 /* MatchesMessagesController.swift in Sources */,
 				B07CEA4C22EA1D300028A05A /* CardViewModel.swift in Sources */,
 				B0D4E66C22F20CE600FC6A99 /* Firebase+Utils.swift in Sources */,
+				B028A4F322F7084D008B0878 /* MatchesHorizontalController.swift in Sources */,
 				B07CEA4522E9AC100028A05A /* CardView.swift in Sources */,
 				B09599C622F145560051DCB1 /* LoginController.swift in Sources */,
 				B0D411CB22F66F6D00D88578 /* CustomInputAccessoryView.swift in Sources */,
 				B06F5D5722F012F600EBABA7 /* SettingsController.swift in Sources */,
 				B0FB1F4822F2A09C00976A41 /* PhotoController.swift in Sources */,
+				B028A4EF22F70757008B0878 /* MatchCell.swift in Sources */,
 				B04EB14822E8D7C40053A762 /* TopNavigationStackView.swift in Sources */,
 				B097785C22ED779A002C802F /* RegistrationController.swift in Sources */,
 				B07CEA4822EA14E40028A05A /* User.swift in Sources */,
