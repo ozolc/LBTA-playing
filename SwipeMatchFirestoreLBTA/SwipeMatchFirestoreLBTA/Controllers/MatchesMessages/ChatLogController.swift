@@ -7,11 +7,8 @@
 //
 
 import LBTATools
-
-struct Message {
-    let text: String
-    let isFromCurrentLoggedUser: Bool
-}
+import FirebaseFirestore
+import FirebaseAuth
 
 class MessageCell: LBTAListCell<Message> {
     
@@ -78,13 +75,49 @@ class ChatLogController: LBTAListController<MessageCell, Message>, UICollectionV
         super.init()
     }
     
-    lazy var redView: UIView = {
-        return CustomInputAccessoryView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 50))
+    lazy var customInputView: CustomInputAccessoryView = {
+        let civ = CustomInputAccessoryView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 50))
+        civ.sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+        return civ
     }()
+    
+    @objc fileprivate func handleSend() {
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        let collection = Firestore.firestore().collection("matches_messages").document(currentUserId).collection(match.uid)
+        
+        let data = ["text": customInputView.textView.text ?? "",
+                    "fromId": currentUserId,
+                    "toId": match.uid,
+                    "timestamp": Timestamp(date: Date())] as [String: Any]
+        
+        collection.addDocument(data: data) { (err) in
+            if let err = err {
+                print("Failed to save message:", err)
+                return
+            }
+            
+            print("Successfully saved message into Firestore")
+            self.customInputView.textView.text = ""
+            self.customInputView.placeholderLabel.isHidden = false
+        }
+        
+        let toCollection = Firestore.firestore().collection("matches_messages").document(match.uid).collection(currentUserId)
+        
+        toCollection.addDocument(data: data) { (err) in
+            if let err = err {
+                print("Failed to save message:", err)
+                return
+            }
+            
+            print("Successfully saved message into Firestore")
+            self.customInputView.textView.text = ""
+            self.customInputView.placeholderLabel.isHidden = false
+        }
+    }
     
     override var inputAccessoryView: UIView? {
         get {
-            return redView
+            return customInputView
         }
     }
     
@@ -95,16 +128,40 @@ class ChatLogController: LBTAListController<MessageCell, Message>, UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.keyboardDismissMode = .interactive
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         
-        items = [
-            .init(text: "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.", isFromCurrentLoggedUser: true),
-            .init(text: "Hello buddy", isFromCurrentLoggedUser: false),
-            .init(text: "To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?", isFromCurrentLoggedUser: true),
-            .init(text: "But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?", isFromCurrentLoggedUser: false),
-        ]
+        collectionView.keyboardDismissMode = .interactive
+
+        fetchMessages()
         
         setupUI()
+    }
+    
+    @objc fileprivate func handleKeyboardShow() {
+        self.collectionView.scrollToItem(at: [0, items.count - 1], at: .bottom, animated: true)
+    }
+    
+    fileprivate func fetchMessages() {
+        print("Fetching messages")
+        
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        
+        let query = Firestore.firestore().collection("matches_messages").document(currentUserId).collection(match.uid).order(by: "timestamp")
+            
+            query.addSnapshotListener { querySnapshot, error in
+                guard let snapshot = querySnapshot else {
+                    print("Error fetching snapshots: \(error!)")
+                    return
+                }
+                snapshot.documentChanges.forEach({ (change) in
+                    if (change.type == .added) {
+                        let dictionary = change.document.data()
+                        self.items.append(.init(dictionary: dictionary))
+                    }
+                })
+                self.collectionView.reloadData()
+                self.collectionView.scrollToItem(at: [0, self.items.count - 1], at: .bottom, animated: true)
+        }
     }
     
     fileprivate func setupUI() {

@@ -15,6 +15,7 @@
 		B0269E0F22E8B41E00D00DA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0269E0D22E8B41E00D00DA8 /* Main.storyboard */; };
 		B0269E1122E8B42200D00DA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0269E1022E8B42200D00DA8 /* Assets.xcassets */; };
 		B0269E1422E8B42200D00DA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0269E1222E8B42200D00DA8 /* LaunchScreen.storyboard */; };
+		B028A4EB22F6D22B008B0878 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028A4EA22F6D22B008B0878 /* Message.swift */; };
 		B0369BC922F49855001DFF61 /* MatchesNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0369BC822F49855001DFF61 /* MatchesNavBar.swift */; };
 		B03D84EB22F4755D006FF9C6 /* MatchesMessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03D84EA22F4755C006FF9C6 /* MatchesMessagesController.swift */; };
 		B04EB14622E8D3030053A762 /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04EB14522E8D3030053A762 /* HomeBottomControlsStackView.swift */; };
@@ -57,6 +58,7 @@
 		B0269E1022E8B42200D00DA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0269E1322E8B42200D00DA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0269E1522E8B42200D00DA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B028A4EA22F6D22B008B0878 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B0369BC822F49855001DFF61 /* MatchesNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesNavBar.swift; sourceTree = "<group>"; };
 		B03D84EA22F4755C006FF9C6 /* MatchesMessagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesMessagesController.swift; sourceTree = "<group>"; };
 		B04EB14522E8D3030053A762 /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			children = (
 				B07CEA4722EA14E40028A05A /* User.swift */,
 				B0EFCCF922EB052C004CE90F /* Advertiser.swift */,
+				B028A4EA22F6D22B008B0878 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				B07CEA4822EA14E40028A05A /* User.swift in Sources */,
 				B0A9E80122F401BA00D9B37B /* SendMessageButton.swift in Sources */,
 				B09599CC22F1AC2D0051DCB1 /* SwipingPhotosController.swift in Sources */,
+				B028A4EB22F6D22B008B0878 /* Message.swift in Sources */,
 				B06F5D5922F0276A00EBABA7 /* SettingsCell.swift in Sources */,
 				B0369BC922F49855001DFF61 /* MatchesNavBar.swift in Sources */,
 			);
