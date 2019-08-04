@@ -10,7 +10,20 @@ import LBTATools
 import FirebaseAuth
 import FirebaseFirestore
 
-class MatchesMessagesController: LBTAListHeaderController<RecentMessageCell, UIColor, MatchesHeader>, UICollectionViewDelegateFlowLayout {
+struct RecentMessage {
+    let text, uid, name, profileImageUrl: String
+    let timestamp: Timestamp
+    
+    init(dictionary: [String: Any]) {
+        self.text = dictionary["text"] as? String ?? ""
+        self.uid = dictionary["uid"] as? String ?? ""
+        self.name = dictionary["name"] as? String ?? ""
+        self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
+        self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
+    }
+}
+
+class MatchesMessagesController: LBTAListHeaderController<RecentMessageCell, RecentMessage, MatchesHeader>, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0 
@@ -34,9 +47,45 @@ class MatchesMessagesController: LBTAListHeaderController<RecentMessageCell, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        items = [.red, .blue, .green, .purple]
+        fetchRecentMessages()
+        
+        items = []
+//            .init(text: "Some random message that I'll use for each recent message cell", uid: "BLANK", name: "Big Burger", profileImageUrl: "https://firebasestorage.googleapis.com/v0/b/swipematchfirestore-eedf0.appspot.com/o/images%2F9BC03DA9-754A-48E5-83E4-1FED864E9AEA?alt=media&token=82b6764b-1623-44de-9bd7-fbf23010c4f3", timestamp: Timestamp(date: .init())),
+//            .init(text: "Some random message ", uid: "BLANK", name: "111", profileImageUrl: "https://firebasestorage.googleapis.com/v0/b/swipematchfirestore-eedf0.appspot.com/o/images%2F9BC03DA9-754A-48E5-83E4-1FED864E9AEA?alt=media&token=82b6764b-1623-44de-9bd7-fbf23010c4f3", timestamp: Timestamp(date: .init())),
+//        ]
         
         setupUI()
+    }
+    
+    var recentMessagesDictionary = [String: RecentMessage]()
+    
+    fileprivate func fetchRecentMessages() {
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        
+        Firestore.firestore().collection("matches_messages").document(currentUserId).collection("recent_messages").addSnapshotListener { (querySnapshot, err) in
+            if let err = err {
+                print("Failed to fetch recent messages", err)
+                return
+            }
+            
+            querySnapshot?.documentChanges.forEach({ (change) in
+                
+                if (change.type == .added || change.type == .modified) {
+                    let dictionary = change.document.data()
+                    let recentMessage = RecentMessage(dictionary: dictionary)
+                    self.recentMessagesDictionary[recentMessage.uid] = recentMessage
+                }
+            })
+            self.resetItems()
+        }
+    }
+    
+    fileprivate func resetItems() {
+        let values = Array(recentMessagesDictionary.values)
+        items = values.sorted(by: { (rm1, rm2) -> Bool in
+            return rm1.timestamp.compare(rm2.timestamp) == .orderedDescending
+        })
+        collectionView.reloadData()
     }
     
 //    fileprivate func fetchMatches() {
