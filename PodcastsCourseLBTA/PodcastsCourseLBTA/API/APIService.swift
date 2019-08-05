@@ -24,7 +24,7 @@ class APIService {
         
         AF.request(baseItunesSearchURL, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).response { (dataResponse) in
             if let err = dataResponse.error {
-                print("Failed to contact Yahoo", err)
+                print("Failed to contact \(self.baseItunesSearchURL)", err)
                 return
             }
             
