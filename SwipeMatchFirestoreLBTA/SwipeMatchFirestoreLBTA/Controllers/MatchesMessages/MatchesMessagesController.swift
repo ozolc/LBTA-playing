@@ -80,6 +80,14 @@ class MatchesMessagesController: LBTAListHeaderController<RecentMessageCell, Rec
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let recentMessage = self.items[indexPath.item]
+        let dictionary = ["name": recentMessage.name, "profileImageUrl": recentMessage.profileImageUrl, "uid": recentMessage.uid]
+        let match = Match(dictionary: dictionary)
+        let controller = ChatLogController(match: match)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     fileprivate func resetItems() {
         let values = Array(recentMessagesDictionary.values)
         items = values.sorted(by: { (rm1, rm2) -> Bool in
@@ -87,27 +95,6 @@ class MatchesMessagesController: LBTAListHeaderController<RecentMessageCell, Rec
         })
         collectionView.reloadData()
     }
-    
-//    fileprivate func fetchMatches() {
-//        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
-//        Firestore.firestore().collection("matches_messages").document(currentUserId).collection("matches").getDocuments { (querySnapshot, err) in
-//            if let err = err {
-//                print("Failed to fetch matches", err)
-//                return
-//            }
-//
-//            print("Here are my matches documents")
-//
-//            var matches = [Match]()
-//            querySnapshot?.documents.forEach({ (documentSnapshot) in
-//                let dictionary = documentSnapshot.data()
-//                matches.append(.init(dictionary: dictionary))
-//            })
-//
-//            self.items = matches
-//            self.collectionView.reloadData()
-//        }
-//    }
     
     fileprivate func setupUI() {
         collectionView.backgroundColor = .white
