@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		26CDDE3595D7882BAB0DB47A /* Pods_PodcastsCourseLBTA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E43DA2685CFCCE901C965674 /* Pods_PodcastsCourseLBTA.framework */; };
+		B02682A222F88FF8001843D6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02682A122F88FF8001843D6 /* APIService.swift */; };
 		B028A50322F7FDD3008B0878 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028A50222F7FDD3008B0878 /* AppDelegate.swift */; };
 		B028A50522F7FDD3008B0878 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028A50422F7FDD3008B0878 /* ViewController.swift */; };
 		B028A50822F7FDD3008B0878 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B028A50622F7FDD3008B0878 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		076E1A165F76BCAF15801464 /* Pods-PodcastsCourseLBTA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodcastsCourseLBTA.debug.xcconfig"; path = "Target Support Files/Pods-PodcastsCourseLBTA/Pods-PodcastsCourseLBTA.debug.xcconfig"; sourceTree = "<group>"; };
 		10F5C9215DC78B932E5C9783 /* Pods-PodcastsCourseLBTA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodcastsCourseLBTA.release.xcconfig"; path = "Target Support Files/Pods-PodcastsCourseLBTA/Pods-PodcastsCourseLBTA.release.xcconfig"; sourceTree = "<group>"; };
+		B02682A122F88FF8001843D6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		B028A4FF22F7FDD3008B0878 /* PodcastsCourseLBTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodcastsCourseLBTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B028A50222F7FDD3008B0878 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B028A50422F7FDD3008B0878 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +48,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B02682A022F88FE4001843D6 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B02682A122F88FF8001843D6 /* APIService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		B028A4F622F7FDD3008B0878 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +77,7 @@
 		B028A50122F7FDD3008B0878 /* PodcastsCourseLBTA */ = {
 			isa = PBXGroup;
 			children = (
+				B02682A022F88FE4001843D6 /* API */,
 				B028A51922F80E41008B0878 /* Model */,
 				B028A51622F80D97008B0878 /* Controllers */,
 				B028A50222F7FDD3008B0878 /* AppDelegate.swift */,
@@ -102,7 +113,6 @@
 				076E1A165F76BCAF15801464 /* Pods-PodcastsCourseLBTA.debug.xcconfig */,
 				10F5C9215DC78B932E5C9783 /* Pods-PodcastsCourseLBTA.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -233,6 +243,7 @@
 				B028A50522F7FDD3008B0878 /* ViewController.swift in Sources */,
 				B028A50322F7FDD3008B0878 /* AppDelegate.swift in Sources */,
 				B028A51522F7FE5D008B0878 /* MainTabBarController.swift in Sources */,
+				B02682A222F88FF8001843D6 /* APIService.swift in Sources */,
 				B028A51B22F80E5A008B0878 /* Podcast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -38,31 +38,13 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // later implement Alamofire to search iTunes API)
-//        guard let url = URL(string:"https://itunes.apple.com/search?term=\(searchText)") else { return }
-        let url = "https://itunes.apple.com/search"
-        let parameters = ["term": searchText, "media": "podcast"]
-        
-        AF.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).response { (dataResponse) in
-            if let err = dataResponse.error {
-                print("Failed to contact Yahoo", err)
-                return
-            }
+        APIService.shared.fetchPodcasts(searchText: searchText) { (podcasts) in
             
-            guard let data = dataResponse.data else { return }
-            do {
-                let searchResult = try JSONDecoder().decode(SearchResults.self, from: data)
-                self.podcasts = searchResult.results
-                self.tableView.reloadData()
-            } catch let decodeErr {
-                print("Failed to decode:", decodeErr)
-            }
+            self.podcasts = podcasts
+            self.tableView.reloadData()
+            print("Finished searching for podcasts...")
         }
-    }
-    
-    struct SearchResults: Decodable {
-        let resultCount: Int
-        let results: [Podcast]
+        
     }
     
     fileprivate func setupTableView() {
