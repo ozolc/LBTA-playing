@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26CDDE3595D7882BAB0DB47A /* Pods_PodcastsCourseLBTA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E43DA2685CFCCE901C965674 /* Pods_PodcastsCourseLBTA.framework */; };
 		B028A50322F7FDD3008B0878 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028A50222F7FDD3008B0878 /* AppDelegate.swift */; };
 		B028A50522F7FDD3008B0878 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028A50422F7FDD3008B0878 /* ViewController.swift */; };
 		B028A50822F7FDD3008B0878 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B028A50622F7FDD3008B0878 /* Main.storyboard */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		076E1A165F76BCAF15801464 /* Pods-PodcastsCourseLBTA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodcastsCourseLBTA.debug.xcconfig"; path = "Target Support Files/Pods-PodcastsCourseLBTA/Pods-PodcastsCourseLBTA.debug.xcconfig"; sourceTree = "<group>"; };
+		10F5C9215DC78B932E5C9783 /* Pods-PodcastsCourseLBTA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodcastsCourseLBTA.release.xcconfig"; path = "Target Support Files/Pods-PodcastsCourseLBTA/Pods-PodcastsCourseLBTA.release.xcconfig"; sourceTree = "<group>"; };
 		B028A4FF22F7FDD3008B0878 /* PodcastsCourseLBTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodcastsCourseLBTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B028A50222F7FDD3008B0878 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B028A50422F7FDD3008B0878 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +31,7 @@
 		B028A51422F7FE5D008B0878 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		B028A51722F80DBF008B0878 /* PodcastsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchController.swift; sourceTree = "<group>"; };
 		B028A51A22F80E5A008B0878 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
+		E43DA2685CFCCE901C965674 /* Pods_PodcastsCourseLBTA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PodcastsCourseLBTA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26CDDE3595D7882BAB0DB47A /* Pods_PodcastsCourseLBTA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +51,8 @@
 			children = (
 				B028A50122F7FDD3008B0878 /* PodcastsCourseLBTA */,
 				B028A50022F7FDD3008B0878 /* Products */,
+				D60AF5B309F9589E7209ACC4 /* Pods */,
+				E2DC840B2514C660FFDE893B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +96,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D60AF5B309F9589E7209ACC4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				076E1A165F76BCAF15801464 /* Pods-PodcastsCourseLBTA.debug.xcconfig */,
+				10F5C9215DC78B932E5C9783 /* Pods-PodcastsCourseLBTA.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E2DC840B2514C660FFDE893B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E43DA2685CFCCE901C965674 /* Pods_PodcastsCourseLBTA.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,9 +121,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B028A51122F7FDD6008B0878 /* Build configuration list for PBXNativeTarget "PodcastsCourseLBTA" */;
 			buildPhases = (
+				998D7D817B99C9C9CC5D472B /* [CP] Check Pods Manifest.lock */,
 				B028A4FB22F7FDD3008B0878 /* Sources */,
 				B028A4FC22F7FDD3008B0878 /* Frameworks */,
 				B028A4FD22F7FDD3008B0878 /* Resources */,
+				A693715EFA39A1ADBC7F110A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +181,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		998D7D817B99C9C9CC5D472B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PodcastsCourseLBTA-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A693715EFA39A1ADBC7F110A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PodcastsCourseLBTA/Pods-PodcastsCourseLBTA-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PodcastsCourseLBTA/Pods-PodcastsCourseLBTA-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PodcastsCourseLBTA/Pods-PodcastsCourseLBTA-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B028A4FB22F7FDD3008B0878 /* Sources */ = {
@@ -308,6 +377,7 @@
 		};
 		B028A51222F7FDD6008B0878 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 076E1A165F76BCAF15801464 /* Pods-PodcastsCourseLBTA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -326,6 +396,7 @@
 		};
 		B028A51322F7FDD6008B0878 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10F5C9215DC78B932E5C9783 /* Pods-PodcastsCourseLBTA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
