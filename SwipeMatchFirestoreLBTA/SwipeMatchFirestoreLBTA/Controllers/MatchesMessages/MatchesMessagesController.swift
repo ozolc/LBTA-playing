@@ -58,11 +58,13 @@ class MatchesMessagesController: LBTAListHeaderController<RecentMessageCell, Rec
     }
     
     var recentMessagesDictionary = [String: RecentMessage]()
+    var listener: ListenerRegistration?
     
     fileprivate func fetchRecentMessages() {
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        let query = Firestore.firestore().collection("matches_messages").document(currentUserId).collection("recent_messages")
         
-        Firestore.firestore().collection("matches_messages").document(currentUserId).collection("recent_messages").addSnapshotListener { (querySnapshot, err) in
+        listener = query.addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 print("Failed to fetch recent messages", err)
                 return
@@ -77,6 +79,14 @@ class MatchesMessagesController: LBTAListHeaderController<RecentMessageCell, Rec
                 }
             })
             self.resetItems()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if isMovingFromParent {
+            listener?.remove()
         }
     }
     
