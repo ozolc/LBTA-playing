@@ -7,12 +7,50 @@
 //
 
 import UIKit
+import FeedKit
 
 class EpisodesController: UITableViewController {
     
     var podcast: Podcast? {
         didSet {
             navigationItem.title = podcast?.trackName
+            
+            fetchEpisode()
+        }
+    }
+    
+    fileprivate func fetchEpisode() {
+        print("Looking for episodes at feed url:", podcast?.feedUrl ?? "")
+        
+        guard let feedUrl = podcast?.feedUrl else { return }
+        
+        let secureFeedUrl = feedUrl.contains("https") ? feedUrl : feedUrl.replacingOccurrences(of: "http", with: "https")
+        
+        guard let url = URL(string: secureFeedUrl) else { return }
+        
+        let parser = FeedParser(URL: url)
+        parser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { (result) in
+            print("Successfully parse feed:", result.isSuccess)
+            
+            // associative enumeration values
+            switch result {
+            case let .rss(feed):
+                var episodes = [Episode]() // blank Episode array
+                feed.items?.forEach({ (feedItem) in
+                    let episode = Episode(title: feedItem.title ?? "")
+                    episodes.append(episode)
+                })
+                self.episodes = episodes
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                break
+            case let .failure(error):
+                print("Failed to parse feed: ", error)
+            default:
+                print("Found a feed...")
+                break
+            }
         }
     }
     
@@ -20,15 +58,9 @@ class EpisodesController: UITableViewController {
     
     struct Episode {
         let title: String
-        
     }
     
-    var episodes = [
-        Episode(title: "First episode"),
-        Episode(title: "Second episode"),
-        Episode(title: "Third episode")
-        ]
-    
+    var episodes = [Episode]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
