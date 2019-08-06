@@ -10,6 +10,8 @@ import UIKit
 
 class EpisodeCell: UITableViewCell {
     
+    var podcastArtworkUrl: String?
+    
     var episode: Episode! {
         didSet {
             titleLabel.text = episode.title
@@ -18,6 +20,9 @@ class EpisodeCell: UITableViewCell {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd MMM yyyy"
             pubDateLabel.text = dateFormatter.string(from: episode.pubDate)
+            
+            let url = URL(string: episode.imageUrl?.toSecureHTTPS() ?? "")
+            episodeImageView.sd_setImage(with: url, completed: nil)
         }
     }
     
@@ -33,6 +38,5 @@ class EpisodeCell: UITableViewCell {
             descriptionLabel.numberOfLines = 2
         }
     }
-    
     
 }
