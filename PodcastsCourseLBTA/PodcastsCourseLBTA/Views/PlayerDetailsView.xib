@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="q9t-6t-UPK" customClass="PlayerDetailView" customModule="PodcastsCourseLBTA" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="q9t-6t-UPK" customClass="PlayerDetailsView" customModule="PodcastsCourseLBTA" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
