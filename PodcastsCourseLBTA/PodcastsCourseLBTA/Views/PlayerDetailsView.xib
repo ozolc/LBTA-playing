@@ -19,6 +19,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXJ-QE-TwW">
                     <rect key="frame" x="0.0" y="20" width="414" height="64"/>
                     <subviews>
+                        <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUn-a2-mwL">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="0.66666666666666663"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="HUE-vo-tth"/>
+                            </constraints>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OKT-sm-pdN">
                             <rect key="frame" x="8" y="8" width="398" height="48"/>
                             <subviews>
@@ -62,6 +69,9 @@
                         <constraint firstAttribute="trailing" secondItem="OKT-sm-pdN" secondAttribute="trailing" constant="8" id="96B-rS-8nl"/>
                         <constraint firstItem="OKT-sm-pdN" firstAttribute="leading" secondItem="lXJ-QE-TwW" secondAttribute="leading" constant="8" id="9ha-Em-lCu"/>
                         <constraint firstItem="OKT-sm-pdN" firstAttribute="top" secondItem="lXJ-QE-TwW" secondAttribute="top" constant="8" id="EAa-Cf-eap"/>
+                        <constraint firstItem="cUn-a2-mwL" firstAttribute="leading" secondItem="lXJ-QE-TwW" secondAttribute="leading" id="HTr-aS-9V2"/>
+                        <constraint firstItem="cUn-a2-mwL" firstAttribute="top" secondItem="lXJ-QE-TwW" secondAttribute="top" id="Nif-az-s9h"/>
+                        <constraint firstAttribute="trailing" secondItem="cUn-a2-mwL" secondAttribute="trailing" id="qfH-HH-Hey"/>
                         <constraint firstAttribute="bottom" secondItem="OKT-sm-pdN" secondAttribute="bottom" constant="8" id="tzm-if-Ber"/>
                     </constraints>
                 </view>
