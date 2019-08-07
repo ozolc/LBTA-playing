@@ -75,6 +75,10 @@ class PlayerDetailView: UIView {
         }
     }
     
+    static func initFromNib() -> PlayerDetailView {
+        return Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailView
+    }
+    
     //MARK: - IB Actions and Outlets
     @IBAction func handleCurrentTimeSliderChange(_ sender: Any) {
         let percentage = currentTimeSlider.value

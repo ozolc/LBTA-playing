@@ -113,7 +113,7 @@
                                         <constraint firstAttribute="width" constant="54" id="ahv-Bh-2pz"/>
                                     </constraints>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" title="Button" image="play"/>
+                                    <state key="normal" title="Button" image="pause"/>
                                 </button>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1vk-oI-fgV">
                                     <rect key="frame" x="210.66666666666666" y="0.0" width="49.999999999999972" height="113.33333333333333"/>
@@ -190,7 +190,7 @@
         <image name="fastforward15" width="45.5" height="45.5"/>
         <image name="max_volume" width="32.5" height="32.5"/>
         <image name="muted_volume" width="32.5" height="32.5"/>
-        <image name="play" width="59" height="59"/>
+        <image name="pause" width="57" height="57"/>
         <image name="rewind15" width="45.5" height="45.5"/>
     </resources>
 </document>
