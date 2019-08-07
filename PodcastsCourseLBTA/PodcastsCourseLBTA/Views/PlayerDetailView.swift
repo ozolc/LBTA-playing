@@ -39,8 +39,29 @@ class PlayerDetailView: UIView {
         return avPlayer
     }()
     
+    fileprivate func observePlayerCurrentTime() {
+        let interval = CMTime(seconds: 1, preferredTimescale: 2)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { (time) in
+            self.currentLabel.text = time.toDisplayString()
+            let durationTime = self.player.currentItem?.duration
+            self.durationLabel.text = durationTime?.toDisplayString()
+            
+            self.updateCurrentTimeSlider()
+        }
+    }
+    
+    fileprivate func updateCurrentTimeSlider() {
+        let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
+        let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTime(seconds: 1, preferredTimescale: 1))
+        let percentage = currentTimeSeconds / durationSeconds
+        
+        self.currentTimeSlider.value = Float(percentage)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        observePlayerCurrentTime()
         
         let time = CMTime(value: 1, timescale: 3)
         
@@ -52,6 +73,10 @@ class PlayerDetailView: UIView {
     }
     
     //MARK: - IB Actions and Outlets
+    
+    @IBOutlet weak var currentLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var currentTimeSlider: UISlider!
     
     @IBOutlet weak var playPauseButton: UIButton! {
         didSet {
