@@ -13,6 +13,7 @@ class PlayerDetailsView: UIView {
     
     var episode: Episode! {
         didSet {
+            miniTitleLabel.text = episode.title
             titleLabel.text = episode.title
             authorLabel.text = episode.author
             
@@ -20,6 +21,7 @@ class PlayerDetailsView: UIView {
             
             guard let url = URL(string: episode.imageUrl ?? "") else { return }
             episodeImageView.sd_setImage(with: url)
+            miniEpisodeImageView.sd_setImage(with: url)
         }
     }
     
@@ -87,6 +89,25 @@ class PlayerDetailsView: UIView {
     }
     
     //MARK: - IB Actions and Outlets
+    
+    @IBOutlet weak var miniEpisodeImageView: UIImageView!
+    @IBOutlet weak var miniTitleLabel: UILabel!
+    @IBOutlet weak var miniPlayPauseButon: UIButton! {
+        didSet {
+            miniPlayPauseButon.addTarget(self, action: #selector(handlePlayPause), for: .touchUpInside)
+        }
+    }
+    
+    
+    @IBOutlet weak var miniFastForwardButton: UIButton! {
+        didSet {
+            miniFastForwardButton.addTarget(self, action: #selector(handleFastForward(_:)), for: .touchUpInside)
+        }
+    }
+    
+    @IBOutlet weak var miniPlayerView: UIView!
+    @IBOutlet weak var maximizedStackView: UIStackView!
+    
     @IBAction func handleCurrentTimeSliderChange(_ sender: Any) {
         let percentage = currentTimeSlider.value
         guard let duration = player.currentItem?.duration else { return }
@@ -95,7 +116,6 @@ class PlayerDetailsView: UIView {
         let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
         
         player.seek(to: seekTime)
-        
     }
     
     @IBAction func handleFastForward(_ sender: Any) {
@@ -130,10 +150,12 @@ class PlayerDetailsView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            miniPlayPauseButon.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             enlargeEpisodeImageView()
         } else {
             player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            miniPlayPauseButon.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             shrinkEpisodeImageView()
         }
     }
