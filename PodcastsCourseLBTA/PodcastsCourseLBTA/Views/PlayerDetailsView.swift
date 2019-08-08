@@ -18,12 +18,40 @@ class PlayerDetailsView: UIView {
             titleLabel.text = episode.title
             authorLabel.text = episode.author
             
+            setupNowPlayingInfo()
+            
             playEpisode()
             
             guard let url = URL(string: episode.imageUrl ?? "") else { return }
             episodeImageView.sd_setImage(with: url)
-            miniEpisodeImageView.sd_setImage(with: url)
+//            miniEpisodeImageView.sd_setImage(with: url)
+            
+            miniEpisodeImageView.sd_setImage(with: url) { (image, _, _, _) in
+                
+                guard let image = image else { return }
+                
+                // lockscreen artwork setup code
+                var nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo
+                
+                // some modifications here
+                let artWork = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { (_) -> UIImage in
+                    return image
+                })
+                nowPlayingInfo?[MPMediaItemPropertyArtwork] = artWork
+                
+                MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+                
+            }
         }
+    }
+    
+    fileprivate func setupNowPlayingInfo() {
+        var nowPlayingInfo = [String: Any]()
+        
+        nowPlayingInfo[MPMediaItemPropertyTitle] = episode.title
+        nowPlayingInfo[MPMediaItemPropertyArtist] = episode.author
+        
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
     
     
@@ -49,8 +77,24 @@ class PlayerDetailsView: UIView {
             let durationTime = self?.player.currentItem?.duration
             self?.durationLabel.text = durationTime?.toDisplayString()
             
+            self?.setupLockscreenCurrentTime()
+            
             self?.updateCurrentTimeSlider()
         }
+    }
+    
+    fileprivate func setupLockscreenCurrentTime() {
+        var nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo
+        
+        // some modifications here
+        guard let currentItem = player.currentItem else { return }
+        let durationInSeconds = CMTimeGetSeconds(currentItem.duration)
+        
+        let elapsedTime = CMTimeGetSeconds(player.currentTime())
+        
+        nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
+        nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationInSeconds
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
     
     fileprivate func updateCurrentTimeSlider() {
