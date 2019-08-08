@@ -62,17 +62,42 @@ class PlayerDetailsView: UIView {
     
     var panGesture: UIPanGestureRecognizer!
     
+    fileprivate func setupGestures() {
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        miniPlayerView.addGestureRecognizer(panGesture)
+        
+        maximizedStackView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismissalPan)))
+    }
+    
+    @objc fileprivate func handleDismissalPan(gesture: UIPanGestureRecognizer) {
+        if gesture.state == .changed {
+            let translation = gesture.translation(in: superview)
+            self.maximizedStackView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+        } else if gesture.state == .ended {
+            let translation = gesture.translation(in: superview)
+            let velocity = gesture.velocity(in: self.superview)
+            print(velocity.y)
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                self.maximizedStackView.transform = .identity
+                
+                if translation.y > 50 || velocity.y > 500 {
+                    let mainTabBarController = UIApplication.mainTabBarController()
+                    mainTabBarController?.minimizePlayerDetails()
+                }
+                
+            })
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        addGestureRecognizer(panGesture)
-        panGesture.isEnabled = false
+        setupGestures()
+
         observePlayerCurrentTime()
         
         let time = CMTime(value: 1, timescale: 3)
-        
         let times = [NSValue(time: time)]
         
         // player has a reference to self
@@ -81,47 +106,6 @@ class PlayerDetailsView: UIView {
             print("Episode started playing")
             self?.enlargeEpisodeImageView()
         }
-    }
-    
-    @objc func handlePan(gesture: UIPanGestureRecognizer) {
-        if gesture.state == .changed {
-            handlePanChange(gesture: gesture)
-        } else if gesture.state == .ended {
-            handlePanEnded(gesture: gesture)
-        }
-    }
-    
-    fileprivate func handlePanChange(gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: self.superview)
-        self.transform = CGAffineTransform(translationX: 0, y: translation.y)
-        
-        self.miniPlayerView.alpha = 1 + translation.y / 200
-        self.maximizedStackView.alpha = -translation.y / 200
-    }
-
-    fileprivate func handlePanEnded(gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: self.superview)
-        let velocity = gesture.velocity(in: self.superview)
-        print(velocity.y)
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.transform = .identity
-            
-            if translation.y < -200 || velocity.y < -500 {
-                let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
-                mainTabBarController?.maximizePlayerDetails(episode: nil)
-                gesture.isEnabled = false
-            } else {
-                self.miniPlayerView.alpha = 1
-                self.maximizedStackView.alpha = 0
-            }
-        })
-    }
-    
-    @objc func handleTapMaximize() {
-        let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
-        mainTabBarController?.maximizePlayerDetails(episode: nil)
-        panGesture.isEnabled = false
     }
     
     static func initFromNib() -> PlayerDetailsView {
@@ -226,9 +210,8 @@ class PlayerDetailsView: UIView {
 
     @IBAction func handleDismiss(_ sender: Any) {
 //        self.removeFromSuperview()
-        let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
+        let mainTabBarController = UIApplication.mainTabBarController()
         mainTabBarController?.minimizePlayerDetails()
-        panGesture.isEnabled = true
     }
     
     fileprivate func enlargeEpisodeImageView() {
