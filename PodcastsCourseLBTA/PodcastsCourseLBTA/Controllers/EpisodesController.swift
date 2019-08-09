@@ -43,33 +43,40 @@ class EpisodesController: UITableViewController {
     //MARK: - Setup work
     fileprivate func setupNavigationBarButtons() {
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(handleFavorite)),
+            UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(handleSaveFavorite)),
             UIBarButtonItem(title: "Fetch", style: .plain, target: self, action: #selector(handleFetchSavedPodcasts))
         ]
     }
     
-    let favoritePodcastKey = "favoritePodcastKey"
-    
     @objc fileprivate func handleFetchSavedPodcasts() {
         print("Fetching saved Podcasts from UserDefaults")
-        let value = UserDefaults.standard.value(forKey: favoritePodcastKey) as? String
-        print(value ?? "")
-        
         // how to retrieve our Podcast object from UserDefaults
-        guard let data = UserDefaults.standard.data(forKey: favoritePodcastKey) else { return }
-        let podcast = NSKeyedUnarchiver.unarchiveObject(with: data) as? Podcast
-        print(podcast?.trackName, podcast?.artistName)
+        guard let data = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey) else { return }
+        do {
+            let savedPodcasts = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Podcast]
+            
+            savedPodcasts?.forEach({ (p) in
+                print(p.trackName ?? "")
+            })
+            
+        } catch let err {
+            print("Error fetching:", err)
+        }
     }
     
-    @objc fileprivate func handleFavorite() {
+    @objc fileprivate func handleSaveFavorite() {
         print("Saving info into UserDefaults")
         
         guard let podcast = self.podcast else { return }
         
+        // fetch our saved podcasts first
+        
         // 1. Transform Podcast into Data
+        var listOfPodcast = UserDefaults.standard.savedPodcasts()
+        listOfPodcast.append(podcast)
         do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: podcast, requiringSecureCoding: false)
-        UserDefaults.standard.set(data, forKey: favoritePodcastKey)
+            let data = try NSKeyedArchiver.archivedData(withRootObject: listOfPodcast, requiringSecureCoding: false)
+            UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
         } catch let err {
             print("Failed to archive Podcast into Data with error:", err)
         }

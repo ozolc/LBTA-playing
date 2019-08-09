@@ -8,7 +8,10 @@
 
 import Foundation
 
-class Podcast: NSObject, Decodable, NSCoding {
+class Podcast: NSObject, Decodable, NSSecureCoding {
+    static var supportsSecureCoding: Bool {
+        return true
+    }
     
     func encode(with aCoder: NSCoder) {
         print("Trying to transform Podcast into Data")
