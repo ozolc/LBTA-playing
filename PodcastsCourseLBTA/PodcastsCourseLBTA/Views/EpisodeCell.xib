@@ -49,12 +49,21 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGn-6F-fvV">
+                        <rect key="frame" x="28" y="123.5" width="76.5" height="34.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="bGn-6F-fvV" firstAttribute="centerX" secondItem="rtX-hm-EcP" secondAttribute="centerX" id="5jo-NO-nar"/>
                     <constraint firstItem="x0A-oq-oCF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JRx-XG-I3F"/>
                     <constraint firstItem="rtX-hm-EcP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LP3-w1-yw7"/>
                     <constraint firstItem="x0A-oq-oCF" firstAttribute="leading" secondItem="rtX-hm-EcP" secondAttribute="trailing" constant="16" id="Uec-Xf-yLt"/>
                     <constraint firstItem="rtX-hm-EcP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="fjs-SN-m2s"/>
+                    <constraint firstItem="bGn-6F-fvV" firstAttribute="centerY" secondItem="rtX-hm-EcP" secondAttribute="centerY" id="kds-VW-kf0"/>
                     <constraint firstAttribute="trailingMargin" secondItem="x0A-oq-oCF" secondAttribute="trailing" id="tuV-Rt-X1D"/>
                 </constraints>
             </tableViewCellContentView>
@@ -62,6 +71,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="egy-Rx-3XB" id="a8G-py-Zfi"/>
                 <outlet property="episodeImageView" destination="rtX-hm-EcP" id="tOx-UE-N1j"/>
+                <outlet property="progressLabel" destination="bGn-6F-fvV" id="GJx-wu-iH2"/>
                 <outlet property="pubDateLabel" destination="UGe-0O-CBl" id="uea-2D-X4z"/>
                 <outlet property="titleLabel" destination="zG5-xF-ZfS" id="TSI-Qd-5Qm"/>
             </connections>

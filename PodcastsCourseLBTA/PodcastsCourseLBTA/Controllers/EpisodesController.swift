@@ -48,7 +48,8 @@ class EpisodesController: UITableViewController {
         print(hasFavorited)
         if hasFavorited {
             // setting up a heart icon
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart").withRenderingMode(.alwaysOriginal), style: .plain, target: nil, action: nil)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart").withRenderingMode(.alwaysTemplate), style: .plain, target: nil, action: nil)
+            navigationItem.rightBarButtonItem?.tintColor = .purple
         } else {
             navigationItem.rightBarButtonItems = [
                 UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(handleSaveFavorite)),
@@ -91,7 +92,8 @@ class EpisodesController: UITableViewController {
         }
         
         showBadgeHighlight()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart").withRenderingMode(.alwaysOriginal), style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart").withRenderingMode(.alwaysTemplate), style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem?.tintColor = .purple
     }
     
     fileprivate func showBadgeHighlight() {

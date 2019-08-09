@@ -10,7 +10,15 @@ import Foundation
 import Alamofire
 import FeedKit
 
+extension Notification.Name {
+    
+    static let downloadProgress = NSNotification.Name("downloadProgress")
+    static let downloadComplete = NSNotification.Name("downloadComplete")
+}
+
 class APIService {
+    
+    typealias EpisodeDownloadCompleteTuple = (fileUrl: String, episodeTitle: String)
     
     let baseItunesSearchURL = "https://itunes.apple.com/search"
     
@@ -23,9 +31,16 @@ class APIService {
         let downloadRequest = DownloadRequest.suggestedDownloadDestination()
         
         AF.download(episode.streamUrl, to: downloadRequest).downloadProgress { (progress) in
-            print(progress.fractionCompleted)
+            
+            // Notify DownloadsController about download progress somehow
+            
+            NotificationCenter.default.post(name: .downloadProgress, object: nil, userInfo: ["title": episode.title, "progress": progress.fractionCompleted])
+            
             }.response { (resp) in
                 print(resp.fileURL?.absoluteString ?? "")
+                
+                let episodeDownloadCompleteTuple = EpisodeDownloadCompleteTuple(resp.fileURL?.absoluteString ?? "", episode.title)
+                NotificationCenter.default.post(name: .downloadComplete, object: episodeDownloadCompleteTuple, userInfo: nil)
                 
                 var downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
                 guard let index = downloadedEpisodes.firstIndex(where: { $0.title == episode.title && $0.author == episode.author }) else { return }
