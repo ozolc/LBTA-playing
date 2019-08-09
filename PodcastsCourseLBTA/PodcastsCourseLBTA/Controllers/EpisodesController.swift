@@ -36,11 +36,47 @@ class EpisodesController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTableView()
+        setupNavigationBarButtons()
     }
     
     //MARK: - Setup work
+    fileprivate func setupNavigationBarButtons() {
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(handleFavorite)),
+            UIBarButtonItem(title: "Fetch", style: .plain, target: self, action: #selector(handleFetchSavedPodcasts))
+        ]
+    }
+    
+    let favoritePodcastKey = "favoritePodcastKey"
+    
+    @objc fileprivate func handleFetchSavedPodcasts() {
+        print("Fetching saved Podcasts from UserDefaults")
+        let value = UserDefaults.standard.value(forKey: favoritePodcastKey) as? String
+        print(value ?? "")
+        
+        // how to retrieve our Podcast object from UserDefaults
+        guard let data = UserDefaults.standard.data(forKey: favoritePodcastKey) else { return }
+        let podcast = NSKeyedUnarchiver.unarchiveObject(with: data) as? Podcast
+        print(podcast?.trackName, podcast?.artistName)
+    }
+    
+    @objc fileprivate func handleFavorite() {
+        print("Saving info into UserDefaults")
+        
+        guard let podcast = self.podcast else { return }
+        
+        // 1. Transform Podcast into Data
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: podcast, requiringSecureCoding: false)
+        UserDefaults.standard.set(data, forKey: favoritePodcastKey)
+        } catch let err {
+            print("Failed to archive Podcast into Data with error:", err)
+        }
+        
+        
+    }
+    
     fileprivate func setupTableView() {
         let nib = UINib(nibName: "EpisodeCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
