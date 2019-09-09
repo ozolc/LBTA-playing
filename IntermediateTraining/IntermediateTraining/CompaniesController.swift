@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CompaniesController.swift
 //  IntermediateTraining
 //
 //  Created by Maksim Nosov on 09/09/2019.
@@ -31,12 +31,16 @@ class CompaniesController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
-        
-        setupNavigationStyle()
     }
     
     @objc fileprivate func handleAddCompany() {
         print("Adding company...")
+        
+        let createCompanyController = CreateCompanyController()
+        
+        let navController = CustomNavigationController(rootViewController: createCompanyController)
+        
+        present(navController, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -65,16 +69,6 @@ class CompaniesController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return companies.count
-    }
-    
-    fileprivate func setupNavigationStyle() {
-        navigationController?.navigationBar.isTranslucent = false
-        
-        navigationController?.navigationBar.barTintColor = .lightRed
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
 }
