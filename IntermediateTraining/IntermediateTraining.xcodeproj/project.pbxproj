@@ -12,6 +12,7 @@
 		B0671AC423264F7200C494A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0671AC223264F7200C494A9 /* Main.storyboard */; };
 		B0671AC623264F7400C494A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0671AC523264F7400C494A9 /* Assets.xcassets */; };
 		B0671AC923264F7400C494A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0671AC723264F7400C494A9 /* LaunchScreen.storyboard */; };
+		B0671AD12326584E00C494A9 /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0671AD02326584E00C494A9 /* UIColor+theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		B0671AC523264F7400C494A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0671AC823264F7400C494A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0671ACA23264F7400C494A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0671AD02326584E00C494A9 /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				B0671AC523264F7400C494A9 /* Assets.xcassets */,
 				B0671AC723264F7400C494A9 /* LaunchScreen.storyboard */,
 				B0671ACA23264F7400C494A9 /* Info.plist */,
+				B0671AD02326584E00C494A9 /* UIColor+theme.swift */,
 			);
 			path = IntermediateTraining;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0671AD12326584E00C494A9 /* UIColor+theme.swift in Sources */,
 				B0671AC123264F7200C494A9 /* ViewController.swift in Sources */,
 				B0671ABF23264F7200C494A9 /* AppDelegate.swift in Sources */,
 			);
