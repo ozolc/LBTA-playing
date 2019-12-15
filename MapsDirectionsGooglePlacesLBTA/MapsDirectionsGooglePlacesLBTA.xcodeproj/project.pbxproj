@@ -15,6 +15,7 @@
 		B01DAB9C23A4B98300E4E915 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B01DAB9A23A4B98300E4E915 /* LaunchScreen.storyboard */; };
 		B01DABA523A4BAA300E4E915 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DABA423A4BAA300E4E915 /* MainController.swift */; };
 		B01DABA823A4BCEE00E4E915 /* LBTATools in Frameworks */ = {isa = PBXBuildFile; productRef = B01DABA723A4BCEE00E4E915 /* LBTATools */; };
+		B08773D823A6AC5D005DF822 /* beijing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B08773D723A6AC5D005DF822 /* beijing.gpx */; };
 		B0C5297723A62B8B007EC2A4 /* LocationsCarouselController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5297623A62B8B007EC2A4 /* LocationsCarouselController.swift */; };
 		B0C5297923A630B0007EC2A4 /* MKMapItem+Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5297823A630B0007EC2A4 /* MKMapItem+Address.swift */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,7 @@
 		B01DAB9B23A4B98300E4E915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B01DAB9D23A4B98300E4E915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B01DABA423A4BAA300E4E915 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		B08773D723A6AC5D005DF822 /* beijing.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = beijing.gpx; sourceTree = "<group>"; };
 		B0C5297623A62B8B007EC2A4 /* LocationsCarouselController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCarouselController.swift; sourceTree = "<group>"; };
 		B0C5297823A630B0007EC2A4 /* MKMapItem+Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Address.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,6 +50,7 @@
 		B01DAB8323A4B98200E4E915 = {
 			isa = PBXGroup;
 			children = (
+				B08773D723A6AC5D005DF822 /* beijing.gpx */,
 				B01DAB8E23A4B98200E4E915 /* MapsDirectionsGooglePlacesLBTA */,
 				B01DAB8D23A4B98200E4E915 /* Products */,
 			);
@@ -158,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B08773D823A6AC5D005DF822 /* beijing.gpx in Resources */,
 				B01DAB9C23A4B98300E4E915 /* LaunchScreen.storyboard in Resources */,
 				B01DAB9923A4B98300E4E915 /* Preview Assets.xcassets in Resources */,
 				B01DAB9623A4B98300E4E915 /* Assets.xcassets in Resources */,
