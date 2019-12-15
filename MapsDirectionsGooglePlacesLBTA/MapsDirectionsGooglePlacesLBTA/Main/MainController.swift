@@ -11,18 +11,20 @@ import MapKit
 import LBTATools
 
 extension MainController: MKMapViewDelegate {
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "id")
         annotationView.canShowCallout = true
-        annotationView.image = #imageLiteral(resourceName: "tourist")
-        
+//        annotationView.image = #imageLiteral(resourceName: "tourist")
         return annotationView
     }
+    
 }
 
 class MainController: UIViewController {
     
-    let mapView =  MKMapView()
+    let mapView = MKMapView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,22 +34,35 @@ class MainController: UIViewController {
         mapView.fillSuperview()
         
         setupRegionForMap()
+        
 //        setupAnnotationsForMap()
         performLocalSearch()
         setupSearchUI()
+        setupLocationsCarousel()
     }
-
+    
+    let locationsController = LocationsCarouselController(scrollDirection: .horizontal)
+    
+    fileprivate func setupLocationsCarousel() {
+        
+        let locationsView = locationsController.view!
+        
+        view.addSubview(locationsView)
+        locationsView.anchor(top: nil,
+                             leading: view.leadingAnchor,
+                             bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                             trailing: view.trailingAnchor,
+                             size: .init(width: 0, height: 150))
+    }
+    
+    
+    
     let searchTextField = UITextField(placeholder: "Search query")
     
     fileprivate func setupSearchUI() {
-        
         let whiteContainer = UIView(backgroundColor: .white)
         view.addSubview(whiteContainer)
-        whiteContainer.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                              leading: view.leadingAnchor,
-                              bottom: nil,
-                              trailing: view.trailingAnchor,
-                              padding: .init(top: 0, left: 16, bottom: 0, right: 16))
+        whiteContainer.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         
         whiteContainer.stack(searchTextField).withMargins(.allSides(16))
         
@@ -55,13 +70,13 @@ class MainController: UIViewController {
         // OLD SCHOOL
 //        searchTextField.addTarget(self, action: #selector(handleSearchChanges), for: .editingChanged)
         
+        
         // NEW SCHOOL Search Throttling
         // search on the last keystroke of text changes and basically wait 500 milliseconds
         NotificationCenter.default
             .publisher(for: UITextField.textDidChangeNotification, object: searchTextField)
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .sink { (_) in
-                print(123123123)
                 self.performLocalSearch()
         }
     }
@@ -106,13 +121,12 @@ class MainController: UIViewController {
         mapView.addAnnotation(annotation)
         
         let appleCampusAnnotation = MKPointAnnotation()
-        appleCampusAnnotation.coordinate = .init(latitude: 37.332693, longitude: -122.030024)
+        appleCampusAnnotation.coordinate = .init(latitude: 37.3326, longitude: -122.030024)
         appleCampusAnnotation.title = "Apple Campus"
         appleCampusAnnotation.subtitle = "Cupertino, CA"
         mapView.addAnnotation(appleCampusAnnotation)
         
         mapView.showAnnotations(self.mapView.annotations, animated: true)
-        
     }
     
     fileprivate func setupRegionForMap() {
@@ -157,6 +171,7 @@ struct MainPreview: PreviewProvider {
     }
     
     struct ContainerView: UIViewControllerRepresentable {
+        
         func makeUIViewController(context: UIViewControllerRepresentableContext<MainPreview.ContainerView>) -> MainController {
             return MainController()
         }
@@ -166,6 +181,5 @@ struct MainPreview: PreviewProvider {
         }
         
         typealias UIViewControllerType = MainController
-        
     }
 }

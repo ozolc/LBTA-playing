@@ -15,6 +15,7 @@
 		B01DAB9C23A4B98300E4E915 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B01DAB9A23A4B98300E4E915 /* LaunchScreen.storyboard */; };
 		B01DABA523A4BAA300E4E915 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DABA423A4BAA300E4E915 /* MainController.swift */; };
 		B01DABA823A4BCEE00E4E915 /* LBTATools in Frameworks */ = {isa = PBXBuildFile; productRef = B01DABA723A4BCEE00E4E915 /* LBTATools */; };
+		B0C5297723A62B8B007EC2A4 /* LocationsCarouselController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5297623A62B8B007EC2A4 /* LocationsCarouselController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		B01DAB9B23A4B98300E4E915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B01DAB9D23A4B98300E4E915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B01DABA423A4BAA300E4E915 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		B0C5297623A62B8B007EC2A4 /* LocationsCarouselController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCarouselController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				B01DABA423A4BAA300E4E915 /* MainController.swift */,
+				B0C5297623A62B8B007EC2A4 /* LocationsCarouselController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				B01DABA523A4BAA300E4E915 /* MainController.swift in Sources */,
 				B01DAB9023A4B98200E4E915 /* AppDelegate.swift in Sources */,
 				B01DAB9223A4B98200E4E915 /* SceneDelegate.swift in Sources */,
+				B0C5297723A62B8B007EC2A4 /* LocationsCarouselController.swift in Sources */,
 				B01DAB9423A4B98200E4E915 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
