@@ -39,6 +39,7 @@ class MainController: UIViewController {
         performLocalSearch()
         setupSearchUI()
         setupLocationsCarousel()
+        locationsController.mainController = self
     }
     
     let locationsController = LocationsCarouselController(scrollDirection: .horizontal)
@@ -68,17 +69,17 @@ class MainController: UIViewController {
         
         // listen for text changes and then perform new search
         // OLD SCHOOL
-//        searchTextField.addTarget(self, action: #selector(handleSearchChanges), for: .editingChanged)
+        searchTextField.addTarget(self, action: #selector(handleSearchChanges), for: .editingChanged)
         
         
         // NEW SCHOOL Search Throttling
         // search on the last keystroke of text changes and basically wait 500 milliseconds
-        NotificationCenter.default
-            .publisher(for: UITextField.textDidChangeNotification, object: searchTextField)
-            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
-            .sink { (_) in
-                self.performLocalSearch()
-        }
+//        NotificationCenter.default
+//            .publisher(for: UITextField.textDidChangeNotification, object: searchTextField)
+//            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+//            .sink { (_) in
+//                self.performLocalSearch()
+//        }
     }
     
     @objc fileprivate func handleSearchChanges() {
@@ -100,6 +101,7 @@ class MainController: UIViewController {
             // Success
             // remove old annotations
             self.mapView.removeAnnotations(self.mapView.annotations)
+            self.locationsController.items.removeAll()
             
             resp?.mapItems.forEach({ (mapItem) in
                 print(mapItem.address())
@@ -108,7 +110,13 @@ class MainController: UIViewController {
                 annotation.coordinate = mapItem.placemark.coordinate
                 annotation.title = mapItem.name
                 self.mapView.addAnnotation(annotation)
+                
+                // tell my locationsCarouselController
+                self.locationsController.items.append(mapItem)
             })
+            
+            self.locationsController.collectionView.scrollToItem(at: [0,0], at: .centeredHorizontally, animated: true)
+            
             self.mapView.showAnnotations(self.mapView.annotations, animated: true)
         }
     }
@@ -134,31 +142,6 @@ class MainController: UIViewController {
         let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
         let region = MKCoordinateRegion(center: centerCoordinate, span: span)
         mapView.setRegion(region, animated: true)
-    }
-}
-
-extension MKMapItem {
-    func address() -> String {
-        var addressString = ""
-        if placemark.subThoroughfare != nil {
-            addressString = placemark.subThoroughfare! + " "
-        }
-        if placemark.thoroughfare != nil {
-            addressString += placemark.thoroughfare! + ", "
-        }
-        if placemark.postalCode != nil {
-            addressString += placemark.postalCode! + " "
-        }
-        if placemark.locality != nil {
-            addressString += placemark.locality! + ", "
-        }
-        if placemark.administrativeArea != nil {
-            addressString += placemark.administrativeArea! + " "
-        }
-        if placemark.country != nil {
-            addressString += placemark.country!
-        }
-        return addressString
     }
 }
 
