@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0119F7B23A7760A00115909 /* DirectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0119F7A23A7760A00115909 /* DirectionsController.swift */; };
 		B01DAB9023A4B98200E4E915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DAB8F23A4B98200E4E915 /* AppDelegate.swift */; };
 		B01DAB9223A4B98200E4E915 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DAB9123A4B98200E4E915 /* SceneDelegate.swift */; };
 		B01DAB9423A4B98200E4E915 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DAB9323A4B98200E4E915 /* ContentView.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B0119F7A23A7760A00115909 /* DirectionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsController.swift; sourceTree = "<group>"; };
 		B01DAB8C23A4B98200E4E915 /* MapsDirectionsGooglePlacesLBTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapsDirectionsGooglePlacesLBTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B01DAB8F23A4B98200E4E915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B01DAB9123A4B98200E4E915 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B0119F7923A775E700115909 /* Directions */ = {
+			isa = PBXGroup;
+			children = (
+				B0119F7A23A7760A00115909 /* DirectionsController.swift */,
+			);
+			path = Directions;
+			sourceTree = "<group>";
+		};
 		B01DAB8323A4B98200E4E915 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +77,7 @@
 		B01DAB8E23A4B98200E4E915 /* MapsDirectionsGooglePlacesLBTA */ = {
 			isa = PBXGroup;
 			children = (
+				B0119F7923A775E700115909 /* Directions */,
 				B01DABA323A4BA8F00E4E915 /* Main */,
 				B01DAB8F23A4B98200E4E915 /* AppDelegate.swift */,
 				B01DAB9123A4B98200E4E915 /* SceneDelegate.swift */,
@@ -177,6 +188,7 @@
 			files = (
 				B0C5297923A630B0007EC2A4 /* MKMapItem+Address.swift in Sources */,
 				B01DABA523A4BAA300E4E915 /* MainController.swift in Sources */,
+				B0119F7B23A7760A00115909 /* DirectionsController.swift in Sources */,
 				B01DAB9023A4B98200E4E915 /* AppDelegate.swift in Sources */,
 				B01DAB9223A4B98200E4E915 /* SceneDelegate.swift in Sources */,
 				B0C5297723A62B8B007EC2A4 /* LocationsCarouselController.swift in Sources */,
