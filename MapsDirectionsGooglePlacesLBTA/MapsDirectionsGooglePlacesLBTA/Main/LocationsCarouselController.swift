@@ -29,7 +29,9 @@ class LocationCell: LBTAListCell<MKMapItem> {
         setupShadow(opacity: 0.2, radius: 5, offset: .zero, color: .black)
         layer.cornerRadius = 5
         
-        stack(label, addressLabel).withMargins(.allSides(16))
+        // apply hstack first and alignment center for vertical aligment
+        hstack(stack(label, addressLabel, spacing: 12).withMargins(.allSides(16)),
+               alignment: .center)
     }
 }
 
@@ -38,11 +40,11 @@ class LocationsCarouselController: LBTAListController<LocationCell, MKMapItem> {
     weak var mainController: MainController?
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print(self.items[indexPath.item].name)
-        
         let annotations = mainController?.mapView.annotations
+        
         annotations?.forEach({ (annotation) in
-            if annotation.title == self.items[indexPath.item].name {
+            guard let customAnnotation = annotation as? MainController.CustomMapItemAnnotation else { return }
+            if customAnnotation.mapItem?.name == self.items[indexPath.item].name {
                 mainController?.mapView.selectAnnotation(annotation, animated: true)
             }
         })
@@ -54,13 +56,6 @@ class LocationsCarouselController: LBTAListController<LocationCell, MKMapItem> {
         super.viewDidLoad()
         collectionView.clipsToBounds = false
         collectionView.backgroundColor = .clear
-        
-        //        let placemark = MKPlacemark(coordinate: .init(latitude: 10, longitude: 55))
-        //        let dummyMapItem = MKMapItem(placemark: placemark)
-        //        dummyMapItem.name = "Dummy location for example"
-        //        self.items = [dummyMapItem]
-        
-        //        self.items = ["1", "2", "3"]
     }
 }
 
