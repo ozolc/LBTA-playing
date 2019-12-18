@@ -58,9 +58,9 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
         let endingPlacemark = MKPlacemark(coordinate: .init(latitude: 37.331352, longitude: -122.030331))
         request.destination = .init(placemark: endingPlacemark)
         
-        request.requestsAlternateRoutes = true
+//        request.requestsAlternateRoutes = true
         
-//        request.transportType = .walking
+        request.transportType = .walking
         
         let directions = MKDirections(request: request)
         directions.calculate { (resp, err) in
@@ -71,13 +71,13 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
             
             // success
             print("Found my directions/routing....")
-//            guard let route = resp?.routes.first else { return }
+            guard let route = resp?.routes.first else { return }
 //
 //            print(route.expectedTravelTime / 60 / 60)
             
-            resp?.routes.forEach({ (route) in
+//            resp?.routes.forEach({ (route) in
                 self.mapView.addOverlay(route.polyline)
-            })
+//            })
             
             
         }
@@ -126,18 +126,25 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
             .withMargins(.init(top: 0, left: 16, bottom: 12, right: 16))
         
         startTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleChangeStartLocation)))
+        endTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleChangeEndChangeLocation)))
         
         navigationController?.navigationBar.isHidden = true
     }
     
     @objc fileprivate func handleChangeStartLocation() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .yellow
+        let vc = LocationSearchController()
+        vc.selectionHandler = { [weak self] mapItem in
+            self?.startTextField.text = mapItem.name
+        }
         
-        // temp hack
-        let button = UIButton(title: "BACK", titleColor: .black, font: .boldSystemFont(ofSize: 14), backgroundColor: .clear, target: self, action: #selector(handleBack))
-        vc.view.addSubview(button)
-        button.fillSuperview()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc fileprivate func handleChangeEndChangeLocation() {
+        let vc = LocationSearchController()
+        vc.selectionHandler = { [weak self] mapItem in
+            self?.endTextField.text = mapItem.name
+        }
         
         navigationController?.pushViewController(vc, animated: true)
     }
