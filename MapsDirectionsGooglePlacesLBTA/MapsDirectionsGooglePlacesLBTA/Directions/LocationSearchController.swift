@@ -44,12 +44,59 @@ class LocationSearchController: LBTAListController<LocationSearchCell, MKMapItem
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchTextField.becomeFirstResponder()
+        
+        performLocalSearch()
+        setupSearchBar()
+    }
+    
+    let searchTextField = IndentedTextField(placeholder: "Enter search term", padding: 12)
+    
+    let backIcon = UIButton(image: #imageLiteral(resourceName: "back_arrow"), tintColor: .black, target: self, action: #selector(handleBack)).withWidth(32)
+    @objc fileprivate func handleBack() {
+        navigationController?.popViewController(animated: true)
+    }
+
+    let navBarHeight: CGFloat = 66
+    
+    fileprivate func setupSearchBar() {
+        let navBar = UIView(backgroundColor: .white)
+        view.addSubview(navBar)
+        navBar.anchor(top: view.topAnchor,
+                      leading: view.leadingAnchor,
+                      bottom: view.safeAreaLayoutGuide.topAnchor,
+                      trailing: view.trailingAnchor,
+                      padding: .init(top: 0, left: 0, bottom: -navBarHeight, right: 0))
+        
+        // fix scrollbar insets
+        collectionView.verticalScrollIndicatorInsets.top = navBarHeight
+        
+        let container = UIView(backgroundColor: .clear)
+        navBar.addSubview(container)
+        container.fillSuperviewSafeAreaLayoutGuide()
+        container.hstack(backIcon, searchTextField, spacing: 12).withMargins(.init(top: 0, left: 16, bottom: 16, right: 16))
+        searchTextField.layer.borderWidth = 2
+        searchTextField.layer.borderColor = UIColor.lightGray.cgColor
+        searchTextField.layer.cornerRadius = 5
+        
+        setupSearchListener()
+    }
+    
+    fileprivate func setupSearchListener() {
+        // search throttling
+//        _ = NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: searchTextField).debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+//            .sink { [weak self] (_) in
+        searchTextField.addTarget(self, action: #selector(handleSearchChanges), for: .editingChanged)
+//        }
+    }
+    
+    @objc fileprivate func handleSearchChanges() {
         performLocalSearch()
     }
     
     fileprivate func performLocalSearch() {
         let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = "Apple"
+        request.naturalLanguageQuery = searchTextField.text
         
         let search = MKLocalSearch.init(request: request)
         search.start { (resp, err) in

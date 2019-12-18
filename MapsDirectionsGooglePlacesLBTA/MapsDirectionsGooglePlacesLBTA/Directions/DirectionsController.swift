@@ -10,6 +10,7 @@ import UIKit
 import LBTATools
 import MapKit
 import SwiftUI
+import JGProgressHUD
 
 class DirectionsController: UIViewController, MKMapViewDelegate {
     
@@ -29,8 +30,8 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
         mapView.anchor(top: navBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
         
         mapView.showsUserLocation = true
-        setupStartEndDummyAnnotations()
-        requestForDirections()
+//        setupStartEndDummyAnnotations()
+//        requestForDirections()
         
     }
     
@@ -51,19 +52,17 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
     
     fileprivate func requestForDirections() {
         let request = MKDirections.Request()
+        request.source = startMapItem
+        request.destination = endMapItem
         
-        let startingPlacemark = MKPlacemark(coordinate: .init(latitude: 37.7666, longitude: -122.427290))
-        request.source = .init(placemark: startingPlacemark)
-        
-        let endingPlacemark = MKPlacemark(coordinate: .init(latitude: 37.331352, longitude: -122.030331))
-        request.destination = .init(placemark: endingPlacemark)
-        
-//        request.requestsAlternateRoutes = true
-        
-        request.transportType = .walking
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Routing..."
+        hud.show(in: view)
         
         let directions = MKDirections(request: request)
         directions.calculate { (resp, err) in
+            hud.dismiss()
+            
             if let err = err {
                 print("Failed to find routing info:", err)
                 return
@@ -131,19 +130,53 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
         navigationController?.navigationBar.isHidden = true
     }
     
+    var startMapItem: MKMapItem?
+    var endMapItem: MKMapItem?
+    
     @objc fileprivate func handleChangeStartLocation() {
         let vc = LocationSearchController()
         vc.selectionHandler = { [weak self] mapItem in
             self?.startTextField.text = mapItem.name
+            
+            // add starting annotation and also it in the map
+            self?.startMapItem = mapItem
+            self?.refreshMap()
         }
         
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func refreshMap() {
+        // remove everything from map
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        
+        if let mapItem = startMapItem {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = mapItem.placemark.coordinate
+            annotation.title = mapItem.name
+            mapView.addAnnotation(annotation)
+        }
+        
+        if let mapItem = endMapItem {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = mapItem.placemark.coordinate
+            annotation.title = mapItem.name
+            mapView.addAnnotation(annotation)
+            mapView.showAnnotations(mapView.annotations, animated: false)
+        }
+        
+        requestForDirections()
+        
+        mapView.showAnnotations(mapView.annotations, animated: false)
     }
     
     @objc fileprivate func handleChangeEndChangeLocation() {
         let vc = LocationSearchController()
         vc.selectionHandler = { [weak self] mapItem in
             self?.endTextField.text = mapItem.name
+            self?.endMapItem = mapItem
+            self?.refreshMap()
         }
         
         navigationController?.pushViewController(vc, animated: true)
