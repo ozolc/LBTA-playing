@@ -47,6 +47,8 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
     
     @objc fileprivate func handleShowRoute() {
         let routesController = RoutesController()
+        routesController.route = currentlyShowingRoute
+        
         routesController.items = self.currentlyShowingRoute?.steps.filter {!$0.instructions.isEmpty} ?? []
         present(routesController, animated: true)
     }
@@ -71,9 +73,34 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    class RoutesController: LBTAListController<RouteStepCell, MKRoute.Step>, UICollectionViewDelegateFlowLayout {
+    class RoutesController: LBTAListHeaderController<RouteStepCell, MKRoute.Step, RouteHeader>, UICollectionViewDelegateFlowLayout {
+        
+        var route: MKRoute!
+        
+        override func setupHeader(_ header: RouteHeader) {
+            header.nameLabel.attributedText = header.generateAttributedString(title: "Route", description: route.name)
+            
+            header.distanceLabel.attributedText = header.generateAttributedString(title: "Distance", description: String(format: "%.2f m", route.distance))
+            
+            var timeString = ""
+            if route.expectedTravelTime > 3600 {
+                let h = Int(route.expectedTravelTime / 60 / 60)
+                let m = Int((route.expectedTravelTime.truncatingRemainder(dividingBy: 60 * 60)) / 60)
+                timeString = String(format: "%d hr %d min", h, m)
+            } else {
+                let time = Int(route.expectedTravelTime / 60)
+                timeString = String(format: "%d min", time)
+            }
+            header.estimatedTimeLabel.attributedText = header.generateAttributedString(title: "Estimated time", description: timeString)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+            .init(width: 0, height: 120)
+        }
+        
         override func viewDidLoad() {
             super.viewDidLoad()
+            
         }
         
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
