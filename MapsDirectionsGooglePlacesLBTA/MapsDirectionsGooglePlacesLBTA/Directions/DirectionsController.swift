@@ -30,9 +30,55 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
         mapView.anchor(top: navBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
         
         mapView.showsUserLocation = true
+        
+        setupShowRouteButton()
+        
 //        setupStartEndDummyAnnotations()
 //        requestForDirections()
         
+    }
+    
+    fileprivate func setupShowRouteButton() {
+        let showRouteButton = UIButton(title: "Show Route", titleColor: .black, font: .boldSystemFont(ofSize: 16), backgroundColor: .white, target: self, action: #selector(handleShowRoute))
+        
+        view.addSubview(showRouteButton)
+        showRouteButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .allSides(16), size: .init(width: 0, height: 50))
+    }
+    
+    @objc fileprivate func handleShowRoute() {
+        let routesController = RoutesController()
+        routesController.items = self.currentlyShowingRoute?.steps.filter {!$0.instructions.isEmpty} ?? []
+        present(routesController, animated: true)
+    }
+    
+    class RouteStepCell: LBTAListCell<MKRoute.Step> {
+        
+        override var item: MKRoute.Step! {
+            didSet {
+                nameLabel.text = item.instructions
+                distanceLabel.text = String(format: "%.2f m", item.distance)
+            }
+        }
+        
+        let nameLabel = UILabel(text: "Name", numberOfLines: 0)
+        let distanceLabel = UILabel(text: "Distance", textAlignment: .right)
+        
+        override func setupViews() {
+            hstack(nameLabel,
+                   distanceLabel.withWidth(80)).withMargins(.allSides(16))
+            
+            addSeparatorView(leadingAnchor: nameLabel.leadingAnchor)
+        }
+    }
+    
+    class RoutesController: LBTAListController<RouteStepCell, MKRoute.Step>, UICollectionViewDelegateFlowLayout {
+        override func viewDidLoad() {
+            super.viewDidLoad()
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            .init(width: view.frame.width, height: 70)
+        }
     }
     
     fileprivate func setupStartEndDummyAnnotations() {
@@ -70,17 +116,19 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
             
             // success
             print("Found my directions/routing....")
-            guard let route = resp?.routes.first else { return }
-//
-//            print(route.expectedTravelTime / 60 / 60)
-            
 //            resp?.routes.forEach({ (route) in
-                self.mapView.addOverlay(route.polyline)
+//                self.mapView.addOverlay(route.polyline)
 //            })
             
+            if let firstRoute = resp?.routes.first {
+                self.mapView.addOverlay(firstRoute.polyline)
+            }
             
+            self.currentlyShowingRoute = resp?.routes.first
         }
     }
+    
+    var currentlyShowingRoute: MKRoute?
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let polylineRenderer = MKPolylineRenderer(overlay: overlay)
