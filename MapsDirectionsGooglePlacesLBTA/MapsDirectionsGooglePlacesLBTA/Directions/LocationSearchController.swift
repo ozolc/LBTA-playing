@@ -10,6 +10,7 @@ import SwiftUI
 import UIKit
 import LBTATools
 import MapKit
+import Combine
 
 class LocationSearchCell: LBTAListCell<MKMapItem> {
     
@@ -82,16 +83,18 @@ class LocationSearchController: LBTAListController<LocationSearchCell, MKMapItem
         setupSearchListener()
     }
     
+//    var listener: AnyCancellable!
+    var listener: Any!
+    
     fileprivate func setupSearchListener() {
         // search throttling
-//        _ = NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: searchTextField).debounce(for: .milliseconds(500), scheduler: RunLoop.main)
-//            .sink { [weak self] (_) in
-        searchTextField.addTarget(self, action: #selector(handleSearchChanges), for: .editingChanged)
-//        }
-    }
-    
-    @objc fileprivate func handleSearchChanges() {
-        performLocalSearch()
+        listener = NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: searchTextField).debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .sink { [weak self] (_) in
+                self?.performLocalSearch()
+        }
+        
+        // let's say you want to stop listening to text changes in the search field in the future
+//        listener.cancel()
     }
     
     fileprivate func performLocalSearch() {

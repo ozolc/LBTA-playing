@@ -100,22 +100,25 @@ class MainController: UIViewController, CLLocationManagerDelegate {
         
         // listen for text changes and then perform new search
         // OLD SCHOOL
-        searchTextField.addTarget(self, action: #selector(handleSearchChanges), for: .editingChanged)
+//        searchTextField.addTarget(self, action: #selector(handleSearchChanges), for: .editingChanged)
         
         
         // NEW SCHOOL Search Throttling
         // search on the last keystroke of text changes and basically wait 500 milliseconds
-//        NotificationCenter.default
-//            .publisher(for: UITextField.textDidChangeNotification, object: searchTextField)
-//            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
-//            .sink { (_) in
-//                self.performLocalSearch()
-//        }
+
+        listener = NotificationCenter.default
+            .publisher(for: UITextField.textDidChangeNotification, object: searchTextField)
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .sink { (_) in
+                self.performLocalSearch()
+        }
     }
     
-    @objc fileprivate func handleSearchChanges() {
-        performLocalSearch()
-    }
+    var listener: Any!
+    
+//    @objc fileprivate func handleSearchChanges() {
+//        performLocalSearch()
+//    }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let customAnnotation = view.annotation as? CustomMapItemAnnotation else { return }
