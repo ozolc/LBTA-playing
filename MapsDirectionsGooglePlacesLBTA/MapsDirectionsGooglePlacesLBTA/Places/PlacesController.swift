@@ -11,7 +11,7 @@ import LBTATools
 import MapKit
 import GooglePlaces
 
-class PlacesController: UIViewController, CLLocationManagerDelegate {
+class PlacesController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     let mapView = MKMapView()
     let locationManager = CLLocationManager()
@@ -21,6 +21,7 @@ class PlacesController: UIViewController, CLLocationManagerDelegate {
         
         view.addSubview(mapView)
         mapView.fillSuperview()
+        mapView.delegate = self
         mapView.showsUserLocation = true
         locationManager.delegate = self
         
@@ -42,7 +43,7 @@ class PlacesController: UIViewController, CLLocationManagerDelegate {
                 
                 let place = likelyhood.place
                 
-                let annotation = MKPointAnnotation()
+                let annotation = PlaceAnnotation(place: place)
                 annotation.title = place.name
                 annotation.coordinate = place.coordinate
                 
@@ -51,6 +52,57 @@ class PlacesController: UIViewController, CLLocationManagerDelegate {
             
             self?.mapView.showAnnotations(self?.mapView.annotations ?? [], animated: true)
         }
+    }
+    
+    class PlaceAnnotation: MKPointAnnotation {
+        let place: GMSPlace
+        
+        init(place: GMSPlace) {
+            self.place = place
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if !(annotation is PlaceAnnotation) { return nil }
+        
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "id")
+        annotationView.canShowCallout = true
+        
+        if let placeAnnotation = annotation as? PlaceAnnotation {
+            let types = placeAnnotation.place.types
+            if let firstType = types?.first {
+                if firstType == "bar" {
+                    annotationView.image = #imageLiteral(resourceName: "bar")
+                } else if firstType == "restaurant" {
+                    annotationView.image = #imageLiteral(resourceName: "restaurant")
+                } else {
+                    annotationView.image = #imageLiteral(resourceName: "tourist-1")
+                }
+            }
+        }
+        
+        return annotationView
+    }
+    
+    var currentCustomCallout: UIView?
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        currentCustomCallout?.removeFromSuperview()
+        
+        let customCalloutContainer = UIView(backgroundColor: .red)
+        
+//        customCalloutContainer.frame = .init(x: 0, y: 0, width: 100, height: 100)
+        
+        view.addSubview(customCalloutContainer)
+        
+        customCalloutContainer.translatesAutoresizingMaskIntoConstraints = false
+        
+        customCalloutContainer.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        customCalloutContainer.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        customCalloutContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        customCalloutContainer.bottomAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        
+        currentCustomCallout = customCalloutContainer
     }
     
     fileprivate func requestForLocationAuthorization() {
