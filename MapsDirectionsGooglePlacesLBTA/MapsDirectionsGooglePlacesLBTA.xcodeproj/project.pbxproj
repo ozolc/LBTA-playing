@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88EF4218B79D072B05BEDEF1 /* Pods_MapsDirectionsGooglePlacesLBTA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E9AC22AD5760228BA3C2F3 /* Pods_MapsDirectionsGooglePlacesLBTA.framework */; };
 		B0119F7B23A7760A00115909 /* DirectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0119F7A23A7760A00115909 /* DirectionsController.swift */; };
 		B01DAB9023A4B98200E4E915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DAB8F23A4B98200E4E915 /* AppDelegate.swift */; };
 		B01DAB9223A4B98200E4E915 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DAB9123A4B98200E4E915 /* SceneDelegate.swift */; };
@@ -15,16 +16,19 @@
 		B01DAB9923A4B98300E4E915 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B01DAB9823A4B98300E4E915 /* Preview Assets.xcassets */; };
 		B01DAB9C23A4B98300E4E915 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B01DAB9A23A4B98300E4E915 /* LaunchScreen.storyboard */; };
 		B01DABA523A4BAA300E4E915 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01DABA423A4BAA300E4E915 /* MainController.swift */; };
-		B01DABA823A4BCEE00E4E915 /* LBTATools in Frameworks */ = {isa = PBXBuildFile; productRef = B01DABA723A4BCEE00E4E915 /* LBTATools */; };
+		B01DABA823A4BCEE00E4E915 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B01DABA723A4BCEE00E4E915 /* SwiftPackageProductDependency */; };
 		B08773D823A6AC5D005DF822 /* beijing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B08773D723A6AC5D005DF822 /* beijing.gpx */; };
 		B0AA62F023ABCC0B003A7415 /* RouteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AA62EF23ABCC0B003A7415 /* RouteHeader.swift */; };
 		B0B3634D23AA0E9200717035 /* LocationSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B3634C23AA0E9200717035 /* LocationSearchController.swift */; };
 		B0C5297723A62B8B007EC2A4 /* LocationsCarouselController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5297623A62B8B007EC2A4 /* LocationsCarouselController.swift */; };
 		B0C5297923A630B0007EC2A4 /* MKMapItem+Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5297823A630B0007EC2A4 /* MKMapItem+Address.swift */; };
-		B0FC398923AA254A005427D9 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = B0FC398823AA254A005427D9 /* JGProgressHUD */; };
+		B0E8675F23AD015F00E6C544 /* PlacesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E8675E23AD015F00E6C544 /* PlacesController.swift */; };
+		B0FC398923AA254A005427D9 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B0FC398823AA254A005427D9 /* SwiftPackageProductDependency */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F0EDD3A6798D09A57DFA160 /* Pods-MapsDirectionsGooglePlacesLBTA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsDirectionsGooglePlacesLBTA.release.xcconfig"; path = "Target Support Files/Pods-MapsDirectionsGooglePlacesLBTA/Pods-MapsDirectionsGooglePlacesLBTA.release.xcconfig"; sourceTree = "<group>"; };
+		6BD068336D1ACD0629B951CF /* Pods-MapsDirectionsGooglePlacesLBTA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsDirectionsGooglePlacesLBTA.debug.xcconfig"; path = "Target Support Files/Pods-MapsDirectionsGooglePlacesLBTA/Pods-MapsDirectionsGooglePlacesLBTA.debug.xcconfig"; sourceTree = "<group>"; };
 		B0119F7A23A7760A00115909 /* DirectionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsController.swift; sourceTree = "<group>"; };
 		B01DAB8C23A4B98200E4E915 /* MapsDirectionsGooglePlacesLBTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapsDirectionsGooglePlacesLBTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B01DAB8F23A4B98200E4E915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +44,8 @@
 		B0B3634C23AA0E9200717035 /* LocationSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchController.swift; sourceTree = "<group>"; };
 		B0C5297623A62B8B007EC2A4 /* LocationsCarouselController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCarouselController.swift; sourceTree = "<group>"; };
 		B0C5297823A630B0007EC2A4 /* MKMapItem+Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Address.swift"; sourceTree = "<group>"; };
+		B0E8675E23AD015F00E6C544 /* PlacesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesController.swift; sourceTree = "<group>"; };
+		D6E9AC22AD5760228BA3C2F3 /* Pods_MapsDirectionsGooglePlacesLBTA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapsDirectionsGooglePlacesLBTA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,8 +53,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0FC398923AA254A005427D9 /* JGProgressHUD in Frameworks */,
-				B01DABA823A4BCEE00E4E915 /* LBTATools in Frameworks */,
+				B0FC398923AA254A005427D9 /* BuildFile in Frameworks */,
+				B01DABA823A4BCEE00E4E915 /* BuildFile in Frameworks */,
+				88EF4218B79D072B05BEDEF1 /* Pods_MapsDirectionsGooglePlacesLBTA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +78,8 @@
 				B08773D723A6AC5D005DF822 /* beijing.gpx */,
 				B01DAB8E23A4B98200E4E915 /* MapsDirectionsGooglePlacesLBTA */,
 				B01DAB8D23A4B98200E4E915 /* Products */,
+				FC98C4C9C4BCEFDC508FED48 /* Pods */,
+				E916DB01ECA4264ECE046E87 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +94,7 @@
 		B01DAB8E23A4B98200E4E915 /* MapsDirectionsGooglePlacesLBTA */ = {
 			isa = PBXGroup;
 			children = (
+				B0E8675D23AD014C00E6C544 /* Places */,
 				B0119F7923A775E700115909 /* Directions */,
 				B01DABA323A4BA8F00E4E915 /* Main */,
 				B01DAB8F23A4B98200E4E915 /* AppDelegate.swift */,
@@ -116,6 +126,32 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		B0E8675D23AD014C00E6C544 /* Places */ = {
+			isa = PBXGroup;
+			children = (
+				B0E8675E23AD015F00E6C544 /* PlacesController.swift */,
+			);
+			path = Places;
+			sourceTree = "<group>";
+		};
+		E916DB01ECA4264ECE046E87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6E9AC22AD5760228BA3C2F3 /* Pods_MapsDirectionsGooglePlacesLBTA.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC98C4C9C4BCEFDC508FED48 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6BD068336D1ACD0629B951CF /* Pods-MapsDirectionsGooglePlacesLBTA.debug.xcconfig */,
+				2F0EDD3A6798D09A57DFA160 /* Pods-MapsDirectionsGooglePlacesLBTA.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -123,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B01DABA023A4B98300E4E915 /* Build configuration list for PBXNativeTarget "MapsDirectionsGooglePlacesLBTA" */;
 			buildPhases = (
+				9CFF91F2C4B28E5822F8E8C6 /* [CP] Check Pods Manifest.lock */,
 				B01DAB8823A4B98200E4E915 /* Sources */,
 				B01DAB8923A4B98200E4E915 /* Frameworks */,
 				B01DAB8A23A4B98200E4E915 /* Resources */,
+				3934F1AC0F6A5356947A4CC8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,8 +171,8 @@
 			);
 			name = MapsDirectionsGooglePlacesLBTA;
 			packageProductDependencies = (
-				B01DABA723A4BCEE00E4E915 /* LBTATools */,
-				B0FC398823AA254A005427D9 /* JGProgressHUD */,
+				B01DABA723A4BCEE00E4E915 /* SwiftPackageProductDependency */,
+				B0FC398823AA254A005427D9 /* SwiftPackageProductDependency */,
 			);
 			productName = MapsDirectionsGooglePlacesLBTA;
 			productReference = B01DAB8C23A4B98200E4E915 /* MapsDirectionsGooglePlacesLBTA.app */;
@@ -165,8 +203,8 @@
 			);
 			mainGroup = B01DAB8323A4B98200E4E915;
 			packageReferences = (
-				B01DABA623A4BCEE00E4E915 /* XCRemoteSwiftPackageReference "LBTATools" */,
-				B0FC398723AA254A005427D9 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				B01DABA623A4BCEE00E4E915 /* RemoteSwiftPackageReference */,
+				B0FC398723AA254A005427D9 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = B01DAB8D23A4B98200E4E915 /* Products */;
 			projectDirPath = "";
@@ -191,6 +229,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3934F1AC0F6A5356947A4CC8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapsDirectionsGooglePlacesLBTA/Pods-MapsDirectionsGooglePlacesLBTA-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapsDirectionsGooglePlacesLBTA/Pods-MapsDirectionsGooglePlacesLBTA-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MapsDirectionsGooglePlacesLBTA/Pods-MapsDirectionsGooglePlacesLBTA-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CFF91F2C4B28E5822F8E8C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MapsDirectionsGooglePlacesLBTA-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B01DAB8823A4B98200E4E915 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -203,6 +283,7 @@
 				B0B3634D23AA0E9200717035 /* LocationSearchController.swift in Sources */,
 				B01DAB9223A4B98200E4E915 /* SceneDelegate.swift in Sources */,
 				B0AA62F023ABCC0B003A7415 /* RouteHeader.swift in Sources */,
+				B0E8675F23AD015F00E6C544 /* PlacesController.swift in Sources */,
 				B0C5297723A62B8B007EC2A4 /* LocationsCarouselController.swift in Sources */,
 				B01DAB9423A4B98200E4E915 /* ContentView.swift in Sources */,
 			);
@@ -338,6 +419,7 @@
 		};
 		B01DABA123A4B98300E4E915 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BD068336D1ACD0629B951CF /* Pods-MapsDirectionsGooglePlacesLBTA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -358,6 +440,7 @@
 		};
 		B01DABA223A4B98300E4E915 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F0EDD3A6798D09A57DFA160 /* Pods-MapsDirectionsGooglePlacesLBTA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -400,7 +483,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B01DABA623A4BCEE00E4E915 /* XCRemoteSwiftPackageReference "LBTATools" */ = {
+		B01DABA623A4BCEE00E4E915 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bhlvoong/LBTATools.git";
 			requirement = {
@@ -408,7 +491,7 @@
 				minimumVersion = 1.0.17;
 			};
 		};
-		B0FC398723AA254A005427D9 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+		B0FC398723AA254A005427D9 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
 			requirement = {
@@ -419,14 +502,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B01DABA723A4BCEE00E4E915 /* LBTATools */ = {
+		B01DABA723A4BCEE00E4E915 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B01DABA623A4BCEE00E4E915 /* XCRemoteSwiftPackageReference "LBTATools" */;
+			package = B01DABA623A4BCEE00E4E915 /* RemoteSwiftPackageReference */;
 			productName = LBTATools;
 		};
-		B0FC398823AA254A005427D9 /* JGProgressHUD */ = {
+		B0FC398823AA254A005427D9 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B0FC398723AA254A005427D9 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			package = B0FC398723AA254A005427D9 /* RemoteSwiftPackageReference */;
 			productName = JGProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
