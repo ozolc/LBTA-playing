@@ -66,7 +66,7 @@ class PlacesController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
         if !(annotation is PlaceAnnotation) { return nil }
         
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "id")
-        annotationView.canShowCallout = true
+//        annotationView.canShowCallout = true
         
         if let placeAnnotation = annotation as? PlaceAnnotation {
             let types = placeAnnotation.place.types
@@ -89,7 +89,7 @@ class PlacesController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         currentCustomCallout?.removeFromSuperview()
         
-        let customCalloutContainer = UIView(backgroundColor: .red)
+        let customCalloutContainer = UIView(backgroundColor: .white)
         
 //        customCalloutContainer.frame = .init(x: 0, y: 0, width: 100, height: 100)
         
@@ -97,12 +97,61 @@ class PlacesController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
         
         customCalloutContainer.translatesAutoresizingMaskIntoConstraints = false
         
-        customCalloutContainer.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        customCalloutContainer.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        let widthAnchor = customCalloutContainer.widthAnchor.constraint(equalToConstant: 100)
+            widthAnchor.isActive = true
+        let heightAnchor = customCalloutContainer.heightAnchor.constraint(equalToConstant: 200)
+            heightAnchor.isActive = true
         customCalloutContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         customCalloutContainer.bottomAnchor.constraint(equalTo: view.topAnchor).isActive = true
         
+        customCalloutContainer.layer.borderWidth = 2
+        customCalloutContainer.layer.borderColor = UIColor.darkGray.cgColor
+        customCalloutContainer.setupShadow(opacity: 0.2, radius: 5, offset: .zero, color: .darkGray)
+        customCalloutContainer.layer.cornerRadius = 5
+        
         currentCustomCallout = customCalloutContainer
+        
+        // load the spinner
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.color = .darkGray
+        spinner.startAnimating()
+        customCalloutContainer.addSubview(spinner)
+        spinner.fillSuperview()
+        
+        // look up our photo
+        guard let placeId = (view.annotation as? PlaceAnnotation)?.place.placeID else { return }
+        
+        client.lookUpPhotos(forPlaceID: placeId) { [weak self] (metadatalist, err) in
+            if let err = err {
+                print("Error when looking up photos:", err)
+            }
+            
+//            print(metadatalist)
+            guard let firstPhotoMetadata = metadatalist?.results.first else { return }
+            
+            self?.client.loadPlacePhoto(firstPhotoMetadata) { (image, err) in
+                if let err = err {
+                    print("Faile to load photo for place:", err)
+                }
+                
+                guard let image = image else { return }
+                
+                if image.size.width > image.size.height {
+                    // w1/h1 = w2/h2
+                    let newWidth: CGFloat = 150
+                    let newHeight = newWidth / image.size.width * image.size.height
+                    widthAnchor.constant = newWidth
+                    heightAnchor.constant = newHeight
+                }
+                
+                widthAnchor.constant = image.size.width
+                heightAnchor.constant = image.size.height
+                
+                let imageView = UIImageView(image: image, contentMode: .scaleAspectFill)
+                customCalloutContainer.addSubview(imageView)
+                imageView.fillSuperview()
+            }
+        }
     }
     
     fileprivate func requestForLocationAuthorization() {
