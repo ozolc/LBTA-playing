@@ -38,45 +38,15 @@ struct MapViewContainer: UIViewRepresentable {
     }
 }
 
-struct MapSearchingView: View {
+// keep track of properties that your view needs to render
+class MapSearchViewModel: ObservableObject {
     
-    @State var annotations = [MKPointAnnotation]()
-    
-    var body: some View {
-        ZStack(alignment: .top) {
-            
-            MapViewContainer(annotations: annotations)
-                .edgesIgnoringSafeArea(.all)
-            
-            HStack {
-                Button(action: {
-                    // let's perform an airport search
-                    self.performSearch(query: "airports")
-                }) {
-                    Text("Search for airport")
-                        .padding()
-                        .background(Color.white)
-                }
-                
-                Button(action: {
-                    self.annotations = []
-                }) {
-                    Text("Clear Annotations")
-                        .padding()
-                        .background(Color.white)
-                }
-            }.shadow(radius: 3)
-        }
-    }
-    
-    fileprivate func setupRegionForLocalSearch() -> MKCoordinateRegion {
-        let centerCoordinate = CLLocationCoordinate2D(latitude: 37.7666, longitude: -122.427290)
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        let region = MKCoordinateRegion(center: centerCoordinate, span: span)
-        return region
-    }
+    @Published var annotations = [MKPointAnnotation]()
+    @Published var isSearching = false
     
     fileprivate func performSearch(query: String) {
+        self.isSearching = true
+        
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
         request.region = setupRegionForLocalSearch()
@@ -97,9 +67,60 @@ struct MapSearchingView: View {
                 airportAnnotations.append(annotation)
             })
             
+            Thread.sleep(forTimeInterval: 1)
+            self.isSearching = false
+            
             self.annotations = airportAnnotations
         }
     }
+    
+    fileprivate func setupRegionForLocalSearch() -> MKCoordinateRegion {
+        let centerCoordinate = CLLocationCoordinate2D(latitude: 37.7666, longitude: -122.427290)
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        let region = MKCoordinateRegion(center: centerCoordinate, span: span)
+        return region
+    }
+
+}
+
+struct MapSearchingView: View {
+    
+    @ObservedObject var vm = MapSearchViewModel()
+    
+    var body: some View {
+        ZStack(alignment: .top) {
+            
+            MapViewContainer(annotations: vm.annotations)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 12) {
+                HStack {
+                    Button(action: {
+                        
+                        // let's perform an airport search
+                        self.vm.performSearch(query: "airports")
+                    }) {
+                        Text("Search for airport")
+                            .padding()
+                            .background(Color.white)
+                    }
+                    
+                    Button(action: {
+                        self.vm.annotations = []
+                    }) {
+                        Text("Clear Annotations")
+                            .padding()
+                            .background(Color.white)
+                    }
+                }.shadow(radius: 3)
+                
+                if vm.isSearching {
+                    Text("Searching...")
+                }
+            }
+        }
+    }
+    
 }
 
 struct MapSearchingView_Previews: PreviewProvider {
