@@ -30,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            window.rootViewController = MainController()
 //            window.rootViewController = UINavigationController(rootViewController: DirectionsController())
             
-            window.rootViewController = PlacesController()
+            window.rootViewController = UIHostingController(rootView: MapSearchingView())
             
             self.window = window
             window.makeKeyAndVisible()

@@ -38,11 +38,28 @@ struct MapViewContainer: UIViewRepresentable {
     }
 }
 
+import Combine
+
 // keep track of properties that your view needs to render
 class MapSearchViewModel: ObservableObject {
     
     @Published var annotations = [MKPointAnnotation]()
     @Published var isSearching = false
+    @Published var searchQuery = "" {
+        didSet {
+//            performSearch(query: searchQuery)
+        }
+    }
+    
+    var cancellable: AnyCancellable?
+    
+    init() {
+        // combine code
+        cancellable = $searchQuery.debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .sink { [weak self] (searchTerm) in
+                self?.performSearch(query: searchTerm)
+        }
+    }
     
     fileprivate func performSearch(query: String) {
         self.isSearching = true
@@ -67,7 +84,7 @@ class MapSearchViewModel: ObservableObject {
                 airportAnnotations.append(annotation)
             })
             
-            Thread.sleep(forTimeInterval: 1)
+//            Thread.sleep(forTimeInterval: 1)
             self.isSearching = false
             
             self.annotations = airportAnnotations
@@ -95,24 +112,13 @@ struct MapSearchingView: View {
             
             VStack(spacing: 12) {
                 HStack {
-                    Button(action: {
-                        
-                        // let's perform an airport search
-                        self.vm.performSearch(query: "airports")
-                    }) {
-                        Text("Search for airport")
-                            .padding()
-                            .background(Color.white)
-                    }
+                    TextField("Search terms", text: $vm.searchQuery)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 12)
+                        .background(Color.white)
                     
-                    Button(action: {
-                        self.vm.annotations = []
-                    }) {
-                        Text("Clear Annotations")
-                            .padding()
-                            .background(Color.white)
-                    }
                 }.shadow(radius: 3)
+                    .padding()
                 
                 if vm.isSearching {
                     Text("Searching...")
