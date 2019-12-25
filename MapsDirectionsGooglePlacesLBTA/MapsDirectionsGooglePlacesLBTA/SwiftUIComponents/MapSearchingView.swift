@@ -57,6 +57,7 @@ class MapSearchViewModel: ObservableObject {
     @Published var mapItems = [MKMapItem]()
     
     @Published var selectedMapItem: MKMapItem?
+    @Published var keyboardHeight: CGFloat = 0
     
     var cancellable: AnyCancellable?
     
@@ -65,6 +66,26 @@ class MapSearchViewModel: ObservableObject {
         cancellable = $searchQuery.debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .sink { [weak self] (searchTerm) in
                 self?.performSearch(query: searchTerm)
+        }
+        
+        listenForKeyboardNotifications()
+    }
+    
+    fileprivate func listenForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { [weak self] (notification) in
+            guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+            let keyboardFrame = value.cgRectValue
+            let window = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
+            
+            withAnimation(.easeOut(duration: 0.25)) {
+                self?.keyboardHeight = keyboardFrame.height - (window?.safeAreaInsets.bottom ?? 0)
+            }
+        }
+        
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { [weak self] (notification) in
+            withAnimation(.easeOut(duration: 0.25)) {
+                self?.keyboardHeight = 0
+            }
         }
     }
     
@@ -122,16 +143,16 @@ struct MapSearchingView: View {
             
             VStack(spacing: 12) {
                 HStack {
-                    TextField("Search terms", text: $vm.searchQuery,
-                              onCommit:  {
-                                UIApplication.shared.keyWindow?.endEditing(true)
-                    })
+                    TextField("Search terms", text: $vm.searchQuery)
+//                    ,
+//                              onCommit:  {
+//                                UIApplication.shared.keyWindow?.endEditing(true)
+//                    })
                         .padding(.horizontal, 16)
                         .padding(.vertical, 12)
                         .background(Color.white)
                     
-                }.shadow(radius: 3)
-                    .padding()
+                }.padding()
                 
                 if vm.isSearching {
                     Text("Searching...")
@@ -164,6 +185,7 @@ struct MapSearchingView: View {
                     .padding(.horizontal, 16)
                 }.shadow(radius: 5)
                 
+                Spacer().frame(height: vm.keyboardHeight)
             }
         }
     }
