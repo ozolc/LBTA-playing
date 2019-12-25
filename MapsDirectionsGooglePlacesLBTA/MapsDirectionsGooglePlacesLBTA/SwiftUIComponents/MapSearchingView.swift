@@ -14,6 +14,7 @@ struct MapViewContainer: UIViewRepresentable {
     typealias UIViewType = MKMapView
     
     var annotations = [MKPointAnnotation]()
+    var selectedMapItem: MKMapItem?
     
     let mapView = MKMapView()
     
@@ -28,6 +29,12 @@ struct MapViewContainer: UIViewRepresentable {
         uiView.removeAnnotations(uiView.annotations)
         uiView.addAnnotations(annotations)
         uiView.showAnnotations(uiView.annotations, animated: false)
+        
+        uiView.annotations.forEach { (annotation) in
+            if annotation.title == selectedMapItem?.name {
+                uiView.selectAnnotation(annotation, animated: true)
+            }
+        }
     }
     
     fileprivate func setupRegionForMap() {
@@ -45,11 +52,11 @@ class MapSearchViewModel: ObservableObject {
     
     @Published var annotations = [MKPointAnnotation]()
     @Published var isSearching = false
-    @Published var searchQuery = "" {
-        didSet {
-//            performSearch(query: searchQuery)
-        }
-    }
+    @Published var searchQuery = ""
+    
+    @Published var mapItems = [MKMapItem]()
+    
+    @Published var selectedMapItem: MKMapItem?
     
     var cancellable: AnyCancellable?
     
@@ -67,6 +74,7 @@ class MapSearchViewModel: ObservableObject {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
         request.region = setupRegionForLocalSearch()
+        
         let localSearch = MKLocalSearch(request: request)
         localSearch.start { (resp, err) in
             // handle your error
@@ -74,6 +82,8 @@ class MapSearchViewModel: ObservableObject {
                 print("Failed to complete an search", err)
             }
             // success
+            
+            self.mapItems = resp?.mapItems ?? []
             
             var airportAnnotations = [MKPointAnnotation]()
             
@@ -107,12 +117,15 @@ struct MapSearchingView: View {
     var body: some View {
         ZStack(alignment: .top) {
             
-            MapViewContainer(annotations: vm.annotations)
+            MapViewContainer(annotations: vm.annotations, selectedMapItem: vm.selectedMapItem)
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 12) {
                 HStack {
-                    TextField("Search terms", text: $vm.searchQuery)
+                    TextField("Search terms", text: $vm.searchQuery,
+                              onCommit:  {
+                                UIApplication.shared.keyWindow?.endEditing(true)
+                    })
                         .padding(.horizontal, 16)
                         .padding(.vertical, 12)
                         .background(Color.white)
@@ -123,6 +136,34 @@ struct MapSearchingView: View {
                 if vm.isSearching {
                     Text("Searching...")
                 }
+                
+                Spacer()
+                
+                ScrollView(.horizontal) {
+                    HStack(spacing: 16) {
+                        ForEach(vm.mapItems, id: \.self) { item in
+                            
+                            Button(action: {
+                                self.vm.selectedMapItem = item
+                                
+                            }, label: {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(item.name ?? "")
+                                        .font(.headline)
+                                    Text(item.placemark.title ?? "")
+                                }
+                            }).foregroundColor(.black)
+                            
+                            .padding()
+                            .frame(width: 200)
+                            .background(Color.white)
+                            .cornerRadius(5)
+                        }
+                        
+                    }
+                    .padding(.horizontal, 16)
+                }.shadow(radius: 5)
+                
             }
         }
     }
