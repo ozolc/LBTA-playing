@@ -11,6 +11,10 @@ import MapKit
 
 struct MapViewContainer: UIViewRepresentable {
     
+    func makeCoordinator() -> MapViewContainer.Coordinator {
+        return Coordinator(mapView: mapView)
+    }
+    
     typealias UIViewType = MKMapView
     
     var annotations = [MKPointAnnotation]()
@@ -23,6 +27,21 @@ struct MapViewContainer: UIViewRepresentable {
         // setup the region
         setupRegionForMap()
         return mapView
+    }
+    
+    // I want to set mapView.delegate = ?? somewhere
+    class Coordinator: NSObject, MKMapViewDelegate {
+        
+        init(mapView: MKMapView) {
+            super.init()
+            mapView.delegate = self
+        }
+        
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "id")
+            pinAnnotationView.canShowCallout = true
+            return pinAnnotationView
+        }
     }
     
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapViewContainer>) {
