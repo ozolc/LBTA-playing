@@ -21,6 +21,7 @@
 		B08773D823A6AC5D005DF822 /* beijing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B08773D723A6AC5D005DF822 /* beijing.gpx */; };
 		B0AA62F023ABCC0B003A7415 /* RouteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AA62EF23ABCC0B003A7415 /* RouteHeader.swift */; };
 		B0B3634D23AA0E9200717035 /* LocationSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B3634C23AA0E9200717035 /* LocationSearchController.swift */; };
+		B0C2799D23B61675006443F6 /* DirectionsSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C2799C23B61675006443F6 /* DirectionsSearchView.swift */; };
 		B0C5297723A62B8B007EC2A4 /* LocationsCarouselController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5297623A62B8B007EC2A4 /* LocationsCarouselController.swift */; };
 		B0C5297923A630B0007EC2A4 /* MKMapItem+Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5297823A630B0007EC2A4 /* MKMapItem+Address.swift */; };
 		B0E8675F23AD015F00E6C544 /* PlacesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E8675E23AD015F00E6C544 /* PlacesController.swift */; };
@@ -44,6 +45,7 @@
 		B08773D723A6AC5D005DF822 /* beijing.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = beijing.gpx; sourceTree = "<group>"; };
 		B0AA62EF23ABCC0B003A7415 /* RouteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteHeader.swift; sourceTree = "<group>"; };
 		B0B3634C23AA0E9200717035 /* LocationSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchController.swift; sourceTree = "<group>"; };
+		B0C2799C23B61675006443F6 /* DirectionsSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsSearchView.swift; sourceTree = "<group>"; };
 		B0C5297623A62B8B007EC2A4 /* LocationsCarouselController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCarouselController.swift; sourceTree = "<group>"; };
 		B0C5297823A630B0007EC2A4 /* MKMapItem+Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Address.swift"; sourceTree = "<group>"; };
 		B0E8675E23AD015F00E6C544 /* PlacesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				B04DC62D23B0EFAD00FBFB5F /* MapSearchingView.swift */,
+				B0C2799C23B61675006443F6 /* DirectionsSearchView.swift */,
 			);
 			path = SwiftUIComponents;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			files = (
 				B0C5297923A630B0007EC2A4 /* MKMapItem+Address.swift in Sources */,
 				B01DABA523A4BAA300E4E915 /* MainController.swift in Sources */,
+				B0C2799D23B61675006443F6 /* DirectionsSearchView.swift in Sources */,
 				B0119F7B23A7760A00115909 /* DirectionsController.swift in Sources */,
 				B01DAB9023A4B98200E4E915 /* AppDelegate.swift in Sources */,
 				B0B3634D23AA0E9200717035 /* LocationSearchController.swift in Sources */,
