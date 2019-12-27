@@ -26,17 +26,75 @@ struct SelectLocationView: View {
     // here is the magic
     @Binding var isShowing: Bool
     
+    @State var mapItems = [MKMapItem]()
+    
+    @State var searchQuery = ""
+    
     var body: some View {
         VStack {
-            Button(action: {
+            
+            HStack(spacing: 16) {
+                Button(action: {
+                    // need to dismiss this view somehow
+                    self.isShowing = false
+                    
+                }, label: {
+                    Image(uiImage: #imageLiteral(resourceName: "back_arrow"))
+                }).foregroundColor(.black)
                 
-                // need to dismiss this view somehow
-                self.isShowing = false
-                
-            }, label: {
-                Text("Dismiss")
-            })
+                TextField("Enter earch term", text: $searchQuery)
+                    .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification)
+                        .delay(for: .milliseconds(500),
+                               scheduler: RunLoop.main)) { _ in
+                                
+                                // search
+                                let request = MKLocalSearch.Request()
+                                request.naturalLanguageQuery = self.searchQuery
+                                let search = MKLocalSearch(request: request)
+                                search.start { (resp, err) in
+                                    // check your err
+                                    if let err = err {
+                                        print("Failed to search", err)
+                                    }
+                                    
+                                    self.mapItems = resp?.mapItems ?? []
+                                }
+                                
+                }
+            }.padding()
+            
+            if mapItems.count > 0 {
+                ScrollView {
+                    ForEach (mapItems, id: \.self) { item in
+                        HStack {
+                            VStack(alignment: .leading){
+                                Text("\(item.name ?? "")")
+                                    .font(.headline)
+                                Text("\(item.address())")
+                            }
+                            Spacer()
+                        }
+                        .padding()
+                    }
+                }
+            }
+            Spacer()
         }
+        .edgesIgnoringSafeArea(.bottom)
+        .onAppear(perform: {
+            // dummy search
+//            let request = MKLocalSearch.Request()
+//            request.naturalLanguageQuery = "Food"
+//            let search = MKLocalSearch(request: request)
+//            search.start { (resp, err) in
+//                // check your err
+//                if let err = err {
+//                    print("Failed to search", err)
+//                }
+//
+//                self.mapItems = resp?.mapItems ?? []
+//            }
+        })
         .navigationBarTitle("")
         .navigationBarHidden(true)
     }
