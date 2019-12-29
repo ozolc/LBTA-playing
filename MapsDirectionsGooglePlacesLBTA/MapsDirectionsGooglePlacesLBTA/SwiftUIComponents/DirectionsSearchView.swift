@@ -148,10 +148,45 @@ struct DirectionsSearchView: View {
                     DirectionsMapView().edgesIgnoringSafeArea(.bottom)
                 }
                 StatusBarCover()
+                
+                if env.isCalculatingDirections {
+                    VStack {
+                        Spacer()
+                        VStack {
+                            LoadingHUD()
+                            
+                            Text("Loading...")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        }
+                        .padding()
+                        .background(Color.black)
+                        .cornerRadius(5)
+                        
+                        Spacer()
+                    }
+                }
+                
+                
             }
             .navigationBarTitle("DIRECTIONS")
             .navigationBarHidden(true)
         }
+    }
+}
+
+struct LoadingHUD: UIViewRepresentable {
+    typealias UIViewType = UIActivityIndicatorView
+    
+    func makeUIView(context: UIViewRepresentableContext<LoadingHUD>) -> UIActivityIndicatorView {
+        let aiv = UIActivityIndicatorView(style: .large)
+        aiv.color = .white
+        aiv.startAnimating()
+        return aiv
+    }
+    
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<LoadingHUD>) {
+        
     }
 }
 
@@ -224,6 +259,7 @@ import Combine
 
 // treat your env as the brain of your application
 class DirectionsEnvironment: ObservableObject {
+    @Published var isCalculatingDirections = false
     @Published var isSelectingSource = false
     @Published var isSelectingDestination = false
     
@@ -236,7 +272,7 @@ class DirectionsEnvironment: ObservableObject {
     
     init() {
         // listen for changes on sourceMapItem, destinationMapitem
-        cancellable = Publishers.CombineLatest($sourceMapItem, $destinationMapItem).sink { (items) in
+        cancellable = Publishers.CombineLatest($sourceMapItem, $destinationMapItem).sink { [weak self] (items) in
 //            print(items.0 ?? "", items.1 ?? "")
             
             // searching for directions
@@ -244,7 +280,12 @@ class DirectionsEnvironment: ObservableObject {
             request.source = items.0
             request.destination = items.1
             let directions = MKDirections(request: request)
+            
+            self?.isCalculatingDirections = true
+            self?.route = nil
+            
             directions.calculate { [weak self] (resp, err) in
+                self?.isCalculatingDirections = false
                 if let err = err {
                     print("Failed to calculate directions:", err)
                     return
