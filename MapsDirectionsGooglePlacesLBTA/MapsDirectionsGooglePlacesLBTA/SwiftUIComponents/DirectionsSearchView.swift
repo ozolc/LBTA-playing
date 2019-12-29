@@ -137,53 +137,86 @@ struct DirectionsSearchView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
-                
                 VStack(spacing: 0) {
-                    
                     VStack(spacing: 12) {
-                        HStack(spacing: 16) {
-                            Image(uiImage: #imageLiteral(resourceName: "start_location_circles")).frame(width: 24)
-                            
-                            NavigationLink(destination: SelectLocationView(), isActive: $env.isSelectingSource) {
-                                
-                                HStack {
-                                    Text(env.sourceMapItem != nil ? (env.sourceMapItem?.name ?? "") : "Source")
-                                    Spacer()
-                                }
-                                .padding() .background(Color.white).cornerRadius(3)
-                            }
-                        }
-                        
-                        HStack(spacing: 16) {
-                            Image(uiImage: #imageLiteral(resourceName: "annotation_icon").withRenderingMode(.alwaysTemplate)).foregroundColor(.white)
-                                .frame(width: 24)
-                            
-                            
-                            NavigationLink(destination: SelectLocationView(), isActive: $env.isSelectingDestination) {
-                                
-                                HStack {
-                                    Text(env.destinationMapItem != nil ? (env.destinationMapItem?.name ?? "") : "Destination")
-                                    Spacer()
-                                }
-                                .padding() .background(Color.white).cornerRadius(3)
-                            }
-                        }
-                        
+                        MapItemView(selectingBool: $env.isSelectingSource, title: env.sourceMapItem != nil ? (env.sourceMapItem?.name ?? "") : "Source", image: #imageLiteral(resourceName: "start_location_circles"))
+                        MapItemView(selectingBool: $env.isSelectingDestination, title: env.destinationMapItem != nil ? (env.destinationMapItem?.name ?? "") : "Destination", image: #imageLiteral(resourceName: "annotation_icon"))
                     }
                     .padding()
                     .background(Color.blue)
                     
                     DirectionsMapView().edgesIgnoringSafeArea(.bottom)
                 }
-                
-                // status bar cover
-                Spacer().frame(width: UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.frame.width, height: UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.safeAreaInsets.top)
-                    .background(Color.blue)
-                    .edgesIgnoringSafeArea(.top)
+                StatusBarCover()
             }
-        .navigationBarTitle("DIRECTIONS")
+            .navigationBarTitle("DIRECTIONS")
             .navigationBarHidden(true)
         }
+    }
+}
+
+struct MapItemView: View {
+    @EnvironmentObject var env: DirectionsEnvironment
+    @Binding var selectingBool: Bool
+    
+    var title: String
+    var image: UIImage
+    
+    var body: some View {
+        HStack(spacing: 16) {
+            Image(uiImage: image.withRenderingMode(.alwaysTemplate)).frame(width: 24).foregroundColor(.white)
+            NavigationLink(destination: SelectLocationView(), isActive: $selectingBool) {
+                HStack {
+                    Text(title)
+                    Spacer()
+                }
+                .padding() .background(Color.white).cornerRadius(3)
+            }
+        }
+    }
+}
+
+//struct SourceMapItemView: View {
+//    @EnvironmentObject var env: DirectionsEnvironment
+//
+//    var body: some View {
+//        HStack(spacing: 16) {
+//            Image(uiImage: #imageLiteral(resourceName: "start_location_circles")).frame(width: 24)
+//            NavigationLink(destination: SelectLocationView(), isActive: $env.isSelectingSource) {
+//                HStack {
+//                    Text(env.sourceMapItem != nil ? (env.sourceMapItem?.name ?? "") : "Source")
+//                    Spacer()
+//                }
+//                .padding() .background(Color.white).cornerRadius(3)
+//            }
+//        }
+//    }
+//}
+//
+//struct DestinationMapItemView: View {
+//    @EnvironmentObject var env: DirectionsEnvironment
+//
+//    var body: some View {
+//        HStack(spacing: 16) {
+//            Image(uiImage: #imageLiteral(resourceName: "annotation_icon").withRenderingMode(.alwaysTemplate)).foregroundColor(.white)
+//                .frame(width: 24)
+//
+//            NavigationLink(destination: SelectLocationView(), isActive: $env.isSelectingDestination) {
+//                HStack {
+//                    Text(env.destinationMapItem != nil ? (env.destinationMapItem?.name ?? "") : "Destination")
+//                    Spacer()
+//                }
+//                .padding() .background(Color.white).cornerRadius(3)
+//            }
+//        }
+//    }
+//}
+
+struct StatusBarCover: View {
+    var body: some View {
+        Spacer().frame(width: UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.frame.width, height: UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.safeAreaInsets.top)
+            .background(Color.blue)
+            .edgesIgnoringSafeArea(.top)
     }
 }
 
