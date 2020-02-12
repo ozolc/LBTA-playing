@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B05CEBCA23F43006001C3DFC /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05CEBC923F43006001C3DFC /* SearchResultCell.swift */; };
 		B0B8CA2A23F41796001BDC8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8CA2923F41796001BDC8B /* AppDelegate.swift */; };
 		B0B8CA2C23F41796001BDC8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8CA2B23F41796001BDC8B /* SceneDelegate.swift */; };
 		B0B8CA2E23F41796001BDC8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8CA2D23F41796001BDC8B /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B05CEBC923F43006001C3DFC /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		B0B8CA2623F41796001BDC8B /* AppStoreJSONApis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreJSONApis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B8CA2923F41796001BDC8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0B8CA2B23F41796001BDC8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B05CEBC823F42FEE001C3DFC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B05CEBC923F43006001C3DFC /* SearchResultCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B0B8CA1D23F41796001BDC8B = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 		B0B8CA2823F41796001BDC8B /* AppStoreJSONApis */ = {
 			isa = PBXGroup;
 			children = (
+				B05CEBC823F42FEE001C3DFC /* Views */,
 				B0F3738A23F428DD00DF3237 /* Controller */,
 				B0B8CA2923F41796001BDC8B /* AppDelegate.swift */,
 				B0B8CA2B23F41796001BDC8B /* SceneDelegate.swift */,
@@ -156,6 +167,7 @@
 				B0B8CA2E23F41796001BDC8B /* ViewController.swift in Sources */,
 				B0B8CA2A23F41796001BDC8B /* AppDelegate.swift in Sources */,
 				B0F3738C23F4290100DF3237 /* AppsSearchController.swift in Sources */,
+				B05CEBCA23F43006001C3DFC /* SearchResultCell.swift in Sources */,
 				B0B8CA2C23F41796001BDC8B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
