@@ -12,8 +12,8 @@ class Service {
     
     static let shared = Service()
     
-    func fetchApps(completion: @escaping ([Result], Error?) -> ()) {
-        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
+    func fetchApps(searchTerm: String, completion: @escaping ([Result], Error?) -> ()) {
+        let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in
