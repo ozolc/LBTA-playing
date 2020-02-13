@@ -13,8 +13,11 @@
 		B079390023F451090056C2D6 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07938FF23F451090056C2D6 /* UIView+Layout.swift */; };
 		B079390223F45AA30056C2D6 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B079390123F45AA30056C2D6 /* VerticalStackView.swift */; };
 		B079390523F46B710056C2D6 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B079390423F46B710056C2D6 /* SearchResult.swift */; };
-		B089E36F23F578B000E51637 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089E36E23F578B000E51637 /* AppsController.swift */; };
+		B089E36F23F578B000E51637 /* AppsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089E36E23F578B000E51637 /* AppsPageController.swift */; };
 		B089E37123F5794000E51637 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089E37023F5794000E51637 /* BaseListController.swift */; };
+		B090E7C723F5B7E200DBCD9F /* AppsPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B090E7C623F5B7E200DBCD9F /* AppsPageHeader.swift */; };
+		B090E7C923F5B92100DBCD9F /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B090E7C823F5B92100DBCD9F /* AppsHeaderHorizontalController.swift */; };
+		B090E7CB23F5BB7000DBCD9F /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B090E7CA23F5BB7000DBCD9F /* AppsHeaderCell.swift */; };
 		B097313C23F58DDB00D4BA2C /* AppRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097313B23F58DDB00D4BA2C /* AppRowCell.swift */; };
 		B097313E23F58F4600D4BA2C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097313D23F58F4600D4BA2C /* Extensions.swift */; };
 		B099828B23F5390400E9789E /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099828A23F5390400E9789E /* Service.swift */; };
@@ -39,8 +42,11 @@
 		B07938FF23F451090056C2D6 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		B079390123F45AA30056C2D6 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		B079390423F46B710056C2D6 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
-		B089E36E23F578B000E51637 /* AppsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsController.swift; sourceTree = "<group>"; };
+		B089E36E23F578B000E51637 /* AppsPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageController.swift; sourceTree = "<group>"; };
 		B089E37023F5794000E51637 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
+		B090E7C623F5B7E200DBCD9F /* AppsPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageHeader.swift; sourceTree = "<group>"; };
+		B090E7C823F5B92100DBCD9F /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
+		B090E7CA23F5BB7000DBCD9F /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
 		B097313B23F58DDB00D4BA2C /* AppRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRowCell.swift; sourceTree = "<group>"; };
 		B097313D23F58F4600D4BA2C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B099828A23F5390400E9789E /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -90,6 +96,8 @@
 			children = (
 				B000624623F57B2B006A0CD6 /* AppsGroupCell.swift */,
 				B097313B23F58DDB00D4BA2C /* AppRowCell.swift */,
+				B090E7C623F5B7E200DBCD9F /* AppsPageHeader.swift */,
+				B090E7CA23F5BB7000DBCD9F /* AppsHeaderCell.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -124,8 +132,9 @@
 		B089E36D23F578A300E51637 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
-				B089E36E23F578B000E51637 /* AppsController.swift */,
+				B089E36E23F578B000E51637 /* AppsPageController.swift */,
 				B000624823F57DA9006A0CD6 /* AppsHorizontalController.swift */,
+				B090E7C823F5B92100DBCD9F /* AppsHeaderHorizontalController.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -310,7 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0F3738923F4187400DF3237 /* BaseTabBarController.swift in Sources */,
-				B089E36F23F578B000E51637 /* AppsController.swift in Sources */,
+				B089E36F23F578B000E51637 /* AppsPageController.swift in Sources */,
 				B079390523F46B710056C2D6 /* SearchResult.swift in Sources */,
 				B0B8CA2E23F41796001BDC8B /* ViewController.swift in Sources */,
 				B079390023F451090056C2D6 /* UIView+Layout.swift in Sources */,
@@ -319,9 +328,12 @@
 				B0F3738C23F4290100DF3237 /* AppsSearchController.swift in Sources */,
 				B079390223F45AA30056C2D6 /* VerticalStackView.swift in Sources */,
 				B099828B23F5390400E9789E /* Service.swift in Sources */,
+				B090E7C923F5B92100DBCD9F /* AppsHeaderHorizontalController.swift in Sources */,
+				B090E7C723F5B7E200DBCD9F /* AppsPageHeader.swift in Sources */,
 				B05CEBCA23F43006001C3DFC /* SearchResultCell.swift in Sources */,
 				B097313E23F58F4600D4BA2C /* Extensions.swift in Sources */,
 				B089E37123F5794000E51637 /* BaseListController.swift in Sources */,
+				B090E7CB23F5BB7000DBCD9F /* AppsHeaderCell.swift in Sources */,
 				B0B8CA2C23F41796001BDC8B /* SceneDelegate.swift in Sources */,
 				B000624923F57DA9006A0CD6 /* AppsHorizontalController.swift in Sources */,
 				B097313C23F58DDB00D4BA2C /* AppRowCell.swift in Sources */,
