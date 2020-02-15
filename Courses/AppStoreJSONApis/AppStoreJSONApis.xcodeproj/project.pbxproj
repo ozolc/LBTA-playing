@@ -35,6 +35,9 @@
 		B0BE5F6B23F7B85300829B3A /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BE5F6A23F7B85300829B3A /* AppDetailCell.swift */; };
 		B0BE5F6D23F7CF7200829B3A /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BE5F6C23F7CF7200829B3A /* PreviewCell.swift */; };
 		B0BE5F6F23F7D13500829B3A /* PreviewScreenshotsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BE5F6E23F7D13500829B3A /* PreviewScreenshotsController.swift */; };
+		B0E318D123F7EA4500AB0214 /* ReviewRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E318D023F7EA4500AB0214 /* ReviewRowCell.swift */; };
+		B0E318D323F7EC4000AB0214 /* ReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E318D223F7EC4000AB0214 /* ReviewsController.swift */; };
+		B0E318D523F7EE2200AB0214 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E318D423F7EE2200AB0214 /* ReviewCell.swift */; };
 		B0F3738923F4187400DF3237 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F3738823F4187400DF3237 /* BaseTabBarController.swift */; };
 		B0F3738C23F4290100DF3237 /* AppsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F3738B23F4290100DF3237 /* AppsSearchController.swift */; };
 		C42C1CC3FA2C9063293DC54F /* Pods_AppStoreJSONApis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98C17F4E18FFC440A698F9A5 /* Pods_AppStoreJSONApis.framework */; };
@@ -74,6 +77,9 @@
 		B0BE5F6A23F7B85300829B3A /* AppDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
 		B0BE5F6C23F7CF7200829B3A /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
 		B0BE5F6E23F7D13500829B3A /* PreviewScreenshotsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScreenshotsController.swift; sourceTree = "<group>"; };
+		B0E318D023F7EA4500AB0214 /* ReviewRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRowCell.swift; sourceTree = "<group>"; };
+		B0E318D223F7EC4000AB0214 /* ReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsController.swift; sourceTree = "<group>"; };
+		B0E318D423F7EE2200AB0214 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		B0F3738823F4187400DF3237 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		B0F3738B23F4290100DF3237 /* AppsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +179,7 @@
 			children = (
 				B08D974623F7178400BDC93D /* AppDetailController.swift */,
 				B0BE5F6E23F7D13500829B3A /* PreviewScreenshotsController.swift */,
+				B0E318D223F7EC4000AB0214 /* ReviewsController.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -227,6 +234,8 @@
 			children = (
 				B0BE5F6A23F7B85300829B3A /* AppDetailCell.swift */,
 				B0BE5F6C23F7CF7200829B3A /* PreviewCell.swift */,
+				B0E318D023F7EA4500AB0214 /* ReviewRowCell.swift */,
+				B0E318D423F7EE2200AB0214 /* ReviewCell.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -359,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0F3738923F4187400DF3237 /* BaseTabBarController.swift in Sources */,
+				B0E318D523F7EE2200AB0214 /* ReviewCell.swift in Sources */,
 				B099D98523F6775300043D59 /* SocialApp.swift in Sources */,
 				B089E36F23F578B000E51637 /* AppsPageController.swift in Sources */,
 				B079390523F46B710056C2D6 /* SearchResult.swift in Sources */,
@@ -382,8 +392,10 @@
 				B0BE5F6B23F7B85300829B3A /* AppDetailCell.swift in Sources */,
 				B090E7CB23F5BB7000DBCD9F /* AppsHeaderCell.swift in Sources */,
 				B0BE5F6D23F7CF7200829B3A /* PreviewCell.swift in Sources */,
+				B0E318D123F7EA4500AB0214 /* ReviewRowCell.swift in Sources */,
 				B0B8CA2C23F41796001BDC8B /* SceneDelegate.swift in Sources */,
 				B000624923F57DA9006A0CD6 /* AppsHorizontalController.swift in Sources */,
+				B0E318D323F7EC4000AB0214 /* ReviewsController.swift in Sources */,
 				B097313C23F58DDB00D4BA2C /* AppRowCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
