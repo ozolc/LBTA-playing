@@ -19,7 +19,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         let label = UILabel()
         label.text = "Please enter search term above..."
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
@@ -35,7 +35,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         collectionView.backgroundColor = .white
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
         
-        collectionView.addSubview(enterSearchTermLabel)
+        view.addSubview(enterSearchTermLabel)
         enterSearchTermLabel.fillSuperview(padding: .init(
             top: 100, left: 50, bottom: 0, right: 50))
         
