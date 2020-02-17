@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B000624723F57B2B006A0CD6 /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B000624623F57B2B006A0CD6 /* AppsGroupCell.swift */; };
 		B000624923F57DA9006A0CD6 /* AppsHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B000624823F57DA9006A0CD6 /* AppsHorizontalController.swift */; };
+		B0193EAF23FA65A300AFDFDF /* AppFullscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0193EAE23FA65A300AFDFDF /* AppFullscreenController.swift */; };
+		B0193EB123FA680900AFDFDF /* AppFullscreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0193EB023FA680900AFDFDF /* AppFullscreenDescriptionCell.swift */; };
 		B05CEBCA23F43006001C3DFC /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05CEBC923F43006001C3DFC /* SearchResultCell.swift */; };
 		B05E6BBD23F84E3D009844BB /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E6BBC23F84E3D009844BB /* Reviews.swift */; };
 		B071A8BF23F91B8F000B177C /* TodayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071A8BE23F91B8F000B177C /* TodayController.swift */; };
@@ -52,6 +54,8 @@
 		98C17F4E18FFC440A698F9A5 /* Pods_AppStoreJSONApis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreJSONApis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B000624623F57B2B006A0CD6 /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
 		B000624823F57DA9006A0CD6 /* AppsHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalController.swift; sourceTree = "<group>"; };
+		B0193EAE23FA65A300AFDFDF /* AppFullscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenController.swift; sourceTree = "<group>"; };
+		B0193EB023FA680900AFDFDF /* AppFullscreenDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenDescriptionCell.swift; sourceTree = "<group>"; };
 		B05CEBC923F43006001C3DFC /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		B05E6BBC23F84E3D009844BB /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		B071A8BE23F91B8F000B177C /* TodayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				B071A8BE23F91B8F000B177C /* TodayController.swift */,
+				B0193EAE23FA65A300AFDFDF /* AppFullscreenController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				B071A8C123F91C28000B177C /* TodayCell.swift */,
+				B0193EB023FA680900AFDFDF /* AppFullscreenDescriptionCell.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -403,11 +409,13 @@
 				B071A8C223F91C28000B177C /* TodayCell.swift in Sources */,
 				B0B8CA2A23F41796001BDC8B /* AppDelegate.swift in Sources */,
 				B000624723F57B2B006A0CD6 /* AppsGroupCell.swift in Sources */,
+				B0193EB123FA680900AFDFDF /* AppFullscreenDescriptionCell.swift in Sources */,
 				B0F3738C23F4290100DF3237 /* AppsSearchController.swift in Sources */,
 				B08D974223F6FA4100BDC93D /* HorizontalSnappingController.swift in Sources */,
 				B08D974423F6FEE900BDC93D /* BetterSnappingLayout.swift in Sources */,
 				B079390223F45AA30056C2D6 /* VerticalStackView.swift in Sources */,
 				B08D974723F7178400BDC93D /* AppDetailController.swift in Sources */,
+				B0193EAF23FA65A300AFDFDF /* AppFullscreenController.swift in Sources */,
 				B099828B23F5390400E9789E /* Service.swift in Sources */,
 				B090E7C923F5B92100DBCD9F /* AppsHeaderHorizontalController.swift in Sources */,
 				B090E7C723F5B7E200DBCD9F /* AppsPageHeader.swift in Sources */,
