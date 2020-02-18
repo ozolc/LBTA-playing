@@ -29,7 +29,7 @@ class AppFullscreenHeaderCell: UITableViewCell {
                            leading: nil,
                            bottom: nil,
                            trailing: trailingAnchor,
-                           padding: .init(top: 12,
+                           padding: .init(top: 44,
                                           left: 0,
                                           bottom: 0,
                                           right: 12),
