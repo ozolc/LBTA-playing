@@ -21,14 +21,6 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
         collectionView.isScrollEnabled = false
         
         collectionView.register(MultipleAppCell.self, forCellWithReuseIdentifier: cellId)
-        
-        Service.shared.fetchGames { (appGroup, err) in
-            self.results = appGroup?.feed.results ?? []
-            
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
