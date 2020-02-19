@@ -22,6 +22,7 @@
 		B089E36F23F578B000E51637 /* AppsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089E36E23F578B000E51637 /* AppsPageController.swift */; };
 		B089E37123F5794000E51637 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089E37023F5794000E51637 /* BaseListController.swift */; };
 		B08B666D23FBB15900DD5CC5 /* TodayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B666C23FBB15900DD5CC5 /* TodayItem.swift */; };
+		B08B666F23FBC6FE00DD5CC5 /* TodayMultipleAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B666E23FBC6FE00DD5CC5 /* TodayMultipleAppCell.swift */; };
 		B08D974223F6FA4100BDC93D /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D974123F6FA4100BDC93D /* HorizontalSnappingController.swift */; };
 		B08D974423F6FEE900BDC93D /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D974323F6FEE900BDC93D /* BetterSnappingLayout.swift */; };
 		B08D974723F7178400BDC93D /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D974623F7178400BDC93D /* AppDetailController.swift */; };
@@ -47,6 +48,7 @@
 		B0E318D523F7EE2200AB0214 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E318D423F7EE2200AB0214 /* ReviewCell.swift */; };
 		B0F3738923F4187400DF3237 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F3738823F4187400DF3237 /* BaseTabBarController.swift */; };
 		B0F3738C23F4290100DF3237 /* AppsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F3738B23F4290100DF3237 /* AppsSearchController.swift */; };
+		B0F64AEC23FD0CB800691B53 /* BaseTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F64AEB23FD0CB800691B53 /* BaseTodayCell.swift */; };
 		C42C1CC3FA2C9063293DC54F /* Pods_AppStoreJSONApis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98C17F4E18FFC440A698F9A5 /* Pods_AppStoreJSONApis.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,7 @@
 		B089E36E23F578B000E51637 /* AppsPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageController.swift; sourceTree = "<group>"; };
 		B089E37023F5794000E51637 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		B08B666C23FBB15900DD5CC5 /* TodayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayItem.swift; sourceTree = "<group>"; };
+		B08B666E23FBC6FE00DD5CC5 /* TodayMultipleAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMultipleAppCell.swift; sourceTree = "<group>"; };
 		B08D974123F6FA4100BDC93D /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
 		B08D974323F6FEE900BDC93D /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
 		B08D974623F7178400BDC93D /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		B0E318D423F7EE2200AB0214 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		B0F3738823F4187400DF3237 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		B0F3738B23F4290100DF3237 /* AppsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchController.swift; sourceTree = "<group>"; };
+		B0F64AEB23FD0CB800691B53 /* BaseTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTodayCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +165,9 @@
 		B071A8C023F91C19000B177C /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				B0F64AEB23FD0CB800691B53 /* BaseTodayCell.swift */,
 				B071A8C123F91C28000B177C /* TodayCell.swift */,
+				B08B666E23FBC6FE00DD5CC5 /* TodayMultipleAppCell.swift */,
 				B0193EB023FA680900AFDFDF /* AppFullscreenDescriptionCell.swift */,
 				B0193EB223FA726600AFDFDF /* AppFullscreenHeaderCell.swift */,
 			);
@@ -410,6 +416,7 @@
 				B089E36F23F578B000E51637 /* AppsPageController.swift in Sources */,
 				B079390523F46B710056C2D6 /* SearchResult.swift in Sources */,
 				B0BE5F6F23F7D13500829B3A /* PreviewScreenshotsController.swift in Sources */,
+				B0F64AEC23FD0CB800691B53 /* BaseTodayCell.swift in Sources */,
 				B0B8CA2E23F41796001BDC8B /* ViewController.swift in Sources */,
 				B079390023F451090056C2D6 /* UIView+Layout.swift in Sources */,
 				B071A8C223F91C28000B177C /* TodayCell.swift in Sources */,
@@ -421,6 +428,7 @@
 				B0193EB323FA726600AFDFDF /* AppFullscreenHeaderCell.swift in Sources */,
 				B08D974223F6FA4100BDC93D /* HorizontalSnappingController.swift in Sources */,
 				B08D974423F6FEE900BDC93D /* BetterSnappingLayout.swift in Sources */,
+				B08B666F23FBC6FE00DD5CC5 /* TodayMultipleAppCell.swift in Sources */,
 				B079390223F45AA30056C2D6 /* VerticalStackView.swift in Sources */,
 				B08D974723F7178400BDC93D /* AppDetailController.swift in Sources */,
 				B0193EAF23FA65A300AFDFDF /* AppFullscreenController.swift in Sources */,
