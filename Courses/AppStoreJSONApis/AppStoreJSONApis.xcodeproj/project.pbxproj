@@ -49,6 +49,8 @@
 		B0F3738923F4187400DF3237 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F3738823F4187400DF3237 /* BaseTabBarController.swift */; };
 		B0F3738C23F4290100DF3237 /* AppsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F3738B23F4290100DF3237 /* AppsSearchController.swift */; };
 		B0F64AEC23FD0CB800691B53 /* BaseTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F64AEB23FD0CB800691B53 /* BaseTodayCell.swift */; };
+		B0F64AEE23FD112300691B53 /* TodayMultipleAppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F64AED23FD112300691B53 /* TodayMultipleAppsController.swift */; };
+		B0F64AF023FD119000691B53 /* MultipleAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F64AEF23FD119000691B53 /* MultipleAppCell.swift */; };
 		C42C1CC3FA2C9063293DC54F /* Pods_AppStoreJSONApis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98C17F4E18FFC440A698F9A5 /* Pods_AppStoreJSONApis.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +102,8 @@
 		B0F3738823F4187400DF3237 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		B0F3738B23F4290100DF3237 /* AppsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchController.swift; sourceTree = "<group>"; };
 		B0F64AEB23FD0CB800691B53 /* BaseTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTodayCell.swift; sourceTree = "<group>"; };
+		B0F64AED23FD112300691B53 /* TodayMultipleAppsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMultipleAppsController.swift; sourceTree = "<group>"; };
+		B0F64AEF23FD119000691B53 /* MultipleAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleAppCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 			children = (
 				B071A8BE23F91B8F000B177C /* TodayController.swift */,
 				B0193EAE23FA65A300AFDFDF /* AppFullscreenController.swift */,
+				B0F64AED23FD112300691B53 /* TodayMultipleAppsController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 				B08B666E23FBC6FE00DD5CC5 /* TodayMultipleAppCell.swift */,
 				B0193EB023FA680900AFDFDF /* AppFullscreenDescriptionCell.swift */,
 				B0193EB223FA726600AFDFDF /* AppFullscreenHeaderCell.swift */,
+				B0F64AEF23FD119000691B53 /* MultipleAppCell.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -429,6 +435,7 @@
 				B08D974223F6FA4100BDC93D /* HorizontalSnappingController.swift in Sources */,
 				B08D974423F6FEE900BDC93D /* BetterSnappingLayout.swift in Sources */,
 				B08B666F23FBC6FE00DD5CC5 /* TodayMultipleAppCell.swift in Sources */,
+				B0F64AEE23FD112300691B53 /* TodayMultipleAppsController.swift in Sources */,
 				B079390223F45AA30056C2D6 /* VerticalStackView.swift in Sources */,
 				B08D974723F7178400BDC93D /* AppDetailController.swift in Sources */,
 				B0193EAF23FA65A300AFDFDF /* AppFullscreenController.swift in Sources */,
@@ -439,6 +446,7 @@
 				B097313E23F58F4600D4BA2C /* Extensions.swift in Sources */,
 				B089E37123F5794000E51637 /* BaseListController.swift in Sources */,
 				B071A8BF23F91B8F000B177C /* TodayController.swift in Sources */,
+				B0F64AF023FD119000691B53 /* MultipleAppCell.swift in Sources */,
 				B0A7523123F5CFE6002AA64A /* AppGroup.swift in Sources */,
 				B0BE5F6B23F7B85300829B3A /* AppDetailCell.swift in Sources */,
 				B05E6BBD23F84E3D009844BB /* Reviews.swift in Sources */,
