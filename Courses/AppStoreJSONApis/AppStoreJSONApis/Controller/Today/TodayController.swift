@@ -13,7 +13,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     var items = [TodayItem]()
     
     let activityIndicatorView: UIActivityIndicatorView = {
-        let aiv = UIActivityIndicatorView(style: .whiteLarge)
+        let aiv = UIActivityIndicatorView(style: .large)
         aiv.color = .darkGray
         aiv.startAnimating()
         aiv.hidesWhenStopped = true
@@ -216,7 +216,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
                 
                 let fullController = TodayMultipleAppsController(mode: .fullscreen)
                 fullController.apps = apps
-                present(fullController, animated: true)
+                present(BackEnabledNavigationController(rootViewController: fullController), animated: true)
                 return
             }
             
