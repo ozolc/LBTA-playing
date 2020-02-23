@@ -131,178 +131,197 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         // #3 not to interfere with our UITableView scrolling
     }
     
+    var appFullscreenBeginOffset: CGFloat = 0
+    
     @objc fileprivate func handleDrag(gesture: UIPanGestureRecognizer) {
+        if gesture.state == .began {
+            appFullscreenBeginOffset = appFullscreenController.tableView.contentOffset.y
+        }
+        
+        if appFullscreenController.tableView.contentOffset.y > 0 {
+            return
+        }
+        
         let translationY = gesture.translation(in: appFullscreenController.view).y
         
         if gesture.state == .changed {
-            let scale = 1 - translationY / 1000
-            
-            let transform: CGAffineTransform = .init(scaleX: scale, y: scale)
-            self.appFullscreenController.view.transform = transform
+            if translationY > 0 {
+                let trueOffset = translationY - appFullscreenBeginOffset
+                
+                var scale = 1 - trueOffset / 1000
+                
+                scale = min(1, scale)
+                scale = max(0.5, scale)
+                
+                let transform: CGAffineTransform = .init(scaleX: scale, y: scale)
+                self.appFullscreenController.view.transform = transform
+            }
             
         } else if gesture.state == .ended {
-            handleAppFullscreenDismissal()
+            if translationY > 0 {
+                handleAppFullscreenDismissal()
+            }
         }
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
-    fileprivate func setupStartingCellFrame(_ indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+            return true
+        }
         
-        // absolute coordindates of cell
-        guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
+        fileprivate func setupStartingCellFrame(_ indexPath: IndexPath) {
+            guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+            
+            // absolute coordindates of cell
+            guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
+            
+            self.startingFrame = startingFrame
+        }
         
-        self.startingFrame = startingFrame
-    }
-    
-    fileprivate func setupAppFullscreenStartingPosition(_ indexPath: IndexPath) {
-        let fullscreenView = appFullscreenController.view!
-        view.addSubview(fullscreenView)
-        
-        addChild(appFullscreenController)
-        
-        self.collectionView.isUserInteractionEnabled = false
-        
-        setupStartingCellFrame(indexPath)
-        
-        guard let startingFrame = startingFrame else { return }
-        
-        // auto layout constraint animations
-        // 4 anchors
-        
-        self.anchoredConstraint = fullscreenView
-            .anchor(top: view.topAnchor,
-                    leading: view.leadingAnchor,
-                    bottom: nil,
-                    trailing: nil,
-                    padding: .init(top: startingFrame.origin.y,
-                                   left: startingFrame.origin.x,
-                                   bottom: 0,
-                                   right: 0),
-                    size: .init(width: startingFrame.width,
-                                height: startingFrame.height))
-        
-        self.view.layoutIfNeeded()
-    }
-    
-    var anchoredConstraint: AnchoredConstraints?
-    
-    fileprivate func beginAnimationAppFullscreen() {
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+        fileprivate func setupAppFullscreenStartingPosition(_ indexPath: IndexPath) {
+            let fullscreenView = appFullscreenController.view!
+            view.addSubview(fullscreenView)
             
-            self.blurVisualEffectView.alpha = 1
+            addChild(appFullscreenController)
             
-            self.anchoredConstraint?.top?.constant = 0
-            self.anchoredConstraint?.leading?.constant = 0
-            self.anchoredConstraint?.width?.constant = self.view.frame.width
-            self.anchoredConstraint?.height?.constant = self.view.frame.height
+            self.collectionView.isUserInteractionEnabled = false
             
-            self.view.layoutIfNeeded() // starts animation
+            setupStartingCellFrame(indexPath)
             
-            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height + 100
+            guard let startingFrame = startingFrame else { return }
             
-            guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
+            // auto layout constraint animations
+            // 4 anchors
             
-            cell.todayCell.topConstraint.constant = 48
-            cell.layoutIfNeeded()
-            
-            
-        }, completion: nil)
-    }
-    
-    fileprivate func showSingleAppFullscreen(indexPath: IndexPath) {
-        setupSingleAppFullscreenController(indexPath)
-        setupAppFullscreenStartingPosition(indexPath)
-        beginAnimationAppFullscreen()
-    }
-    
-    var startingFrame: CGRect?
-    
-    @objc func handleAppFullscreenDismissal() {
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            
-            self.blurVisualEffectView.alpha = 0
-            self.appFullscreenController.view.transform = .identity
-            
-            self.appFullscreenController.tableView.contentOffset = .zero
-            
-            guard let startingFrame = self.startingFrame else { return }
-            self.anchoredConstraint?.top?.constant = startingFrame.origin.y
-            self.anchoredConstraint?.leading?.constant = startingFrame.origin.x
-            self.anchoredConstraint?.width?.constant = startingFrame.width
-            self.anchoredConstraint?.height?.constant = startingFrame.height
+            self.anchoredConstraint = fullscreenView
+                .anchor(top: view.topAnchor,
+                        leading: view.leadingAnchor,
+                        bottom: nil,
+                        trailing: nil,
+                        padding: .init(top: startingFrame.origin.y,
+                                       left: startingFrame.origin.x,
+                                       bottom: 0,
+                                       right: 0),
+                        size: .init(width: startingFrame.width,
+                                    height: startingFrame.height))
             
             self.view.layoutIfNeeded()
-            
-            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height - 80
-            
-            guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
-            
-            cell.todayCell.topConstraint.constant = 24
-            cell.layoutIfNeeded()
-            
-        }, completion: { _ in
-            self.appFullscreenController.view.removeFromSuperview()
-            self.appFullscreenController.removeFromParent()
-            self.collectionView.isUserInteractionEnabled = true
-        })
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cellId = items[indexPath.item].cellType.rawValue
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseTodayCell
-        cell.todayItem = items[indexPath.item]
-        
-        (cell as? TodayMultipleAppCell)?.multipleAppsController.collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMultipleAppsTap)))
-        
-        return cell
-    }
-    
-    @objc fileprivate func handleMultipleAppsTap(gesture: UIGestureRecognizer) {
-        
-        let collectionView = gesture.view
-        
-        // figure out which cell were clicking into
-        
-        var superview = collectionView?.superview
-        
-        while superview != nil {
-            if let cell = superview as? TodayMultipleAppCell {
-                guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
-                
-                let apps = self.items[indexPath.item].apps
-                
-                let fullController = TodayMultipleAppsController(mode: .fullscreen)
-                fullController.apps = apps
-                present(BackEnabledNavigationController(rootViewController: fullController), animated: true)
-                return
-            }
-            
-            superview = superview?.superview
         }
-    }
-    
-    static let cellSize: CGFloat = 500
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width - 64, height: TodayController.cellSize)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 32
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 32, left: 0, bottom: 32, right: 0)
-    }
-    
+        
+        var anchoredConstraint: AnchoredConstraints?
+        
+        fileprivate func beginAnimationAppFullscreen() {
+            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+                
+                self.blurVisualEffectView.alpha = 1
+                
+                self.anchoredConstraint?.top?.constant = 0
+                self.anchoredConstraint?.leading?.constant = 0
+                self.anchoredConstraint?.width?.constant = self.view.frame.width
+                self.anchoredConstraint?.height?.constant = self.view.frame.height
+                
+                self.view.layoutIfNeeded() // starts animation
+                
+                self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height + 100
+                
+                guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
+                
+                cell.todayCell.topConstraint.constant = 48
+                cell.layoutIfNeeded()
+                
+                
+            }, completion: nil)
+        }
+        
+        fileprivate func showSingleAppFullscreen(indexPath: IndexPath) {
+            setupSingleAppFullscreenController(indexPath)
+            setupAppFullscreenStartingPosition(indexPath)
+            beginAnimationAppFullscreen()
+        }
+        
+        var startingFrame: CGRect?
+        
+        @objc func handleAppFullscreenDismissal() {
+            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+                
+                self.blurVisualEffectView.alpha = 0
+                self.appFullscreenController.view.transform = .identity
+                
+                self.appFullscreenController.tableView.contentOffset = .zero
+                
+                guard let startingFrame = self.startingFrame else { return }
+                self.anchoredConstraint?.top?.constant = startingFrame.origin.y
+                self.anchoredConstraint?.leading?.constant = startingFrame.origin.x
+                self.anchoredConstraint?.width?.constant = startingFrame.width
+                self.anchoredConstraint?.height?.constant = startingFrame.height
+                
+                self.view.layoutIfNeeded()
+                
+                self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height - 80
+                
+                guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
+                cell.closeButton.alpha = 0
+                cell.todayCell.topConstraint.constant = 24
+                cell.layoutIfNeeded()
+                
+            }, completion: { _ in
+                self.appFullscreenController.view.removeFromSuperview()
+                self.appFullscreenController.removeFromParent()
+                self.collectionView.isUserInteractionEnabled = true
+            })
+        }
+        
+        override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return items.count
+        }
+        
+        override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            
+            let cellId = items[indexPath.item].cellType.rawValue
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseTodayCell
+            cell.todayItem = items[indexPath.item]
+            
+            (cell as? TodayMultipleAppCell)?.multipleAppsController.collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMultipleAppsTap)))
+            
+            return cell
+        }
+        
+        @objc fileprivate func handleMultipleAppsTap(gesture: UIGestureRecognizer) {
+            
+            let collectionView = gesture.view
+            
+            // figure out which cell were clicking into
+            
+            var superview = collectionView?.superview
+            
+            while superview != nil {
+                if let cell = superview as? TodayMultipleAppCell {
+                    guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
+                    
+                    let apps = self.items[indexPath.item].apps
+                    
+                    let fullController = TodayMultipleAppsController(mode: .fullscreen)
+                    fullController.apps = apps
+                    present(BackEnabledNavigationController(rootViewController: fullController), animated: true)
+                    return
+                }
+                
+                superview = superview?.superview
+            }
+        }
+        
+        static let cellSize: CGFloat = 500
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return .init(width: view.frame.width - 64, height: TodayController.cellSize)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 32
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return .init(top: 32, left: 0, bottom: 32, right: 0)
+        }
+        
 }
