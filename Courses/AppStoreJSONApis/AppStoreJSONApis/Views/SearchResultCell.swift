@@ -20,16 +20,16 @@ class SearchResultCell: UICollectionViewCell {
             appIconImageView.sd_setImage(with: url)
             
             screenshot1ImageView.sd_setImage(with: URL(string:
-                appResult.screenshotUrls[0]))
+                appResult.screenshotUrls![0]))
             
-            if appResult.screenshotUrls.count > 1 {
+            if appResult.screenshotUrls!.count > 1 {
                 screenshot2ImageView.sd_setImage(with: URL(string:
-                    appResult.screenshotUrls[1]))
+                    appResult.screenshotUrls![1]))
             }
             
-            if appResult.screenshotUrls.count > 2 {
+            if appResult.screenshotUrls!.count > 2 {
                 screenshot3ImageView.sd_setImage(with: URL(string:
-                    appResult.screenshotUrls[2]))
+                    appResult.screenshotUrls![2]))
             }
         }
     }
